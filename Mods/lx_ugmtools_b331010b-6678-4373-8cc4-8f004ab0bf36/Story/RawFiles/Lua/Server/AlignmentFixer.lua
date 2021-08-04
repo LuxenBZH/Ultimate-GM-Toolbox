@@ -40,6 +40,7 @@ Ext.RegisterOsirisListener("GameStarted", 2, "before", function(level, isEditor)
         CharacterSetRelationFactionToFaction(faction, "Neutral NPC", 50)
         CharacterSetRelationFactionToFaction("Neutral NPC", faction, 50)
         CharacterSetRelationFactionToFaction(faction, "Evil NPC", 0)
+        CharacterSetRelationFactionToFaction("Evil NPC", faction, 0)
     end
     for faction1,map in pairs(relationMap) do
         for faction2,relation in pairs(map) do

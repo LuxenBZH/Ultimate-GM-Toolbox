@@ -1,5 +1,9 @@
 GM Tools : Ultimate GM Toolbox Changelog
 
+# 0.11.11.21
+Fix
+* Added a missing line for the faction relation fixer
+
 # 0.11.11.20
 New
 * Included a host mod list modification warning. That way, people that don't know about the lack of sync between client and server mod list introduced by Gift Bag 2 won't be screwed by it
