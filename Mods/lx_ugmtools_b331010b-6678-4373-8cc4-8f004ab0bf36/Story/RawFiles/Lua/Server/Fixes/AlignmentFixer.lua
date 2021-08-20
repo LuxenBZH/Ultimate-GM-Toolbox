@@ -1,7 +1,7 @@
 
-Ext.RegisterOsirisListener("CharacterChangedAlginmentToCharacter", 3, "before", function(char1, char2, newRelation)
-    Ext.Print("UGMT:",char1,char2,"changed relation:",newRelation)
-end)
+-- Ext.RegisterOsirisListener("CharacterChangedAlginmentToCharacter", 3, "before", function(char1, char2, newRelation)
+--     Ext.Print("UGMT:",char1,char2,"changed relation:",newRelation)
+-- end)
 
 ---- Alignment fixer
 

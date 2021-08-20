@@ -137,3 +137,11 @@ local function StopFollow(char, status, causee)
 end
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", StopFollow)
+
+Classes.OsirisHandler:RegisterListener("ObjectEnteredCombat", 2, "before", function(object, combatID)
+    Ext.Print("OSIRISTEST")
+    if ObjectIsCharacter(object) == 1 and HasActiveStatus(object, "GM_PATROLING") == 1 then
+        RemoveStatus(object, "GM_PATROLING")
+        Ext.Print("TEST")
+    end
+end)
