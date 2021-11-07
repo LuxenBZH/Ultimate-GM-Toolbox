@@ -1,6 +1,8 @@
 Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
 Ext.Require("Server/Systems/Selection.lua")
 Ext.Require("Server/Systems/OsiServices.lua")
+Ext.Require("Server/Systems/InputBoxAnswer.lua")
+Ext.Require("Server/Systems/ContextMenuAnswers.lua")
 
 Ext.Require("Server/Tools/Movement.lua")
 Ext.Require("Server/Tools/Tools.lua")

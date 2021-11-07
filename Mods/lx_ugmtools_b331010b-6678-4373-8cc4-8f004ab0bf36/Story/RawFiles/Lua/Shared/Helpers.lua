@@ -93,7 +93,7 @@ abilities = {
     "Polymorph",
     "Ranged",
     "RangerLore",
-    "Reflection",
+    "PainReflection",
     "Reflexes",
     "RogueLore",
     "Runecrafting",

@@ -174,24 +174,32 @@ end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManagePlayable)
 
+function RespecCharacter(character)
+    if not Ext.GetCharacter(character).IsPlayer then return end
+    for i,attr in pairs(attributes) do
+        local basePoints = math.floor(Ext.GetCharacter(character).Stats["Base"..attr] - NRD_CharacterGetPermanentBoostInt(character, attr) - Ext.ExtraData.AttributeBaseValue)
+        Ext.Print("base attributes",basePoints)
+        NRD_PlayerSetBaseAttribute(character, attr, Ext.ExtraData.AttributeBaseValue)
+        CharacterAddAttributePoint(character, basePoints)
+        CharacterAddAttribute(character, "Dummy", 0)
+    end
+    for i,ab in pairs(abilities) do
+        local basePoints = math.floor(CharacterGetBaseAbility(character, ab) - NRD_CharacterGetPermanentBoostInt(character, ab))
+        NRD_PlayerSetBaseAbility(character, ab, 0)
+        CharacterAddAttribute(character, "Dummy", 0)
+        CharacterAddAbilityPoint(character, basePoints)
+    end
+    for i,civ in pairs(civilAbilities) do
+        local basePoints = math.floor(CharacterGetBaseAbility(character, civ) - NRD_CharacterGetPermanentBoostInt(character, civ))
+        NRD_PlayerSetBaseAbility(character, civ, 0)
+        CharacterAddAttribute(character, "Dummy", 0)
+        CharacterAddCivilAbilityPoint(character, basePoints)
+    end
+end
+
 function Respec()
     for character,x in pairs(selected) do
-        if not Ext.GetCharacter(character).IsPlayer then return end
-        for i,attr in pairs(attributes) do
-            local basePoints = math.floor(Ext.GetCharacter(character).Stats["Base"..attr] - NRD_CharacterGetPermanentBoostInt(character, attr) - Ext.ExtraData.AttributeBaseValue)
-            NRD_PlayerSetBaseAttribute(character, attr, Ext.ExtraData.AttributeBaseValue)
-            CharacterAddAttributePoints(character, basePoints)
-        end
-        for i,ab in pairs(abilities) do
-            local basePoints = math.floor(CharacterGetBaseAbility(character, ab) - NRD_CharacterGetPermanentBoostInt(character, ab))
-            NRD_PlayerSetBaseAbility(character, ab, 0)
-            CharacterAddAbilityPoint(basePoints)
-        end
-        for i,civ in pairs(civilAbilities) do
-            local basePoints = math.floor(CharacterGetBaseAbility(character, civ) - NRD_CharacterGetPermanentBoostInt(character, civ))
-            NRD_PlayerSetBaseAbility(character, civ, 0)
-            CharacterAddAbilityPoint(basePoints)
-        end
+        RespecCharacter(character)
     end
 end
  

@@ -2,6 +2,10 @@ Ext.Require("Client/Tools/ShroudManager.lua")
 Ext.Require("Client/Tools/SessionLoaded.lua")
 Ext.Require("Client/Setup/FXReplacements.lua")
 Ext.Require("Client/Setup/MessageBox.lua")
+
+Ext.Require("Client/Tools/CharacterSheet/ContextMenu.lua")
+Ext.Require("Client/Systems/InputBox.lua")
+
 -- Ext.Require("Client/ClickingState.lua")
 -- Ext.Require("Client/CustomStatsTooltipFix.lua")
 Ext.AddPathOverride("Public/Game/GUI/GM/GMPanelHUD.swf", "Public/lx_ugmtools_b331010b-6678-4373-8cc4-8f004ab0bf36/Game/GUI/GM/GMPanelHUD.swf")
