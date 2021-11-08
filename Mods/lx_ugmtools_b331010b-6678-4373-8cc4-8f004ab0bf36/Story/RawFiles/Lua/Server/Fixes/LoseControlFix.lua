@@ -7,9 +7,22 @@ local function GiveControlToAI(character)
         -- if character.IsPossessed then
         --     SetTag(character.MyGuid, "GM_LoseControlWasPossessed")
         -- end
-        Ext.Print(character.DisplayName, character.ReservedUserID, character.IsPossessed)
-        if character.ReservedUserID == hostID or character.ReservedUserID == 65537 then
+        Ext.Print("----------------")
+        Ext.Print(character.DisplayName, character.IsPlayer, character.IsPossessed)
+        local isPlayerCharacter = false
+        for i,player in pairs(Osi.DB_IsPlayer:Get(nil)) do
+            if character.MyGuid == GetUUID(player[1]) then
+                isPlayerCharacter = true
+                break
+            end
+        end
+        if character.IsPlayer and not isPlayerCharacter then
+        -- if character.ReservedUserID == hostID or character.ReservedUserID == 65537 then
+            -- CharacterRemoveFromParty(character.MyGuid)
+            -- CharacterMakeNPC(character.MyGuid)
             character.IsPossessed = false
+            Ext.Print(character.MyGuid, character.IsPossessed)
+            
             SetTag(character.MyGuid, "GM_LoseControlFixActive")
         end
         -- CharacterMakeNPC(character.MyGuid)
@@ -20,6 +33,12 @@ local engineStatuses = {
     CHARMED = true,
     FEAR = true
 }
+
+Ext.RegisterOsirisListener("ObjectTurnStarted", 1, "before", function(object)
+    if HasActiveStatus(object, "CHARMED") == 1 then
+        Ext.GetCharacter(object).IsPossessed = false
+    end
+end)
 
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(target, statusId, causee)
     if ObjectIsCharacter(target) == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
@@ -38,6 +57,7 @@ end)
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", function(character, statusId, causee)
     if IsTagged(character, "GM_LoseControlFixActive") == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
+        CharacterAssignToUser(65537, character)
         if not engineStatuses[statusId] then
             local pass,status = pcall(Ext.GetStat, statusId)
             if not pass or status == nil then return end
@@ -59,6 +79,8 @@ Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", function(chara
                 break
             end
         end 
+
+        Ext.Print("STILLLOST?", stillLost)
         if not stillLost then
             Ext.Print("Recovering fix from", statusId)
             local chars = Ext.GetCharactersAroundPosition(character.WorldPos[1], character.WorldPos[2], character.WorldPos[3], 30)
