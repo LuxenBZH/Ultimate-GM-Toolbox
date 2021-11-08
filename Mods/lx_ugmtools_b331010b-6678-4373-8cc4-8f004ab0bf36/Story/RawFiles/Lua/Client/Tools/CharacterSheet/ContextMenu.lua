@@ -64,7 +64,7 @@ local attributes = {
 
 UI.ContextMenu.Register.ShouldOpenListener(function(contextMenu, x, y)
     local request = Game.Tooltip.GetCurrentOrLastRequest()
-    Ext.Dump(request)
+    -- Ext.Dump(request)
     if Game.Tooltip.IsOpen() then
         if Game.Tooltip.LastRequestTypeEquals("Stat") or Game.Tooltip.LastRequestTypeEquals("Ability")  then
             return true
@@ -94,7 +94,7 @@ UI.ContextMenu.Register.OpeningListener(function(contextMenu, x, y)
                     OpenInputBox("Enter a value", "", 4451, infos)
                 end, "UGMT_SetBaseStatTo")
                 contextMenu:AddEntry("UGMT_AddAttributePoints", function(cMenu, ui, id, actionID, handle)
-                    OpenInputBox("Enter a value", "", 4452, infos)
+                    OpenInputBox("Enter a value. Can be negative to subtract points.", "", 4452, infos)
                 end, "UGMT_AddAttributePoints")
             end
             contextMenu:AddEntry("UGMT_ResetStatBoost", function(cMenu, ui, id, actionID, handle)
@@ -109,30 +109,30 @@ UI.ContextMenu.Register.OpeningListener(function(contextMenu, x, y)
     end
 end)
 
-UI.ContextMenu.Register.BuiltinOpeningListener(function(contextMenu, ui, this, buttonArr, buttons)
-    local cursor = Ext.GetPickingState()
-    Ext.Print("cursor",cursor)
-    if cursor then
-        local target = GameHelpers.TryGetObject(cursor.HoverCharacter or cursor.HoverItem)
-        Ext.Print(target)
-        if target then
-            local request = Game.Tooltip.GetCurrentOrLastRequest()
-            local infos = {
-                Character = target.NetID
-            }
-            contextMenu:AddBuiltinEntry("UGMT_SetScale", function(contextMenu, ui, id, actionID, handle)
-                infos.Context = "SetScale"
-                OpenInputBox("Enter a value en percentage", "", 4454, infos)
-            end, "UGMT_SetScale", true, true, false, true, 0)   
-            if target.PlayerCustomData.Name ~= "" then
-                contextMenu:AddBuiltinEntry("UGMT_Respec", function(contextMenu, ui, id, actionID, handle)
-                    infos.Context = "Respec"
-                    Ext.PostMessageToServer("UGM_ContextMenu", Ext.JsonStringify(infos))
-                end, "UGMT_Respec", true, true, false, true, 0)
-            end
-        end
-    end
-end)
+-- UI.ContextMenu.Register.BuiltinOpeningListener(function(contextMenu, ui, this, buttonArr, buttons)
+--     local cursor = Ext.GetPickingState()
+--     Ext.Print("cursor",cursor)
+--     if cursor then
+--         local target = GameHelpers.TryGetObject(cursor.HoverCharacter or cursor.HoverItem)
+--         Ext.Print(target)
+--         if target then
+--             local request = Game.Tooltip.GetCurrentOrLastRequest()
+--             local infos = {
+--                 Character = target.NetID
+--             }
+--             contextMenu:AddBuiltinEntry("UGMT_SetScale", function(contextMenu, ui, id, actionID, handle)
+--                 infos.Context = "SetScale"
+--                 OpenInputBox("Enter a value en percentage", "", 4454, infos)
+--             end, "UGMT_SetScale", true, true, false, true, 0)   
+--             if target.PlayerCustomData.Name ~= "" then
+--                 contextMenu:AddBuiltinEntry("UGMT_Respec", function(contextMenu, ui, id, actionID, handle)
+--                     infos.Context = "Respec"
+--                     Ext.PostMessageToServer("UGM_ContextMenu", Ext.JsonStringify(infos))
+--                 end, "UGMT_Respec", true, true, false, true, 0)
+--             end
+--         end
+--     end
+-- end)
 
 if Ext.IsDeveloperMode() then
     Mods.LeaderLib.RegisterListener("BeforeLuaReset", function()
