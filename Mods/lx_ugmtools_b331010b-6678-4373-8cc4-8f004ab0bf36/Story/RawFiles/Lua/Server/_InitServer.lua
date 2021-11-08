@@ -15,6 +15,7 @@ Ext.Require("Server/Tools/VisualSetRandomizer.lua")
 Ext.Require("Server/Tools/Fade.lua")
 
 Ext.Require("Server/Fixes/LoseControlFix.lua")
+Ext.Require("Server/Fixes/ForceGMControl.lua")
 Ext.Require("Server/Fixes/AlignmentFixer.lua")
 Ext.Require("Server/Fixes/ModListWatchdog.lua")
 -- Ext.Require("Server/ClickTools.lua")

@@ -40,6 +40,10 @@ Ext.RegisterOsirisListener("ObjectTurnStarted", 1, "before", function(object)
     end
 end)
 
+Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "before", function(object)
+
+end)
+
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(target, statusId, causee)
     if ObjectIsCharacter(target) == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
         target = Ext.GetCharacter(target)
@@ -49,7 +53,9 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(targe
         end
         local pass,status = pcall(Ext.GetStat, statusId)
         if not pass then return end
-        if (status.LoseControl == "Yes" or engineStatuses[statusId]) then
+        -- Ext.Print(status.LoseControl == "Yes", not (status.Name == "POLYMORPHED"))
+        if status.LoseControl == "Yes" and not (status.StatusType == "POLYMORPHED") then
+            -- Ext.Print("TEST")
             GiveControlToAI(target)
         end
     end
