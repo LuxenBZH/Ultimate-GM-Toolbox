@@ -31,6 +31,7 @@ function OpenInputBox(title, message, buttonID, infos)
         --ui:Invoke("setWaiting", true)
         -- ui:Invoke("setPopupType", 2)
         ui:Invoke("setInputEnabled", true)
+        ui:Invoke("focusInputEnabled")
         -- ui:Invoke("setTooltip", 0, stat.ID)
         -- local infos = {
         --     character = characterNetID,
@@ -50,15 +51,16 @@ end
 local function ManageInputBoxAnswer(ui, call, buttonID, device)
     -- Ext.Print(buttonID, ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
     local ui = Ext.GetBuiltinUI("Public/Game/GUI/msgBox.swf")
-    Ext.Print(ui, call, math.floor(buttonID), device)
+    local infos = Ext.JsonParse(ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
+    infos.ButtonID = tonumber(infos.ButtonID)
+    ui:Invoke("setTooltip", 1, "")
+    Ext.Print(ui, call, math.floor(buttonID), math.floor(infos.ButtonID), device)
     if math.floor(buttonID) == 4049 then
         ui:Hide()
         return
     end
-    if buttonID > 4000 and buttonID < 5000 then
-        local infos = Ext.JsonParse(ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
+    if infos.ButtonID > 4000 and infos.ButtonID < 5000 then
         infos.Value = ui:GetRoot().popup_mc.input_mc.input_txt.htmlText
-        -- Ext.Dump(infos)
         Ext.PostMessageToServer("UGM_InputBox", Ext.JsonStringify(infos))
         ui:Hide()
     end

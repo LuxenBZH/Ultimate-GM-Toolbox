@@ -1,75 +1,33 @@
 UI = Mods.LeaderLib.UI
+local ts = Mods.LeaderLib.Classes.TranslatedString
 
--- local function OpenRollMessageBox(rollType, stat, characterNetID, title, message)
---     local ui = Ext.GetBuiltinUI("Public/Game/GUI/msgBox.swf")
---     if ui and stat then
---         ui:Hide()
---         local root = ui:GetRoot()
---         --root.addButton(3, LocalizedText.UI.Close.Value, "", "")
---         root.setPopupType(1)
---         -- root.setText("Roll for "..stat.ID.."<br>".."Enter a modifier (e.g. 5 for +5, -2 for -2)<br>")
---         --ui:Invoke("setAnchor", 0)
---         --ui:Invoke("setPos", 50.0, 50.0)
---         -- ui:Invoke("setText", "Roll for "..stat.Name.."<br>".."Enter a modifier (e.g. 5 for +5, -2 for -2)<br>")
---         ui:Invoke("removeButtons")
---         ui:Invoke("addButton", 4040, "Accept", "", "")
---         ui:Invoke("addBlueButton", 4041, "Cancel")
+local statToEngineName = {
+    Damage = "DamageBoost",
+    -- Armor = "MaxArmor",
+    -- MagicArmor = "MaxMagicArmor",
+    Gain = false,
+    Vitality = "VitalityBoost"
+}
 
---         --ui:Invoke("addYesButton", 1)
---         -- ui:Invoke("showWin")
---         -- ui:Invoke("fadeIn")
---         --ui:Invoke("setWaiting", true)
---         -- ui:Invoke("setPopupType", 2)
---         ui:Invoke("setInputEnabled", true)
---         -- ui:Invoke("setTooltip", 0, stat.ID)
---         local infos = {
---             character = characterNetID,
---             stat = stat.ID,
---             rollType = rollType
---         }
---         ui:Invoke("setTooltip", 1, Ext.JsonStringify(infos))
---         -- root.currentDevice = characterNetID
---         ui:Invoke("showPopup", title, message)
---         -- root.showMsgbox()
---         ui:Show()
---         -- specialMessageBoxOpen = true
---     end
--- end
-
--- local function ManageAnswer(ui, call, buttonID, device)
---     -- Ext.Print(buttonID, ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
---     local ui = Ext.GetBuiltinUI("Public/Game/GUI/msgBox.swf")
---     if buttonID == 4040.0 then
---         local input = ui:GetRoot().popup_mc.input_mc.input_txt.htmlText
---         local mod = tonumber(input)
---         -- Ext.Print(input, mod)
---         if mod == nil then return end
---         local infos = Ext.JsonParse(ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
---         infos["mod"] = mod
---         Ext.PostMessageToServer("SRP_Roll", Ext.JsonStringify(infos))
---         ui:Hide()
---     elseif buttonID == 4041.0 then
---         ui:Hide()
---     end
--- end
-
-local attributes = {
-    Strength = true, --Strength
-    Finesse = true, --Finesse
-    Intelligence = true, --Intelligence
-    Constitution = true, --Constitution
-    Memory = true, --Memory
-    Wits = true, --Wits
+local bannedStats = {
+    Gain = true,
+    Experience = true,
+    NextLevelExperience = true
 }
 
 UI.ContextMenu.Register.ShouldOpenListener(function(contextMenu, x, y)
     local request = Game.Tooltip.GetCurrentOrLastRequest()
     -- Ext.Dump(request)
     if Game.Tooltip.IsOpen() then
-        if Game.Tooltip.LastRequestTypeEquals("Stat") or Game.Tooltip.LastRequestTypeEquals("Ability")  then
-            return true
-        elseif Game.Tooltip.LastRequestTypeEquals("Generic") and request.Tags == "Tags" then
-            return true
+        local root = Ext.GetBuiltinUI("Public/Game/GUI/characterSheet.swf"):GetRoot()
+        if root.isGameMasterChar then
+            if Game.Tooltip.LastRequestTypeEquals("Stat") or Game.Tooltip.LastRequestTypeEquals("Ability")  then
+                if not (bannedStats[request.Stat]) then
+                    return true
+                end
+            elseif Game.Tooltip.LastRequestTypeEquals("Generic") and request.Tags == "Tags" then
+                return true
+            end
         end
     end
 end)
@@ -81,26 +39,41 @@ UI.ContextMenu.Register.OpeningListener(function(contextMenu, x, y)
         local statID = request.Stat
         local characterId = request.Character.NetID
         local infos = {
-            Context = request.Stat,
+            Context = request.Stat or request.Ability,
             Character = characterId
         }
+        -- Ext.Dump(request)
+        if statToEngineName[infos.Context] == false then
+            return
+        elseif statToEngineName[infos.Context] then
+            infos.Context = statToEngineName[infos.Context]
+        end
+        local char = request.Character
         local root = Ext.GetBuiltinUI("Public/Game/GUI/characterSheet.swf"):GetRoot()
         if (Game.Tooltip.RequestTypeEquals("Stat") or Game.Tooltip.LastRequestTypeEquals("Ability")) then
             contextMenu:AddEntry("UGMT_SetStatTo", function(cMenu, ui, id, actionID, handle)
                 OpenInputBox("Enter a value", "", 4450, infos)
-            end, "UGMT_SetStatTo")
-            if root.isGameMasterChar and attributes[request.Stat] then
+            end, Ext.GetTranslatedStringFromKey("UGMT_SetStatTo"))
+            -- Ext.Print(char.PlayerCustomData.Name)
+            -- Ext.Print(attributes[request.Stat] or abilities[request.Ability] or civilAbilities[request.Ability])
+            if char.PlayerCustomData.Name ~= "" and (attributes[request.Stat] or abilities[request.Ability] or civilAbilities[request.Ability]) then  
                 contextMenu:AddEntry("UGMT_SetBaseStatTo", function(cMenu, ui, id, actionID, handle)
                     OpenInputBox("Enter a value", "", 4451, infos)
-                end, "UGMT_SetBaseStatTo")
-                contextMenu:AddEntry("UGMT_AddAttributePoints", function(cMenu, ui, id, actionID, handle)
-                    OpenInputBox("Enter a value. Can be negative to subtract points.", "", 4452, infos)
-                end, "UGMT_AddAttributePoints")
+                end, Ext.GetTranslatedStringFromKey("UGMT_SetBaseStatTo"))
+                if attributes[request.Stat] then
+                    contextMenu:AddEntry("UGMT_AddAttributePoints", function(cMenu, ui, id, actionID, handle)
+                        OpenInputBox("Enter a value.", "Can be negative to subtract points.", 4452, infos)
+                    end, Ext.GetTranslatedStringFromKey("UGMT_AddAttributePoints"))
+                elseif abilities[request.Ability] or civilAbilities[request.Ability] then
+                    contextMenu:AddEntry("UGMT_AddAbilityPoints", function(cMenu, ui, id, actionID, handle)
+                        OpenInputBox("Enter a value.", "Can be negative to subtract points.", 4455, infos)
+                    end, Ext.GetTranslatedStringFromKey("UGMT_AddAbilityPoints"))
+                end
             end
             contextMenu:AddEntry("UGMT_ResetStatBoost", function(cMenu, ui, id, actionID, handle)
                 infos.ButtonID = 4453
                 Ext.PostMessageToServer("UGM_InputBox", Ext.JsonStringify(infos))
-            end, "UGMT_ResetStatBoost")
+            end, Ext.GetTranslatedStringFromKey("UGMT_ResetStatBoost"))
         elseif Game.Tooltip.LastRequestTypeEquals("Generic") and request.Tags == "Tags" then
             contextMenu:AddEntry("UGMT_AddTag", function(cMenu, ui, id, actionID, handle)
                 OpenInputBox("UGMT_AddTag", statData, characterId, "Enter the tag name", "")

@@ -1,5 +1,14 @@
 GM Tools : Ultimate GM Toolbox Changelog
 
+# 0.12.12.23
+Fixes
+* LoseControl and Dominate Mind fix shall now be more accurate. It shouldn't make players triggering Dominate Mind keeping the UI of the victim when it's their turn anymore. /!\ WARNING /!\ : there is still an issue. A character victim of Charm cannot be charmed a second time, unless you go back to the GM view and give briefly the control to AI before possessing again.
+* The GM can now go back to the GM view when possessing a summon or a follower. It will avoid situations where the GM is stuck in a possessed character and cannot go back without reloading the save.
+* The fix above shall also make so the AI or players doesn't randomly take control of possessed characters
+
+New
+* REQUIRE LeaderLib (load order : above UGMT): Attributes and abilities now have a context menu to set the boost, base stat, give points and reset the boost. You have now more powers on the stats of the characters and one of the biggest advantage of using the context menu is that it doesn't reset the HP/armours during combat if you change stats through the context menu
+
 # 0.11.11.21
 Fix
 * Added a missing line for the faction relation fixer
