@@ -9,24 +9,6 @@ local talkAnims = {
 
 animOnClick = false
 
-function AddToAttribute(attribute, value)
-    for char,x in pairs(selected) do
-        CharacterAddAttribute(char, attribute, value)
-    end
-end
-
-function AddSkill(skill)
-    for char,x in pairs(selected) do
-        CharacterAddSkill(char, skill, 1)
-    end
-end
-
-function RemoveSkill(skill)
-    for char,x in pairs(selected) do
-        CharacterRemoveSkill(char, skill)
-    end
-end
-
 -- Click to Anim feature
 function ToggleBark()
     if not animOnClick then

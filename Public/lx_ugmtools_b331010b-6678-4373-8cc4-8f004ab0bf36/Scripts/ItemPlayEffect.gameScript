@@ -1,0 +1,18 @@
+INIT
+	ITEM: __Me
+
+EVENTS
+EVENT Init
+VARS
+	ITEM: _Item
+	STRING: _Effect
+ON
+	OnCharacterItemEvent(_, _Item, "UGM_ItemPlayEffect")
+ACTIONS
+	ItemApplyStatus(_Item, "BURNING", 12.0, 1)
+	IF "c1"
+		GetVar(_Effect, _Item, "UGM_ItemEffect")
+	THEN
+		
+		ItemPlayLoopEffect(_, _Item, _Effect)
+	ENDIF

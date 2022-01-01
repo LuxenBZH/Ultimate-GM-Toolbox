@@ -27,7 +27,7 @@ local function GenerateTreasureFromTable(tab)
         local pouch = Ext.GetItem(CreateItemTemplateAtPosition("LOOT_Pouch_A_244deb74-a42b-44b3-94b1-a7fe3620b98e", x, y, z))
         local level = CharacterGetLevel(char)
         GenerateTreasure(pouch.MyGuid, treasureTable, level, char)
-        local inventory = pouch.GetInventoryItems(pouch)
+        local inventory = pouch:GetInventoryItems()
         for i,item in pairs(inventory) do
             CharacterEquipItem(char, item)
         end

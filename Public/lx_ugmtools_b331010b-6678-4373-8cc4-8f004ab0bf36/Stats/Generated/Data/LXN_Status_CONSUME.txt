@@ -1,0 +1,34 @@
+new entry "GM_BLUEARROW"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_GREENARROW"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_REDARROW"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_YELLOWARROW"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_CIRCLE2M"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_CIRCLE5M"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"
+
+new entry "GM_CIRCLE10M"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "StackId" "stack_selected"

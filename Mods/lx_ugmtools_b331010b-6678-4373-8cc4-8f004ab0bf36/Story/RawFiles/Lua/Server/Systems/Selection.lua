@@ -181,3 +181,16 @@ local function ClearFromOsi(item, event)
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ClearFromOsi)
+
+function ToggleSelectionLock()
+    PersistentVars.lock = not PersistentVars.lock
+end
+
+function SelectAroundPosition(item, distance)
+    if item then
+        item = Ext.GetItem(item)
+        for i,character in pairs(Ext.GetCharactersAroundPosition(item.WorldPos[1], item.WorldPos[2], item.WorldPos[3], distance)) do
+            AddToSelection(character, "GM_Select")
+        end
+    end
+end

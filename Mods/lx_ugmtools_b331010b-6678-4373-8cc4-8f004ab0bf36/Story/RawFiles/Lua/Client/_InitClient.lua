@@ -5,6 +5,12 @@ Ext.Require("Client/Setup/MessageBox.lua")
 
 Ext.Require("Client/Tools/CharacterSheet/ContextMenu.lua")
 Ext.Require("Client/Systems/InputBox.lua")
+-- Ext.Require("Cleint/Topbar/Topbar_management.lua")
+
+Ext.Require("Client/UI/Classes/ToolButton.lua")
+Ext.Require("Client/UI/Classes/DraggingEffect.lua")
+
+Ext.Require("Client/UI/System/ToolBar.lua")
 
 -- Ext.Require("Client/ClickingState.lua")
 -- Ext.Require("Client/CustomStatsTooltipFix.lua")

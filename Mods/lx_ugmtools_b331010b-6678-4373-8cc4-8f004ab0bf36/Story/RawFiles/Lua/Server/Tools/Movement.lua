@@ -72,7 +72,7 @@ local function GetClosest(item)
     return chosen
 end
 
-local function ClassicMove(object, event)
+function ClassicMove(object, event)
     if event ~= "GM_Move_Run" and event ~= "GM_Move_Walk" then return end
     local closest = GetClosest(object)
     local vx,vy,vz = GetPosition(object)
@@ -125,6 +125,10 @@ function FollowTarget(item, event)
         PersistentVars.Followers[char] = target
         RemoveStatus(char, PersistentVars.selectType.current)
     end
+end
+
+function LuaFollowTarget()
+    FollowTarget(nil, "GM_Start_Follow")
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", FollowTarget)

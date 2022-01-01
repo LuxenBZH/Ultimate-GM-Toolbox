@@ -1,8 +1,15 @@
+PersistentVars = {}
+selected = {}
+target = nil
+quickSelection = nil
+bypasslock = false
+
 Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
 Ext.Require("Server/Systems/Selection.lua")
 Ext.Require("Server/Systems/OsiServices.lua")
 Ext.Require("Server/Systems/InputBoxAnswer.lua")
 Ext.Require("Server/Systems/ContextMenuAnswers.lua")
+
 
 Ext.Require("Server/Tools/Movement.lua")
 Ext.Require("Server/Tools/Tools.lua")
@@ -14,23 +21,22 @@ Ext.Require("Server/Tools/UIHotbar.lua")
 Ext.Require("Server/Tools/VisualSetRandomizer.lua")
 Ext.Require("Server/Tools/Fade.lua")
 
+Ext.Require("Server/Systems/ToolbarAnswers.lua")
+
 Ext.Require("Server/Fixes/LoseControlFix.lua")
 Ext.Require("Server/Fixes/ForceGMControl.lua")
 Ext.Require("Server/Fixes/AlignmentFixer.lua")
 Ext.Require("Server/Fixes/ModListWatchdog.lua")
 -- Ext.Require("Server/ClickTools.lua")
 
-
-PersistentVars = {}
-selected = {}
-target = nil
-quickSelection = nil
-bypasslock = false
-
 -- Initialization
 currentLevel = ""
 
 local function RestoreCharactersScaling()
+    if PersistentVars == nil then
+        PersistentVars = {}
+    end
+    if not PersistentVars[currentLevel] then return end
     for character, scale in pairs(PersistentVars[currentLevel].scale) do
         if ObjectExists(character) == 1 and ObjectIsCharacter(character) == 1 then
             Ext.BroadcastMessage("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(scale), nil)

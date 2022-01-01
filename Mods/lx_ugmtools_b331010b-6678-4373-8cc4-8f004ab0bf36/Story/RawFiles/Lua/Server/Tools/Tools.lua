@@ -14,53 +14,90 @@ end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassActivateDeactivate)
 
-local function MassSheatheUnsheathe(item, event)
-    if event == "GM_Sheathe" then
-        for char,x in pairs(selected) do
-            RemoveStatus(char, PersistentVars.selectType.current)
+-- local function MassSheatheUnsheathe(item, event)
+--     if event == "GM_Sheathe" then
+--         for char,x in pairs(selected) do
+--             RemoveStatus(char, PersistentVars.selectType.current)
+--             RemoveStatus(char, "UNSHEATHED")
+--         end
+--     elseif event == "GM_Unsheathe" then
+--         for char,x in pairs(selected) do
+--             RemoveStatus(char, PersistentVars.selectType.current)
+--             ApplyStatus(char, "UNSHEATHED", -1.0, 1)
+--         end
+--     else return end
+--     ClearSelectionAndTarget()
+-- end
+
+-- Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassSheatheUnsheathe)
+
+function ToggleCombatMode()
+    for char,x in pairs(selected) do
+        if HasActiveStatus(char, "UNSHEATHED") == 1 then
             RemoveStatus(char, "UNSHEATHED")
-        end
-    elseif event == "GM_Unsheathe" then
-        for char,x in pairs(selected) do
-            RemoveStatus(char, PersistentVars.selectType.current)
+        else
             ApplyStatus(char, "UNSHEATHED", -1.0, 1)
         end
-    else return end
-    ClearSelectionAndTarget()
+    end
 end
 
-Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassSheatheUnsheathe)
+-- local function StoryFreezeManagement(item, event)
+--     if event == "GM_Freeze_Players" then
+--         if GetTableSize(selected) < 1 then
+--             local players = Osi.DB_IsPlayer:Get(nil)
+--             for i,player in pairs(players) do
+--                 CharacterFreeze(player)
+--                 ApplyStatus(player, "GM_STORYFREEZE", -1.0)
+--             end
+--         else
+--             for char,x in pairs(selected) do
+--                 CharacterFreeze(char)
+--                 ApplyStatus(char, "GM_STORYFREEZE", -1.0)
+--             end
+--         end
+--     elseif event == "GM_Unfreeze_Players" then
+--         if GetTableSize(selected) < 1 then
+--             local players = Osi.DB_IsPlayer(nil)
+--             for i,player in pairs(players) do
+--                 RemoveStatus(player, "GM_STORYFREEZE")
+--             end
+--         else
+--             for char,x in pairs(selected) do
+--                 RemoveStatus(char, "GM_STORYFREEZE")
+--             end
+--         end
+--     else return end
+--     ClearSelectionAndTarget()
+-- end
 
-local function StoryFreezeManagement(item, event)
-    if event == "GM_Freeze_Players" then
-        if GetTableSize(selected) < 1 then
-            local players = Osi.DB_IsPlayer:Get(nil)
-            for i,player in pairs(players) do
+-- Ext.RegisterOsirisListener("StoryEvent", 2, "before", StoryFreezeManagement)
+
+function StoryFreeze()
+    if GetTableSize(selected) < 1 then
+        local players = Osi.DB_IsPlayer:Get(nil)
+        for i,player in pairs(players) do
+            player = player[1]
+            if HasActiveStatus(player, "GM_STORYFREEZE") == 0 then
                 CharacterFreeze(player)
                 ApplyStatus(player, "GM_STORYFREEZE", -1.0)
-            end
-        else
-            for char,x in pairs(selected) do
-                CharacterFreeze(char)
-                ApplyStatus(char, "GM_STORYFREEZE", -1.0)
-            end
-        end
-    elseif event == "GM_Unfreeze_Players" then
-        if GetTableSize(selected) < 1 then
-            local players = Osi.DB_IsPlayer(nil)
-            for i,player in pairs(players) do
+            else
+                CharacterUnfreeze(player)
                 RemoveStatus(player, "GM_STORYFREEZE")
             end
-        else
-            for char,x in pairs(selected) do
+        end
+    else
+        for char,x in pairs(selected) do
+            if HasActiveStatus(char, "GM_STORYFREEZE") == 0 then
+                CharacterFreeze(char)
+                ApplyStatus(char, "GM_STORYFREEZE", -1.0)
+            else
+                CharacterUnfreeze(char)
                 RemoveStatus(char, "GM_STORYFREEZE")
             end
         end
-    else return end
-    ClearSelectionAndTarget()
+    end
 end
 
-Ext.RegisterOsirisListener("StoryEvent", 2, "before", StoryFreezeManagement)
 
 local function Unfreeze(char, status, causee)
     if status ~= "GM_STORYFREEZE" then return end
@@ -263,3 +300,8 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "after", function(item, event)
         ItemRemove(j)
     end
 end)
+
+function ItemPlayEffect(item, effect)
+    SetVarString(item, "UGM_ItemPlayEffect", effect)
+    CharacterItemSetEvent("00000000-0000-0000-0000-000000000000", item, "UGM_ItemPlayEffect")
+end
