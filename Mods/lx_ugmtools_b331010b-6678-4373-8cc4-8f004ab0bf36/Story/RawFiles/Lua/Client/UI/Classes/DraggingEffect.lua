@@ -24,7 +24,7 @@ function DraggingEffect:Create(templates, functions, starting, statuses)
         Ext.RegisterNetListener(func, function(channel, payload)
             print(channel, payload)
             this.CurrentEntity = Ext.GetItem(tonumber(payload))
-            Ext.Print("currentEntity",this.CurrentEntity)
+            -- Ext.Print("currentEntity",this.CurrentEntity)
             this:Drag()
         end)
     end

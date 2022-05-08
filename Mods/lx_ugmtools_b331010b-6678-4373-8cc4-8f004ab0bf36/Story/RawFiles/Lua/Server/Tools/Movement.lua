@@ -1,4 +1,4 @@
-local function RegisterPatrolBeacon(object, event)
+function RegisterPatrolBeacon(object, event)
     if event ~= "GM_Place_Patrol_Beacon" then return end
     for char, status in pairs(selected) do
         local beacons = PersistentVars[currentLevel].patrols[char]
@@ -9,12 +9,11 @@ local function RegisterPatrolBeacon(object, event)
         PersistentVars[currentLevel].patrols[char] = beacons
         Ext.Print("Added patrol point at ",x,y,z)
     end
-    ItemRemove(object)
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", RegisterPatrolBeacon)
 
-local function StartPatrol(object, event)
+function StartPatrol(object, event)
     if event ~= "GM_Start_Multipatrol" then return end
     for char, status in pairs(selected) do
         if GetTableSize(PersistentVars[currentLevel].patrols[char]) < 2 then return end
@@ -23,7 +22,6 @@ local function StartPatrol(object, event)
         ApplyStatus(char, "GM_PATROLING", -1.0)
         RemoveStatus(char, PersistentVars.selectType.current)
     end
-    ItemRemove(object)
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", StartPatrol)

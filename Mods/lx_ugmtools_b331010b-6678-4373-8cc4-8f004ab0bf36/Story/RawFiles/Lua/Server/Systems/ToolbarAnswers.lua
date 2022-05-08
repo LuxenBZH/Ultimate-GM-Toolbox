@@ -23,6 +23,8 @@ local draggingFunctions = {
     ["Select2m"]  = {handle = function(entity) SelectAroundPosition(entity, 2) end},
     ["Select5m"]  = {handle = function(entity) SelectAroundPosition(entity, 5) end},
     ["Select10m"] = {handle = function(entity) SelectAroundPosition(entity, 10) end},
+    ["PlacePatrolBeacon"] = {handle = function(entity) RegisterPatrolBeacon(entity, "GM_Place_Patrol_Beacon") end},
+    ["StartPatrol"]       = {handle = function(entity) StartPatrol(entity, "GM_Start_Multipatrol") end}
 }
 
 Ext.RegisterNetListener("UGM_StartDraggingEffect", function(channel, payload)

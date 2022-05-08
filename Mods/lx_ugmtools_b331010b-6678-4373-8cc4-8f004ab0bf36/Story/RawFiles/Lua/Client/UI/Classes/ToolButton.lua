@@ -8,7 +8,8 @@ ToolButton = {
 
 ToolButton.__index = ToolButton
 
-function ToolButton:Create(ui, name, size, icons, special)
+function ToolButton:Create(bar, ui, name, size, icons, special)
+    Ext.Print(bar, ui, name, size, icons, special)
     local this = {
         Name = name,
         Icons = icons,
@@ -17,9 +18,10 @@ function ToolButton:Create(ui, name, size, icons, special)
         Special = special,
     }
     setmetatable(this, self)
-    ui:GetRoot().toolbar_mc.addButton(name)
+    -- ui:GetRoot().toolbar_mc.addButton(name)
+    ui:GetRoot().toolbarHolder_mc.addButtonToBar(bar, name)
     this:SetupIcon()
-    Ext.RegisterUICall(ui, name.."_pressed", function(...)
+    Ext.RegisterUICall(ui, "toolbar_"..name, function(...)
         this:Press()
     end)
     if #icons > 1 then

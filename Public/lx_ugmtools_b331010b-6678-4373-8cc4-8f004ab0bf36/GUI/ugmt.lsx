@@ -6,6 +6,27 @@
         <node id="root">
             <children>
                 <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_armorfinesse" type="22" />
+                    <attribute id="U1" value="0.437988" type="6" />
+                    <attribute id="U2" value="0.499512" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_armorheavy" type="22" />
+                    <attribute id="U1" value="0.500488" type="6" />
+                    <attribute id="U2" value="0.562012" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_armormage" type="22" />
+                    <attribute id="U1" value="0.562988" type="6" />
+                    <attribute id="U2" value="0.624512" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
                     <attribute id="MapKey" value="ugmt_bark_mode" type="22" />
                     <attribute id="U1" value="0.312988" type="6" />
                     <attribute id="U2" value="0.374512" type="6" />
@@ -18,6 +39,20 @@
                     <attribute id="U2" value="0.312012" type="6" />
                     <attribute id="V1" value="0.000488281" type="6" />
                     <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_beaconpatrol" type="22" />
+                    <attribute id="U1" value="0.625488" type="6" />
+                    <attribute id="U2" value="0.687012" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_clearitems" type="22" />
+                    <attribute id="U1" value="0.625488" type="6" />
+                    <attribute id="U2" value="0.687012" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
                 </node>
                 <node id="IconUV">
                     <attribute id="MapKey" value="ugmt_fade" type="22" />
@@ -48,9 +83,58 @@
                     <attribute id="V2" value="0.0620117" type="6" />
                 </node>
                 <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_makenpc" type="22" />
+                    <attribute id="U1" value="0.0629883" type="6" />
+                    <attribute id="U2" value="0.124512" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_makepc" type="22" />
+                    <attribute id="U1" value="0.125488" type="6" />
+                    <attribute id="U2" value="0.187012" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_runto" type="22" />
+                    <attribute id="U1" value="0.687988" type="6" />
+                    <attribute id="U2" value="0.749512" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_select_zone_1" type="22" />
+                    <attribute id="U1" value="0.750488" type="6" />
+                    <attribute id="U2" value="0.812012" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_select_zone_2" type="22" />
+                    <attribute id="U1" value="0.812988" type="6" />
+                    <attribute id="U2" value="0.874512" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_select_zone_3" type="22" />
+                    <attribute id="U1" value="0.875488" type="6" />
+                    <attribute id="U2" value="0.937012" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
                     <attribute id="MapKey" value="ugmt_shroud" type="22" />
                     <attribute id="U1" value="0.500488" type="6" />
                     <attribute id="U2" value="0.562012" type="6" />
+                    <attribute id="V1" value="0.000488281" type="6" />
+                    <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_startpatrol" type="22" />
+                    <attribute id="U1" value="0.937988" type="6" />
+                    <attribute id="U2" value="0.999512" type="6" />
                     <attribute id="V1" value="0.000488281" type="6" />
                     <attribute id="V2" value="0.0620117" type="6" />
                 </node>
@@ -60,6 +144,27 @@
                     <attribute id="U2" value="0.499512" type="6" />
                     <attribute id="V1" value="0.000488281" type="6" />
                     <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_toggleboss" type="22" />
+                    <attribute id="U1" value="0.187988" type="6" />
+                    <attribute id="U2" value="0.249512" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_togglefollower" type="22" />
+                    <attribute id="U1" value="0.250488" type="6" />
+                    <attribute id="U2" value="0.312012" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_transform" type="22" />
+                    <attribute id="U1" value="0.312988" type="6" />
+                    <attribute id="U2" value="0.374512" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
                 </node>
                 <node id="IconUV">
                     <attribute id="MapKey" value="ugmt_unselect" type="22" />
@@ -74,6 +179,20 @@
                     <attribute id="U2" value="0.437012" type="6" />
                     <attribute id="V1" value="0.000488281" type="6" />
                     <attribute id="V2" value="0.0620117" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_visualrandomize" type="22" />
+                    <attribute id="U1" value="0.375488" type="6" />
+                    <attribute id="U2" value="0.437012" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
+                </node>
+                <node id="IconUV">
+                    <attribute id="MapKey" value="ugmt_walkto" type="22" />
+                    <attribute id="U1" value="0.000488281" type="6" />
+                    <attribute id="U2" value="0.0620117" type="6" />
+                    <attribute id="V1" value="0.0629883" type="6" />
+                    <attribute id="V2" value="0.124512" type="6" />
                 </node>
             </children>
         </node>
