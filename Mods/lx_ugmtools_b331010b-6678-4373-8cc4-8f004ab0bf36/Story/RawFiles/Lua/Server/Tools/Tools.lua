@@ -170,7 +170,7 @@ end
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", Bossify)
 
 -- Make PC or NPC
-local function ManagePlayable(item, event)
+function ManagePlayable(item, event)
     if event == "GM_MakePlayer" then
         for char,x in pairs(selected) do
             CharacterMakePlayer(char)
@@ -210,6 +210,16 @@ local function ManagePlayable(item, event)
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManagePlayable)
+
+function ManageFollower()
+    for char,x in pairs(selected) do
+        if CharacterIsPlayer(target) then
+            ManagePlayable("", "GM_UnmakeFollower")
+        else
+            ManagePlayable("", "GM_MakeFollower")
+        end
+    end
+end
 
 function RespecCharacter(character)
     if not Ext.GetCharacter(character).IsPlayer then return end

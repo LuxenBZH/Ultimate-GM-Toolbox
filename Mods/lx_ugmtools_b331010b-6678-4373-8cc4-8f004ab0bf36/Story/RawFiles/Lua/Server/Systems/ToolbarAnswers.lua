@@ -6,13 +6,26 @@ local answers = {
     ["ugmt_story_freeze"]   = {handle = StoryFreeze},
     ["ugmt_unsheath"]       = {handle = ToggleCombatMode},
     ["ugmt_shroud"]         = {handle = function() Ext.BroadcastMessage("UGM_Shroud_Manager", "Regenerate", nil) end},
-    ["ugmt_fade"]           = {handle = FadeSelection}
+    ["ugmt_fade"]           = {handle = FadeSelection},
+    ["ugmt_randomvisuals"]  = {handle = RandomizeVisualSet, args = {"", "GM_RandomizeVisuals"}},
+    ["ugmt_transform"]      = {handle = TransformCharacter, args = {"", "GM_Transform"}},
+    ["ugmt_bossify"]        = {handle = Bossify, args = {"", "GM_Bossify"}},
+    ["ugmt_makeplayer"]     = {handle = ManagePlayable, args = {"", "GM_MakePlayer"}},
+    ["ugmt_makenpc"]        = {handle = ManagePlayable, args = {"", "GM_MakeNPC"}},
+    ["ugmt_togglefollower"] = {handle = ManageFollower}
 }
 
 Ext.Print("server-side ready")
 
 Ext.RegisterNetListener("UGMT_ToolbarPress", function(channel, message)
-    answers[message].handle()
+    print(message)
+    answer = answers[message]
+    Ext.Dump(answer)
+    if answer.args then
+        answer.handle(table.unpack(answer.args))
+    else
+        answer.handle()
+    end
 end)
 
 Timer = Mods.LeaderLib.Timer
