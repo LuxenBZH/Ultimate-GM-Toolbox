@@ -299,17 +299,21 @@ function UGM_StatSearchName(mode, type, input)
     return result
 end
 
+function ItemRemoveTool(item, event)
+    if event ~= "GM_Destroy_Item" then return end
+    local pos = Ext.GetItem(item).WorldPos
+    local items = Ext.GetItemsAroundPosition(pos[1], pos[2], pos[3], 1.0)
+    for i,j in pairs(items) do
+        if j ~= item then
+            ItemRemove(j)
+        end
+    end
+end
+
 --- Delete Items
 ---@param item string GUID
 ---@param event string Osiris event
-Ext.RegisterOsirisListener("StoryEvent", 2, "after", function(item, event)
-    if event ~= "GM_Destroy_Item" then return end
-    local pos = Ext.GetItem(item).WorldPos
-    local items = Ext.GetItemsAroundPosition(pos[1], pos[2], pos[3], 1)
-    for i,j in pairs(items) do
-        ItemRemove(j)
-    end
-end)
+Ext.RegisterOsirisListener("StoryEvent", 2, "after", ItemRemoveTool)
 
 function ItemPlayEffect(item, effect)
     SetVarString(item, "UGM_ItemPlayEffect", effect)

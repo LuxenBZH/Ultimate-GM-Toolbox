@@ -11,7 +11,7 @@ local toolbars = {
         ["ugmt_unsheath"]       = {{"ugmt_unsheath"}},
         ["ugmt_shroud"]         = {{"ugmt_shroud"}},
         ["ugmt_fade"]           = {{"ugmt_fade"}},
-        ["ugmt_clearitems"]     = {{"ugmt_clearitems"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"ItemRemove"}, 1, {"Select2m"})},
+        ["ugmt_clearitems"]     = {{"ugmt_clearitems"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"ItemRemove"}, 1, {"GM_CIRCLE2M"})},
     },
     [2] = {
         ["ugmt_randomvisuals"]  = {{"ugmt_visualrandomize"}},
@@ -20,6 +20,7 @@ local toolbars = {
         ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
         ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
         ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
+        ["ugmt_confiscate"]     = {{"ugmt_confiscateweapons", "ugmt_confiscateinventory"}}
     },
     [3] = {
         ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},
@@ -59,6 +60,62 @@ local buttonOrder = {
     }
 }
 
+---@class ToolBarManager
+---@field Bars array[]
+---@field UI ExtClient.UI
+---@field CurrentButton ToolButton
+ToolBarManager = {
+    Bars = {},
+    UI = nil,
+    CurrentButton = nil
+}
+
+ToolBarManager.__index = ToolBarManager
+
+function ToolBarManager:Create(ui)
+    local this = {
+        Bars = {},
+        UI = ui,
+        CurrentButton = nil
+    }
+    setmetatable(this, self)
+    Ext.RegisterListener("InputEvent", function(event)
+        if this.CurrentButton then
+            if event.EventId == 2 and event.Release then
+                this:Release()
+            end
+        end
+    end)
+    return this
+end
+
+function ToolBarManager:AddBar(index)
+    self.Bars[index] = {}
+end
+
+function ToolBarManager:AddButton(barIndex, name, size, icons, special)
+    self.Bars[barIndex][name] = ToolButton:Create(barIndex, self.UI, name, size, icons, special)
+    self.UI:GetRoot().toolbarHolder_mc.addButtonToBar(barIndex, name)
+    Ext.RegisterUICall(self.UI, "toolbar_"..name, function(...)
+        self:OnPress(barIndex, name)
+    end)
+end
+
+function ToolBarManager:OnPress(barIndex, name)
+    -- Ext.Print("TEST", self.CurrentButton, self.CurrentButton.Special)
+    -- Deactivate previous button effect if there's one button already active
+    if self.CurrentButton and self.CurrentButton.Special then
+        self.CurrentButton.OnUse = false
+        self.CurrentButton.Special:ToggleOff()
+    end
+    self.CurrentButton = self.Bars[barIndex][name]
+    self.Bars[barIndex][name]:OnPress()
+end
+
+function ToolBarManager:Release()
+    self.CurrentButton = nil
+end
+
 if Mods.LeaderLib then
     Timer = Mods.LeaderLib.Timer
 end
@@ -76,13 +133,16 @@ Ext.RegisterListener("SessionLoaded", function()
     local toolbar = Ext.GetUI("UGMT_Toolbar")
     -- toolbar:GetRoot().toolbar_mc.lBorder_mc.visible = false
     toolbar:GetRoot().visible = false
+
+    local tm = ToolBarManager:Create(toolbar)
     
     for bar, buttons in pairs(toolbars) do
+        tm:AddBar(bar)
         for index, name in pairs(buttonOrder[bar]) do
-            toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
+            tm:AddButton(bar, name, 48, table.unpack(toolbars[bar][name]))
+            -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
         end
     end
-
     -- toolbar:GetRoot().toolbarHolder_mc.toolbar[1].reverseButtons()
     -- toolbar:GetRoot().toolbarHolder_mc.toolbar[2].reverseButtons()
 

@@ -1,5 +1,10 @@
 ---@class DraggingEffect
 --- Templates and functions are corresponding by their index
+--- @field CurrentId int
+--- @field Proxies array[]
+--- @field Functions array[]
+--- @field Statuses array[]
+--- @field Kill boolean
 DraggingEffect = {
     CurrentId = 1,
     Proxies = {},
@@ -10,6 +15,10 @@ DraggingEffect = {
 
 DraggingEffect.__index = DraggingEffect
 
+--- @param templates array[string]
+--- @param functions array[fun]
+--- @param starting int
+--- @param statuses array[string]
 function DraggingEffect:Create(templates, functions, starting, statuses)
     local this = {
         CurrentId = starting or 1,

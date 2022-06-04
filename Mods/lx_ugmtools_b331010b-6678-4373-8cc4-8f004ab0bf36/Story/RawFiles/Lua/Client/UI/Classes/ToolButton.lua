@@ -1,4 +1,8 @@
 ---@class ToolButton
+---@field Name
+---@field Icons
+---@field Size
+---@field UI
 ToolButton = {
     Name = "",
     Icons = {},
@@ -8,6 +12,12 @@ ToolButton = {
 
 ToolButton.__index = ToolButton
 
+--- @param bar int
+--- @param ui ExtClient.UI
+--- @param name string
+--- @param size int
+--- @param icons array[]
+--- @param special DraggingEffect
 function ToolButton:Create(bar, ui, name, size, icons, special)
     Ext.Print(bar, ui, name, size, icons, special)
     local this = {
@@ -19,11 +29,11 @@ function ToolButton:Create(bar, ui, name, size, icons, special)
     }
     setmetatable(this, self)
     -- ui:GetRoot().toolbar_mc.addButton(name)
-    ui:GetRoot().toolbarHolder_mc.addButtonToBar(bar, name)
+    -- ui:GetRoot().toolbarHolder_mc.addButtonToBar(bar, name)
     this:SetupIcon()
-    Ext.RegisterUICall(ui, "toolbar_"..name, function(...)
-        this:Press()
-    end)
+    -- Ext.RegisterUICall(ui, "toolbar_"..name, function(...)
+    --     this:Press()
+    -- end)
     if #icons > 1 then
         Ext.RegisterListener("InputEvent", function(event)
             if this.OnUse then
@@ -50,7 +60,7 @@ function ToolButton:SetupIcon()
     self.CurrentIcon = 1
 end
 
-function ToolButton:Press()
+function ToolButton:OnPress()
     if #self.Icons > 1 and not self.Special then
         self.CurrentIcon = self.Icons[self.CurrentIcon+1] and self.CurrentIcon + 1 or 1
         self.UI:SetCustomIcon(self.Name, self.Icons[self.CurrentIcon], self.Size, self.Size)

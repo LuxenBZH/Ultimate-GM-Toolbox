@@ -13,6 +13,7 @@ local answers = {
     ["ugmt_makeplayer"]     = {handle = ManagePlayable, args = {"", "GM_MakePlayer"}},
     ["ugmt_makenpc"]        = {handle = ManagePlayable, args = {"", "GM_MakeNPC"}},
     ["ugmt_togglefollower"] = {handle = ManageFollower}
+    -- ["ugmt_confiscateweapons"]
 }
 
 Ext.Print("server-side ready")
@@ -37,7 +38,8 @@ local draggingFunctions = {
     ["Select5m"]  = {handle = function(entity) SelectAroundPosition(entity, 5) end},
     ["Select10m"] = {handle = function(entity) SelectAroundPosition(entity, 10) end},
     ["PlacePatrolBeacon"] = {handle = function(entity) RegisterPatrolBeacon(entity, "GM_Place_Patrol_Beacon") end},
-    ["StartPatrol"]       = {handle = function(entity) StartPatrol(entity, "GM_Start_Multipatrol") end}
+    ["StartPatrol"]       = {handle = function(entity) StartPatrol(entity, "GM_Start_Multipatrol") end},
+    ["ItemRemove"]        = {handle = function(entity) ItemRemoveTool(entity, "GM_Destroy_Item") end}
 }
 
 Ext.RegisterNetListener("UGM_StartDraggingEffect", function(channel, payload)
@@ -62,7 +64,6 @@ end)
 Ext.RegisterNetListener("UGM_TriggerDraggingEffectFunction", function(channel, payload)
     local infos = Ext.JsonParse(payload)
     infos.Entity = Ext.GetItem(tonumber(infos.Entity))
-    Ext.Print(draggingFunctions[infos.Func])
     TeleportToPosition(infos.Entity.MyGuid, infos.X, infos.Y, infos.Z, "", 0)
     draggingFunctions[infos.Func].handle(infos.Entity.MyGuid)
 end)

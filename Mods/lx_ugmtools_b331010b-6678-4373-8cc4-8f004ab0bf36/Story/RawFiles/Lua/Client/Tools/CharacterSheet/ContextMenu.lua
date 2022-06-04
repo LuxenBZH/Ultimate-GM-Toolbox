@@ -108,9 +108,9 @@ if Mods.LeaderLib then
     --     end
     -- end)
 
-    if Ext.IsDeveloperMode() then
-        Mods.LeaderLib.RegisterListener("BeforeLuaReset", function()
-            CombatLog.RemoveFilter("SSRolls")
-        end)
-    end
+    -- if Ext.IsDeveloperMode() then
+    --     Mods.LeaderLib.RegisterListener("BeforeLuaReset", function()
+    --         CombatLog.RemoveFilter("SSRolls")
+    --     end)
+    -- end
 end
