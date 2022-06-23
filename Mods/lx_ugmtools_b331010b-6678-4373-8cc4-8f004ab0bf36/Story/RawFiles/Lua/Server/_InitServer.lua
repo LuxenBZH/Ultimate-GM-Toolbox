@@ -20,8 +20,10 @@ Ext.Require("Server/Tools/UIHotbar.lua")
 -- Ext.Require("Server/VisualResources.lua")
 Ext.Require("Server/Tools/VisualSetRandomizer.lua")
 Ext.Require("Server/Tools/Fade.lua")
+Ext.Require("Server/Tools/ContextMenuTools.lua")
 
 Ext.Require("Server/Systems/ToolbarAnswers.lua")
+Ext.Require("Server/Systems/UserWatchdog.lua")
 
 Ext.Require("Server/Fixes/LoseControlFix.lua")
 Ext.Require("Server/Fixes/ForceGMControl.lua")

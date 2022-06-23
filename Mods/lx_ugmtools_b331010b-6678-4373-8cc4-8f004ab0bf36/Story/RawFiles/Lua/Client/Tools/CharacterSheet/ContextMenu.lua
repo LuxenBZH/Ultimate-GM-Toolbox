@@ -1,5 +1,5 @@
 if Mods.LeaderLib then
-    UI = Mods.LeaderLib.UI
+    local UI = Mods.LeaderLib.UI
     local ts = Mods.LeaderLib.Classes.TranslatedString
 
     local statToEngineName = {

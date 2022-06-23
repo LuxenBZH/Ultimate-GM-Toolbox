@@ -4,6 +4,7 @@ Ext.Require("Client/Setup/FXReplacements.lua")
 Ext.Require("Client/Setup/MessageBox.lua")
 
 Ext.Require("Client/Tools/CharacterSheet/ContextMenu.lua")
+Ext.Require("Client/Tools/WorldContextMenu.lua")
 Ext.Require("Client/Systems/InputBox.lua")
 -- Ext.Require("Cleint/Topbar/Topbar_management.lua")
 
@@ -189,3 +190,9 @@ local function UGM_SetupUI()
 end
 
 Ext.RegisterListener("SessionLoaded", UGM_SetupUI)
+
+Users = {}
+
+Ext.RegisterNetListener("UGM_ClientList", function(call, payload, ...)
+    Users = Ext.Json.Parse(payload)
+end)

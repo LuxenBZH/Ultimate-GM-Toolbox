@@ -40,10 +40,6 @@ Ext.RegisterOsirisListener("ObjectTurnStarted", 1, "before", function(object)
     end
 end)
 
-Ext.RegisterOsirisListener("ObjectTurnEnded", 1, "before", function(object)
-
-end)
-
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(target, statusId, causee)
     if ObjectIsCharacter(target) == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
         target = Ext.GetCharacter(target)

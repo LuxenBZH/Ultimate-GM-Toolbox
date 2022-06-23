@@ -15,10 +15,10 @@ DraggingEffect = {
 
 DraggingEffect.__index = DraggingEffect
 
---- @param templates array[string]
---- @param functions array[fun]
+--- @param templates array[]
+--- @param functions array[]
 --- @param starting int
---- @param statuses array[string]
+--- @param statuses array[]
 function DraggingEffect:Create(templates, functions, starting, statuses)
     local this = {
         CurrentId = starting or 1,
