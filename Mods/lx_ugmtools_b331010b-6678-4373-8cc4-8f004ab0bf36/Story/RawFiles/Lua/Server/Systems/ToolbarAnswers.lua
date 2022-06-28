@@ -19,9 +19,9 @@ local answers = {
 Ext.Print("server-side ready")
 
 Ext.RegisterNetListener("UGMT_ToolbarPress", function(channel, message)
-    print(message)
+    -- print(message)
     answer = answers[message]
-    Ext.Dump(answer)
+    -- Ext.Dump(answer)
     if answer.args then
         answer.handle(table.unpack(answer.args))
     else

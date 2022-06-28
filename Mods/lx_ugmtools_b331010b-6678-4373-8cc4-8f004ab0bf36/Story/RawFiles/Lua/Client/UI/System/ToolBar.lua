@@ -16,11 +16,11 @@ local toolbars = {
     [2] = {
         ["ugmt_randomvisuals"]  = {{"ugmt_visualrandomize"}},
         ["ugmt_transform"]      = {{"ugmt_transform"}},
-        ["ugmt_bossify"]        = {{"ugmt_toggleboss"}},
-        ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
-        ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
-        ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
-        ["ugmt_confiscate"]     = {{"ugmt_confiscateweapons", "ugmt_confiscateinventory"}}
+        -- ["ugmt_bossify"]        = {{"ugmt_toggleboss"}},
+        -- ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
+        -- ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
+        -- ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
+        -- ["ugmt_confiscate"]     = {{"ugmt_confiscateweapons", "ugmt_confiscateinventory"}}
     },
     [3] = {
         ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},

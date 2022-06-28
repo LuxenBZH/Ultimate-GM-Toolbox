@@ -124,3 +124,20 @@ civilAbilities = {
     Charm = true,
     Crafting = true,
 }
+
+equipmentSlots = {
+    "Amulet",
+    "Belt",
+    "Boots",
+    "Breast",
+    "Gloves",
+    "Helmet",
+    "Horns",
+    "Leggings",
+    "Overhead",
+    "Ring",
+    "Ring2",
+    "Shield",
+    "Weapon",
+    "Wings",
+}

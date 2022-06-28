@@ -74,7 +74,7 @@ function StartTalkingAnimationLoop(type)
 end
 
 local function LoopAnimation(timerEvent)
-    if not string.startswith(timerEvent, "UGM_Timer_Anim_") then return end
+    if not string.starts(timerEvent, "UGM_Timer_Anim_") then return end
     local char = string.gsub(timerEvent, "UGM_Timer_Anim_", "")
     if HasActiveStatus(char, "DEACTIVATED") == 1 or HasActiveStatus(char, "GM_ANIMATED") == 0 then return end
     local anims = Ext.JsonParse(GetVarString(char, "UGM_Animations"))

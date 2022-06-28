@@ -1,20 +1,3 @@
-Ext.Require("Client/Tools/ShroudManager.lua")
-Ext.Require("Client/Tools/SessionLoaded.lua")
-Ext.Require("Client/Setup/FXReplacements.lua")
-Ext.Require("Client/Setup/MessageBox.lua")
-
-Ext.Require("Client/Tools/CharacterSheet/ContextMenu.lua")
-Ext.Require("Client/Tools/WorldContextMenu.lua")
-Ext.Require("Client/Systems/InputBox.lua")
--- Ext.Require("Cleint/Topbar/Topbar_management.lua")
-
-Ext.Require("Client/UI/Classes/ToolButton.lua")
-Ext.Require("Client/UI/Classes/DraggingEffect.lua")
-
-Ext.Require("Client/UI/System/ToolBar.lua")
-
--- Ext.Require("Client/ClickingState.lua")
--- Ext.Require("Client/CustomStatsTooltipFix.lua")
 -- Ext.AddPathOverride("Public/Game/GUI/GM/GMPanelHUD.swf", "Public/lx_ugmtools_b331010b-6678-4373-8cc4-8f004ab0bf36/Game/GUI/GM/GMPanelHUD.swf")
 
 local function SetCharacterScale(call, data)
@@ -192,7 +175,39 @@ end
 Ext.RegisterListener("SessionLoaded", UGM_SetupUI)
 
 Users = {}
+ActionAssignTo = {}
 
 Ext.RegisterNetListener("UGM_ClientList", function(call, payload, ...)
     Users = Ext.Json.Parse(payload)
+    table.remove(ActionAssignTo)
+    for user,infos in pairs(Users) do
+        table.insert(ActionAssignTo, Mods.LeaderLib.Classes.ContextMenuAction:Create({
+            ID = "UGMT_AssignTo_"..user,
+            DisplayName = infos.UserName,
+            Callback = function(...)
+                Ext.ClientNet.PostMessageToServer("UGM_AssignCharacterToUser", Ext.Json.Stringify({
+                    Character = Ext.GetCharacter(Ext.GetPickingState().HoverCharacter).NetID,
+                    User = user
+                }))
+            end
+        }))
+    end
 end)
+
+Ext.Require("Client/Tools/ShroudManager.lua")
+Ext.Require("Client/Tools/SessionLoaded.lua")
+Ext.Require("Client/Setup/FXReplacements.lua")
+Ext.Require("Client/Setup/MessageBox.lua")
+
+Ext.Require("Client/Tools/CharacterSheet/ContextMenu.lua")
+Ext.Require("Client/Tools/WorldContextMenu.lua")
+Ext.Require("Client/Systems/InputBox.lua")
+-- Ext.Require("Cleint/Topbar/Topbar_management.lua")
+
+Ext.Require("Client/UI/Classes/ToolButton.lua")
+Ext.Require("Client/UI/Classes/DraggingEffect.lua")
+
+Ext.Require("Client/UI/System/ToolBar.lua")
+
+-- Ext.Require("Client/ClickingState.lua")
+-- Ext.Require("Client/CustomStatsTooltipFix.lua")

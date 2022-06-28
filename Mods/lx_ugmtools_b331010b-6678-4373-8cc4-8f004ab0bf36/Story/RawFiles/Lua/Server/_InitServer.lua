@@ -24,6 +24,7 @@ Ext.Require("Server/Tools/ContextMenuTools.lua")
 
 Ext.Require("Server/Systems/ToolbarAnswers.lua")
 Ext.Require("Server/Systems/UserWatchdog.lua")
+Ext.Require("Server/Systems/WorldContextMenuAnswers.lua")
 
 Ext.Require("Server/Fixes/LoseControlFix.lua")
 Ext.Require("Server/Fixes/ForceGMControl.lua")
