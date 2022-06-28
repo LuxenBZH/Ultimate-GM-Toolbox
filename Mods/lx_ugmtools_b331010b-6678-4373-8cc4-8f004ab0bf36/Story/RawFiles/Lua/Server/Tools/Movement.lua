@@ -147,3 +147,9 @@ Classes.OsirisHandler:RegisterListener("ObjectEnteredCombat", 2, "before", funct
         Ext.Print("TEST")
     end
 end)
+
+Ext.RegisterNetListener("UGMT_RightClickMove", function(call, payload, ...)
+    for char,x in pairs(selected) do
+        
+    end
+end)
