@@ -5,7 +5,7 @@ local toolbars = {
         ["ugmt_lock_select"]    = {{"ugmt_lock_select_deactivated", "ugmt_lock_select"}},
         ["ugmt_moveto"]         = {{"ugmt_walkto", "ugmt_runto"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"WalkTo", "RunTo"}, 1, {"GM_BLUEARROW", "GM_REDARROW"})},
         ["ugmt_patrol"]         = {{"ugmt_beaconpatrol", "ugmt_startpatrol"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"PlacePatrolBeacon", "StartPatrol"}, 1, {"GM_GREENARROW", "GM_REDARROW"})},
-        ["ugmt_follow"]         = {{"ugmt_follow"}},
+        -- ["ugmt_follow"]         = {{"ugmt_follow"}},
         ["ugmt_bark_mode"]      = {{"ugmt_bark_mode_deactivated", "ugmt_bark_mode"}},
         ["ugmt_story_freeze"]   = {{"ugmt_story_freeze"}},
         ["ugmt_unsheath"]       = {{"ugmt_unsheath"}},
@@ -16,16 +16,18 @@ local toolbars = {
     [2] = {
         ["ugmt_randomvisuals"]  = {{"ugmt_visualrandomize"}},
         ["ugmt_transform"]      = {{"ugmt_transform"}},
+        ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},
+        ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}},
         -- ["ugmt_bossify"]        = {{"ugmt_toggleboss"}},
         -- ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
-        -- ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
-        -- ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
+        ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
+        ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
         -- ["ugmt_confiscate"]     = {{"ugmt_confiscateweapons", "ugmt_confiscateinventory"}}
     },
-    [3] = {
-        ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},
-        ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}}
-    }
+    -- [3] = {
+    --     ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},
+    --     ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}}
+    -- }
 }
 
 local buttonOrder = {
@@ -35,7 +37,7 @@ local buttonOrder = {
         [3] = "ugmt_lock_select" ,
         [4] = "ugmt_moveto",
         [5] = "ugmt_patrol",
-        [6] = "ugmt_follow",
+        -- [6] = "ugmt_follow",
         [7] = "ugmt_bark_mode",
         [8] = "ugmt_story_freeze",
         [9] = "ugmt_unsheath",
@@ -44,20 +46,22 @@ local buttonOrder = {
         [12] = "ugmt_clearitems"
     },
     [2] = {
-        [1] = "ugmt_randomvisuals",
-        [2] = "ugmt_transform",
-        [3] = "ugmt_bossify",     
-        [4] = "ugmt_makeplayer",
-        [5] = "ugmt_makenpc",
-        [6] = "ugmt_togglefollower",
+        [5] = "ugmt_randomvisuals",
+        [6] = "ugmt_transform",
+        [3] = "ugmt_setrarity",
+        [4] = "ugmt_armor",
+        -- [3] = "ugmt_bossify",     
+        -- [4] = "ugmt_makeplayer",
+        [1] = "ugmt_makenpc",
+        [2] = "ugmt_togglefollower",
     },
-    [3] = {
-        [1] = "ugmt_setrarity",
-        [2] = "ugmt_armor",
-        -- [3] = "ugmt_ohweapon",
-        -- [4] = "ugmt_thweapon",
+    -- [3] = {
+    --     [1] = "ugmt_setrarity",
+    --     [2] = "ugmt_armor",
+    --     -- [3] = "ugmt_ohweapon",
+    --     -- [4] = "ugmt_thweapon",
         
-    }
+    -- }
 }
 
 ---@class ToolBarManager
@@ -142,7 +146,13 @@ Ext.RegisterListener("SessionLoaded", function()
             tm:AddButton(bar, name, 48, table.unpack(toolbars[bar][name]))
             -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
         end
+        if bar > 1 then
+            Ext.Print("SIZE",(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])))
+            toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[bar-1].x = 175 + (GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])+2)*64
+        end
     end
+    toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[0].y = -5
+    toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[1].visible = false
     -- toolbar:GetRoot().toolbarHolder_mc.toolbar[1].reverseButtons()
     -- toolbar:GetRoot().toolbarHolder_mc.toolbar[2].reverseButtons()
 
