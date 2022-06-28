@@ -125,11 +125,13 @@ end
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", RemoveTargeting)
 
 -- Quick selection feature
-local function QuickSelect(call, netID)
+local function QuickSelect(call, payload)
+    local infos = Ext.Json.Parse(payload)
+    local netID = infos.Character
     local char = Ext.GetCharacter(tonumber(netID))
     if quickSelection ~= char.MyGuid then
         -- If selecting different character, remove the previous one selection status
-        if quickSelection ~= nil then
+        if quickSelection ~= nil and not infos.ShiftMod then
             RemoveStatus(quickSelection, PersistentVars.selectType.current)
         end
         if HasActiveStatus(char.MyGuid, PersistentVars.selectType.current) == 0 then
@@ -152,7 +154,9 @@ end
 
 Ext.RegisterNetListener("UGM_QuickSelection", QuickSelect)
 
-local function QuickDeselect(call, netID)
+local function QuickDeselect(call, payload)
+    local infos = Ext.Json.Parse(payload)
+    local netID = infos.Character
     local char = Ext.GetCharacter(tonumber(netID))
     RemoveStatus(char.MyGuid, PersistentVars.selectType.current)
     quickSelection = nil

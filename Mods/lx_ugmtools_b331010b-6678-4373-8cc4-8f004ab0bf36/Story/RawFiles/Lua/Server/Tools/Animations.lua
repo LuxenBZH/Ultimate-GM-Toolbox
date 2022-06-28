@@ -25,7 +25,8 @@ function SetBarkType(type)
     print("AnimOnClick type set to "..type)
 end
 
-local function BarkOnClick(call, netID)
+local function BarkOnClick(call, payload)
+    local netID = Ext.Json.Parse(payload).Character
     local char = Ext.GetCharacter(tonumber(netID))
     if not animOnClick then return end
     if HasActiveStatus(char.MyGuid, "DEACTIVATED") == 1 then return end
