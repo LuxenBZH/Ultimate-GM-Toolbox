@@ -46,33 +46,6 @@ local function UI_QuickSelect(ui, call, ...)
     --Ext.Print(root.GMButtonArray)
 end
 
-itemFunctions = {
-    ["22- Move to position (Run)"] = ""
-
-}
-
-local function UI_TopbarFunctions(ui, call, ...)
-    local monster = Ext.GetBuiltinUI("Public/Game/GUI/GM/monstersSelection.swf")
-    if call == "buttonCallback_50" then
-        Ext.Print("Unselected all")
-        Ext.PostMessageToServer("UGM_Hotbar_UnselectAll", "")
-    elseif call == "buttonCallback_51" then
-        Ext.PostMessageToServer("UGM_Hotbar_SelectionLock", "")
-    elseif call == "buttonCallback_52" then
-        Ext.Print("Toggle Bark")
-        Ext.PostMessageToServer("UGM_Hotbar_ToggleBark", "")
-    elseif call == "buttonCallback_53" then
-        Ext.Print("Toggle story freeze")
-        Ext.PostMessageToServer("UGM_Hotbar_StoryFreeze", "")
-    elseif call == "buttonCallback_54" then
-        Ext.Print("Start follow")
-        Ext.PostMessageToServer("UGM_Hotbar_StartFollow", "")
-    -- elseif call == "buttonCallback_55" then
-    --     Ext.Print("")
-    --     monster:ExternalInterfaceCall("startDragging", itemFunctions["22- Move to position (Run)"], 1)
-    end
-end
-
 local function UGM_SetupUI()
     local targetBar = Ext.GetBuiltinUI("Public/Game/GUI/GM/GMPanelHUD.swf")
     if targetBar ~= nil then
@@ -89,13 +62,21 @@ shiftModifier = false
 Ext.RegisterListener("SessionLoaded", function(...)
     Ext.RegisterListener("InputEvent", function(event)
         if event.EventId == 2 and event.Release then
-            local cursor = Ext.GetPickingState()
-            if cursor and not cursor.HoverCharacter and not cursor.HoverItem then
-                
-                Ext.PostMessageToServer("UGMT_RightClickMove", Ext.Json.Stringify(cursor))
+            local root = Ext.GetBuiltinUI("Public/Game/GUI/GM/GMPanelHUD.swf"):GetRoot()
+            if root.visible then
+                local cursor = Ext.GetPickingState()
+                if cursor and not cursor.HoverCharacter and not cursor.HoverItem then
+                    Ext.PostMessageToServer("UGMT_RightClickMove", Ext.Json.Stringify(cursor))
+                end
             end
         elseif event.EventId == 285 then
             shiftModifier = event.Press
+        end
+    end)
+    Ext.RegisterNetListener("UGM_ClickMoveConfirmed", function(...)
+        local cursor = Ext.GetPickingState()
+        if cursor then
+            Ext.ClientVisual.Create(cursor.WalkablePosition)
         end
     end)
 end)

@@ -64,12 +64,33 @@ local answers = {
             end
         end
     },
+    ["ugmt_refreshtreasuretable"] = {
+        Callback = function(character)
+            local highestLevel = 0
+            local highestLeveledCharacter = nil
+            for i,player in pairs(Osi.DB_IsPlayer:Get(nil)) do
+                local level = Ext.GetCharacter(player).Stats.Level
+                if level > highestLevel then
+                    highestLevel = level
+                    highestLeveledCharacter = player
+                end
+            end
+            GenerateItems(character.MyGuid, character.MyGuid)
+        end
+    }
 }
 
 Ext.RegisterNetListener("UGMT_ContextMenuAction", function(call, payload, ...)
     local infos = Ext.Json.Parse(payload)
-    Ext.Dump(infos)
     local character = Ext.GetCharacter(tonumber(infos.Character))
     local answer = answers[infos.Callback]
     answer.Callback(character)
+end)
+
+Ext.RegisterNetListener("UGM_InputBox", function(call, payload, ...)
+    local infos = Ext.Json.Parse(payload)
+    local character = Ext.GetCharacter(tonumber(infos.Character))
+    if infos.ButtonID == 4501 then
+        CharacterSetCustomTradeTreasure(character.MyGuid, infos.Value)
+    end
 end)

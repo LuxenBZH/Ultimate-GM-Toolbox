@@ -148,8 +148,30 @@ Classes.OsirisHandler:RegisterListener("ObjectEnteredCombat", 2, "before", funct
     end
 end)
 
-Ext.RegisterNetListener("UGMT_RightClickMove", function(call, payload, ...)
+local function GetClosestToPosition(pos)
+    local closest = nil
+    local chosen = nil
     for char,x in pairs(selected) do
-        
+        local dist = Ext.Math.Distance({table.unpack(Ext.GetCharacter(char).WorldPos)}, {table.unpack(pos)})
+        if closest == nil or closest > dist then closest = dist; chosen = char end
     end
+    return chosen
+end
+
+Ext.RegisterNetListener("UGMT_RightClickMove", function(call, payload, ...)
+    if GetTableSize(selected) == 0 then return end
+    local infos = Ext.Json.Parse(payload)
+    local closest = GetClosestToPosition(infos.WalkablePosition)
+    local vector = SubtractCoordinates(infos.WalkablePosition, Ext.GetCharacter(closest).WorldPos)
+    for char,x in pairs(selected) do
+        if HasActiveStatus(char, "GM_MOVING") == 1 then
+            CharacterPurgeQueue(char)
+        end
+        local destination = AddCoordinates(Ext.GetCharacter(char).WorldPos, vector)
+        CharacterMoveToPosition(char, destination[1], destination[2], destination[3], 1, "NPC_Move_Done")
+        if HasActiveStatus(char, "GM_MOVING") == 0 then
+            ApplyStatus(char, "GM_MOVING", -1.0, 1)
+        end
+    end
+    Ext.PostMessageToClient(CharacterGetHostCharacter(), "UGM_ClickMoveConfirmed", "")
 end)

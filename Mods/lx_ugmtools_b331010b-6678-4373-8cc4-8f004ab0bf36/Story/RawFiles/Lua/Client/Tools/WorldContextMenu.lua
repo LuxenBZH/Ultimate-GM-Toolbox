@@ -94,6 +94,15 @@ Ext.RegisterListener("SessionLoaded", function()
         end
     end
 
+    local function GetShouldOpenNpc(contextMenu, x, y)
+        if _justPressed then
+            local cursor = Ext.GetPickingState()
+            if cursor and Ext.Utils.IsValidHandle(cursor.HoverCharacter) and not Ext.GetCharacter(cursor.HoverCharacter).IsPlayer then
+                return true
+            end
+        end
+    end
+
     -- Bossify
     local bossifyAction = Action:Create({
         ID = "UGMT_ToggleBoss",
@@ -125,7 +134,7 @@ Ext.RegisterListener("SessionLoaded", function()
         Tooltip = "Make selected characters follow this one, as if they were summons",
         Icon = "ugmt_togglefollower",
         Callback = nil,
-        ShouldOpen = GetShouldOpen,
+        ShouldOpen = GetShouldOpenPlayer,
     })
 
     UI.ContextMenu.Register.Action(makeFollowerAction)
@@ -162,6 +171,18 @@ Ext.RegisterListener("SessionLoaded", function()
     })
 
     UI.ContextMenu.Register.Action(assignAction)
+
+    -- Set Treasure Table
+    local treasureTableAction = Action:Create({
+        ID = "UGMT_TreasureTable",
+        DisplayName = "Set Treasure Table",
+        Tooltip = "Assign a Treasure Table to this character. Leave empty to clear it.",
+        ShouldOpen = GetShouldOpenNpc,
+        Children = {},
+        Callback = nil
+    })
+
+    UI.ContextMenu.Register.Action(treasureTableAction)
 
     local Input = Mods.LeaderLib.Input
     local Events = Mods.LeaderLib.Events
@@ -231,6 +252,28 @@ Ext.RegisterListener("SessionLoaded", function()
                     Character = character.NetID
                 }))
             end
+
+            treasureTableAction.Children[#treasureTableAction.Children+1] = Action:Create({
+                ID = "UGMT_SetTreasureTable",
+                DisplayName = "Set",
+                Callback = function(...)
+                    OpenInputBox("Enter a valid treasure table", "", 4501, {
+                        Character = character.NetID
+                    })
+                end
+            })
+
+            treasureTableAction.Children[#treasureTableAction.Children+1] = Action:Create({
+                ID = "UGMT_GenerateTreasureTable",
+                DisplayName = "Refresh",
+                Callback = function(...)
+                    Ext.PostMessageToServer("UGMT_ContextMenuAction", Ext.Json.Stringify({
+                        Callback = "ugmt_refreshtreasuretable",
+                        Character = character.NetID
+                    }))
+                end
+            })
+            
 
             if character.IsPlayer then
                 togglePlayerAction.DisplayName = "Make NPC"

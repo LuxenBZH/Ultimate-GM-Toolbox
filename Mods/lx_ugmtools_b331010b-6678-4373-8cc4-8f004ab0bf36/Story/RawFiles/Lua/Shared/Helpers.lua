@@ -33,13 +33,19 @@ function TableConcatNoIndice(t1,t2)
 end
 
 function SubtractCoordinates(t, t2)
-    local result = {x = t.x - t2.x, y = t.y - t2.y, z = t.z - t2.z}
-    return result
+    if not t.x then
+        return {t[1] - t2[1], t[2] - t2[2], t[3] - t2[3]} 
+    else
+        return {x = t.x - t2.x, y = t.y - t2.y, z = t.z - t2.z}
+    end
 end
 
 function AddCoordinates(t, t2)
-    local result = {x = t.x + t2.x, y = t.y + t2.y, z = t.z + t2.z}
-    return result
+    if not t.x then
+        return {t[1] + t2[1], t[2] + t2[2], t[3] + t2[3]}
+    else
+        return {x = t.x + t2.x, y = t.y + t2.y, z = t.z + t2.z}
+    end
 end
 
 function string.startswith(String,Start)
