@@ -205,8 +205,8 @@
                     <attribute id="Width" value="64" type="4" />
                 </node>
                 <node id="TextureAtlasPath">
-                    <attribute id="Path" value="Assets/Textures/Icons/ugmt.dds" type="20" />
-                    <attribute id="UUID" value="ea15d15c-afdf-44da-93c3-27a268d3239a" type="22" />
+                    <attribute id="Path" value="Assets/Textures/ugmt.dds" type="20" />
+                    <attribute id="UUID" value="c5111d00-389b-45ca-ae7c-12b5dea56128" type="22" />
                 </node>
                 <node id="TextureAtlasTextureSize">
                     <attribute id="Height" value="1024" type="4" />
