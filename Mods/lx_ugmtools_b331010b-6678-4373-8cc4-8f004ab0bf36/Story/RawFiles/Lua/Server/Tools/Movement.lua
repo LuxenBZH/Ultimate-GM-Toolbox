@@ -152,7 +152,7 @@ local function GetClosestToPosition(pos)
     local closest = nil
     local chosen = nil
     for char,x in pairs(selected) do
-        local dist = Ext.Math.Distance({table.unpack(Ext.GetCharacter(char).WorldPos)}, {table.unpack(pos)})
+        local dist = Ext.Math.Distance(Ext.GetCharacter(char).WorldPos, pos)
         if closest == nil or closest > dist then closest = dist; chosen = char end
     end
     return chosen

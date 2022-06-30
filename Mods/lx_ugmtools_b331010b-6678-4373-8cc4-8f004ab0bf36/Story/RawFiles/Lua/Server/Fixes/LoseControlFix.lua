@@ -38,6 +38,14 @@ Ext.RegisterOsirisListener("ObjectTurnStarted", 1, "before", function(object)
     if HasActiveStatus(object, "CHARMED") == 1 then
         Ext.GetCharacter(object).IsPossessed = false
     end
+    -- Just in case...
+    if ObjectIsCharacter(object) then
+        local character = Ext.GetCharacter(object)
+        local host = Ext.GetCharacter(CharacterGetHostCharacter())
+        if character.IsPossessed and character.IsPlayer and character.ReservedUserID ~= host.ReservedUserID then
+            CharacterAssignToUser(host.ReservedUserID, object)
+        end
+    end
 end)
 
 Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(target, statusId, causee)
@@ -58,6 +66,7 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(targe
 end)
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", function(character, statusId, causee)
+    Ext.Print(IsTagged(character, "GM_LoseControlFixActive"), NRD_StatExists(statusId) or engineStatuses[statusId])
     if IsTagged(character, "GM_LoseControlFixActive") == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
         CharacterAssignToUser(65537, character)
         if not engineStatuses[statusId] then
@@ -95,6 +104,8 @@ Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", function(chara
             end
             if possession and CharacterIsInCombat(character.MyGuid) then
                 character.IsPossessed = true
+                local host = Ext.GetCharacter(CharacterGetHostCharacter())
+                CharacterAssignToUser(host.ReservedUserID, character.MyGuid)
             else
                 character.IsPossessed = false
             end
