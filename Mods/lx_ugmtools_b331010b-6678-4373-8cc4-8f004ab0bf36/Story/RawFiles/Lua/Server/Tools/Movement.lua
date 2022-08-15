@@ -140,11 +140,17 @@ end
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", StopFollow)
 
-Classes.OsirisHandler:RegisterListener("ObjectEnteredCombat", 2, "before", function(object, combatID)
-    Ext.Print("OSIRISTEST")
+-- Classes.OsirisHandler:RegisterListener("ObjectEnteredCombat", 2, "before", function(object, combatID)
+--     Ext.Print("OSIRISTEST")
+--     if ObjectIsCharacter(object) == 1 and HasActiveStatus(object, "GM_PATROLING") == 1 then
+--         RemoveStatus(object, "GM_PATROLING")
+--         Ext.Print("TEST")
+--     end
+-- end)
+
+Ext.RegisterOsirisListener("ObjectEnteredCombat", 2, "before", function(object, combatID)
     if ObjectIsCharacter(object) == 1 and HasActiveStatus(object, "GM_PATROLING") == 1 then
         RemoveStatus(object, "GM_PATROLING")
-        Ext.Print("TEST")
     end
 end)
 
@@ -168,7 +174,7 @@ Ext.RegisterNetListener("UGMT_RightClickMove", function(call, payload, ...)
             CharacterPurgeQueue(char)
         end
         local destination = AddCoordinates(Ext.GetCharacter(char).WorldPos, vector)
-        CharacterMoveToPosition(char, destination[1], destination[2], destination[3], 1, "NPC_Move_Done")
+        CharacterMoveToPosition(char, destination[1], destination[2], destination[3], tonumber(infos.Run), "NPC_Move_Done")
         if HasActiveStatus(char, "GM_MOVING") == 0 then
             ApplyStatus(char, "GM_MOVING", -1.0, 1)
         end

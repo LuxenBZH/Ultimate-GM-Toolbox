@@ -120,11 +120,11 @@ Ext.RegisterNetListener("LX_GM_CheckModList", function(channel, payload, ...)
         end
         if not identical then
             local textMessage = "The current loaded mod list is not matching the one from the save file. If you voluntarily added or removed a mod, or changed the order, make sure to save after this message box and reload that new save to make sure the changes has been taken into account.<br> If not, <b>do not continue.</b> Your main menu mod list isn't matching the one of the save file. Please check again that your main menu mod list is matching the one of the save file (gear button at the bottom right).<br> You can do it easily by loading the same campaign in prepare mode (if you didn't changed the mods in the meantime) and load back to this save.<br> Unmatching mods :"
-            Ext.Dump(added)
+            -- Ext.Dump(added)
             for i,mod in pairs(added) do
                 textMessage = textMessage.."<br>NEW: "..Ext.GetModInfo(mod).Name
             end
-            Ext.Dump(removed)
+            -- Ext.Dump(removed)
             for i,mod in pairs(removed) do
                 textMessage = textMessage.."<br>DELETED: "..lists.infos[mod]
             end

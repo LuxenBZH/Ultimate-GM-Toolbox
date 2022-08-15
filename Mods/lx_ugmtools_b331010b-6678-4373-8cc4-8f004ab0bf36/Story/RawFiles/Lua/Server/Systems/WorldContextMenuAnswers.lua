@@ -21,9 +21,9 @@ local answers = {
                 CharacterRemoveFromPlayerCharacter(character.MyGuid, owner)
             else
                 for char,x in pairs(selected) do
-                    Ext.Print(Ext.GetCharacter(char).PartyFollower)
+                    -- Ext.Print(Ext.GetCharacter(char).PartyFollower)
                     if not Ext.GetCharacter(char).PartyFollower then
-                        Ext.Print(char, GetUUID(character.MyGuid))
+                        -- Ext.Print(char, GetUUID(character.MyGuid))
                         CharacterAddToPlayerCharacter(GetUUID(char), character.MyGuid)
                     end
                 end
@@ -69,7 +69,8 @@ local answers = {
             local highestLevel = 0
             local highestLeveledCharacter = nil
             for i,player in pairs(Osi.DB_IsPlayer:Get(nil)) do
-                local level = Ext.GetCharacter(player).Stats.Level
+                _P(player[1])
+                local level = Ext.GetCharacter(player[1]).Stats.Level
                 if level > highestLevel then
                     highestLevel = level
                     highestLeveledCharacter = player

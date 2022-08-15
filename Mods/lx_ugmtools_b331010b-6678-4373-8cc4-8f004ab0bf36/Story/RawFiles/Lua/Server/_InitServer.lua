@@ -4,7 +4,7 @@ target = nil
 quickSelection = nil
 bypasslock = false
 
-Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
+-- Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
 Ext.Require("Server/Systems/Selection.lua")
 Ext.Require("Server/Systems/OsiServices.lua")
 Ext.Require("Server/Systems/InputBoxAnswer.lua")
@@ -96,7 +96,7 @@ end
 Ext.RegisterOsirisListener("GameStarted", 2, "before", InitCurrentLevel)
 
 local function ClientLoaded(channel, payload)
-    Ext.Print(payload)
+    -- Ext.Print(payload)
     if payload == "RestoreScalings" then
         RestoreCharactersScaling()
     end

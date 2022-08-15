@@ -124,6 +124,8 @@ if Mods.LeaderLib then
     Timer = Mods.LeaderLib.Timer
 end
 
+tm = nil
+
 Ext.RegisterListener("SessionLoaded", function()
     if Ext.GameVersion() == "v3.6.51.9303" then return end
     Ext.CreateUI("UGMT_Toolbar", "Public/lx_ugmtools_b331010b-6678-4373-8cc4-8f004ab0bf36/Game/GUI/GM/ugmt_toolbar.swf", 10)
@@ -138,7 +140,7 @@ Ext.RegisterListener("SessionLoaded", function()
     -- toolbar:GetRoot().toolbar_mc.lBorder_mc.visible = false
     toolbar:GetRoot().visible = false
 
-    local tm = ToolBarManager:Create(toolbar)
+    tm = ToolBarManager:Create(toolbar)
     
     for bar, buttons in pairs(toolbars) do
         tm:AddBar(bar)
@@ -147,7 +149,7 @@ Ext.RegisterListener("SessionLoaded", function()
             -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
         end
         if bar > 1 then
-            Ext.Print("SIZE",(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])))
+            -- Ext.Print("SIZE",(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])))
             toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[bar-1].x = 175 + (GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])+2)*64
         end
     end

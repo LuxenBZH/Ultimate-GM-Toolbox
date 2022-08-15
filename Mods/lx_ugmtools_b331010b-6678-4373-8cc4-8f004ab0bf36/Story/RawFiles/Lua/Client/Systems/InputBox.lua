@@ -55,7 +55,7 @@ if Mods.LeaderLib then
         local infos = Ext.JsonParse(ui:GetRoot().popup_mc.input_mc.copy_mc.tooltip)
         infos.ButtonID = tonumber(infos.ButtonID)
         ui:Invoke("setTooltip", 1, "")
-        Ext.Print(ui, call, math.floor(buttonID), math.floor(infos.ButtonID), device)
+        -- Ext.Print(ui, call, math.floor(buttonID), math.floor(infos.ButtonID), device)
         if math.floor(buttonID) == 4049 then
             ui:Hide()
             return

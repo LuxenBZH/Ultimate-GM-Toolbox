@@ -16,12 +16,13 @@ local function GiveControlToAI(character)
                 break
             end
         end
+        -- Condition below match when it's a character controlled by the GM
         if character.IsPlayer and not isPlayerCharacter then
         -- if character.ReservedUserID == hostID or character.ReservedUserID == 65537 then
             -- CharacterRemoveFromParty(character.MyGuid)
             -- CharacterMakeNPC(character.MyGuid)
             character.IsPossessed = false
-            Ext.Print(character.MyGuid, character.IsPossessed)
+            -- Ext.Print(character.MyGuid, character.IsPossessed)
             
             SetTag(character.MyGuid, "GM_LoseControlFixActive")
         end
@@ -66,7 +67,7 @@ Ext.RegisterOsirisListener("CharacterStatusApplied", 3, "before", function(targe
 end)
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", function(character, statusId, causee)
-    Ext.Print(IsTagged(character, "GM_LoseControlFixActive"), NRD_StatExists(statusId) or engineStatuses[statusId])
+    -- Ext.Print(IsTagged(character, "GM_LoseControlFixActive"), NRD_StatExists(statusId) or engineStatuses[statusId])
     if IsTagged(character, "GM_LoseControlFixActive") == 1 and (NRD_StatExists(statusId) or engineStatuses[statusId]) then
         CharacterAssignToUser(65537, character)
         if not engineStatuses[statusId] then

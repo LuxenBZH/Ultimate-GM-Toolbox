@@ -19,7 +19,7 @@ ToolButton.__index = ToolButton
 --- @param icons array[]
 --- @param special DraggingEffect
 function ToolButton:Create(bar, ui, name, size, icons, special)
-    Ext.Print(bar, ui, name, size, icons, special)
+    -- Ext.Print(bar, ui, name, size, icons, special)
     local this = {
         Name = name,
         Icons = icons,
@@ -65,7 +65,7 @@ function ToolButton:OnPress()
         self.CurrentIcon = self.Icons[self.CurrentIcon+1] and self.CurrentIcon + 1 or 1
         self.UI:SetCustomIcon(self.Name, self.Icons[self.CurrentIcon], self.Size, self.Size)
     end
-    Ext.Print(self.Name, "pressed!")
+    -- Ext.Print(self.Name, "pressed!")
     if not self.Special then
         Ext.PostMessageToServer("UGMT_ToolbarPress", self.Name)
     else

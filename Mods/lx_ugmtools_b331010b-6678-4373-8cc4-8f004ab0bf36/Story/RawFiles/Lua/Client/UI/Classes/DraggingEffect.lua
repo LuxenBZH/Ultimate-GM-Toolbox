@@ -31,7 +31,7 @@ function DraggingEffect:Create(templates, functions, starting, statuses)
     setmetatable(this, self)
     for i,func in pairs(functions) do
         Ext.RegisterNetListener(func, function(channel, payload)
-            print(channel, payload)
+            -- print(channel, payload)
             this.CurrentEntity = Ext.GetItem(tonumber(payload))
             -- Ext.Print("currentEntity",this.CurrentEntity)
             this:Drag()
