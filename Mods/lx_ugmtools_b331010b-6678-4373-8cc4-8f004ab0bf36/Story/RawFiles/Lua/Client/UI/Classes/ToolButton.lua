@@ -56,14 +56,14 @@ function ToolButton:Create(bar, ui, name, size, icons, special)
 end
 
 function ToolButton:SetupIcon()
-    self.UI:SetCustomIcon(self.Name, self.Icons[1], self.Size, self.Size)
+    Ext.UI.GetByName(self.UI):SetCustomIcon(self.Name, self.Icons[1], self.Size, self.Size)
     self.CurrentIcon = 1
 end
 
 function ToolButton:OnPress()
     if #self.Icons > 1 and not self.Special then
         self.CurrentIcon = self.Icons[self.CurrentIcon+1] and self.CurrentIcon + 1 or 1
-        self.UI:SetCustomIcon(self.Name, self.Icons[self.CurrentIcon], self.Size, self.Size)
+        Ext.UI.GetByName(self.UI):SetCustomIcon(self.Name, self.Icons[self.CurrentIcon], self.Size, self.Size)
     end
     -- Ext.Print(self.Name, "pressed!")
     if not self.Special then

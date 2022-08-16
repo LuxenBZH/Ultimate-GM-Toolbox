@@ -66,7 +66,7 @@ local buttonOrder = {
 
 ---@class ToolBarManager
 ---@field Bars array[]
----@field UI ExtClient.UI
+---@field UI string
 ---@field CurrentButton ToolButton
 ToolBarManager = {
     Bars = {},
@@ -99,8 +99,8 @@ end
 
 function ToolBarManager:AddButton(barIndex, name, size, icons, special)
     self.Bars[barIndex][name] = ToolButton:Create(barIndex, self.UI, name, size, icons, special)
-    self.UI:GetRoot().toolbarHolder_mc.addButtonToBar(barIndex, name)
-    Ext.RegisterUICall(self.UI, "toolbar_"..name, function(...)
+    Ext.UI.GetByName(self.UI):GetRoot().toolbarHolder_mc.addButtonToBar(barIndex, name)
+    Ext.RegisterUICall(Ext.UI.GetByName(self.UI), "toolbar_"..name, function(...)
         self:OnPress(barIndex, name)
     end)
 end
@@ -140,7 +140,7 @@ Ext.RegisterListener("SessionLoaded", function()
     -- toolbar:GetRoot().toolbar_mc.lBorder_mc.visible = false
     toolbar:GetRoot().visible = false
 
-    tm = ToolBarManager:Create(toolbar)
+    tm = ToolBarManager:Create("UGMT_Toolbar")
     
     for bar, buttons in pairs(toolbars) do
         tm:AddBar(bar)
