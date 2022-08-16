@@ -7,7 +7,7 @@ local answers = {
     },
     ["ugmt_follow"] = {
         Callback = function(character)
-            for char,x in pairs(selected) do
+            for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
                 Osi.ProcCharacterFollowCharacter(char, character.MyGuid)
                 ApplyStatus(char, "GM_FOLLOW", -1.0, 1)
                 PersistentVars.Followers[char] = character.MyGuid
@@ -20,7 +20,7 @@ local answers = {
                 local owner = CharacterGetOwner(character.MyGuid)
                 CharacterRemoveFromPlayerCharacter(character.MyGuid, owner)
             else
-                for char,x in pairs(selected) do
+                for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
                     -- Ext.Print(Ext.GetCharacter(char).PartyFollower)
                     if not Ext.GetCharacter(char).PartyFollower then
                         -- Ext.Print(char, GetUUID(character.MyGuid))
@@ -57,7 +57,7 @@ local answers = {
     ["ugmt_toggleplayer"] = {
         Callback = function(character)
             if not character.IsPlayer then
-                CharacterMakePlayer(character.MyGuid, target or "NULL_00000000-0000-0000-0000-000000000000")
+                CharacterMakePlayer(character.MyGuid, SelectionManager.CurrentTarget or "NULL_00000000-0000-0000-0000-000000000000")
             else
                 CharacterMakeNPC(character.MyGuid)
                 character.IsPlayer = false

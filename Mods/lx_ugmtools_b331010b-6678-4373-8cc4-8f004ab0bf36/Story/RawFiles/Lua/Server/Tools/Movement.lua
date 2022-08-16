@@ -1,6 +1,6 @@
 function RegisterPatrolBeacon(object, event)
     if event ~= "GM_Place_Patrol_Beacon" then return end
-    for char, status in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         local beacons = PersistentVars[currentLevel].patrols[char]
         if beacons == nil then beacons = {} end
         local x,y,z = GetPosition(object)
@@ -15,7 +15,7 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", RegisterPatrolBeacon)
 
 function StartPatrol(object, event)
     if event ~= "GM_Start_Multipatrol" then return end
-    for char, status in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         if GetTableSize(PersistentVars[currentLevel].patrols[char]) < 2 then return end
         local pos = PersistentVars[currentLevel].patrols[char][1]
         CharacterMoveToPosition(char, pos[1], pos[2], pos[3], 0, "UGM_Loop_Patrol")
@@ -63,7 +63,7 @@ end
 local function GetClosest(item)
     local closest = nil
     local chosen = nil
-    for char, x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         local dist = GetDistanceTo(char, item)
         if closest == nil or closest > dist then closest = dist; chosen = char end
     end
@@ -76,10 +76,10 @@ function ClassicMove(object, event)
     local vx,vy,vz = GetPosition(object)
     local itemPos = {x = vx, y = vy, z = vz}
     --Ext.Print(Ext.JsonStringify(itemPos))
-    vx, vy, vz = GetPosition(closest)
+    vx, vy, vz = Osi.GetPosition(closest)
     local closestPos = {x = vx, y = vy, z = vz}
     local vector = SubtractCoordinates(itemPos, closestPos)
-    for char, status in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         if HasActiveStatus(char, "GM_MOVING") == 1 then
             CharacterPurgeQueue(char)
         end
@@ -116,11 +116,11 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", MoveCompleted)
 -- Follow
 function FollowTarget(item, event)
     if event ~= "GM_Start_Follow" then return end
-    if target == nil then print("No target!"); return end
-    for char,x in pairs(selected) do
-        Osi.ProcCharacterFollowCharacter(char, target)
+    if SelectionManager.CurrentTarget == nil then print("No target!"); return end
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+        Osi.ProcCharacterFollowCharacter(char, SelectionManager.CurrentTarget)
         ApplyStatus(char, "GM_FOLLOW", -1.0, 1)
-        PersistentVars.Followers[char] = target
+        PersistentVars.Followers[char] = SelectionManager.CurrentTarget
         RemoveStatus(char, PersistentVars.selectType.current)
     end
 end
@@ -157,7 +157,7 @@ end)
 local function GetClosestToPosition(pos)
     local closest = nil
     local chosen = nil
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         local dist = Ext.Math.Distance(Ext.GetCharacter(char).WorldPos, pos)
         if closest == nil or closest > dist then closest = dist; chosen = char end
     end
@@ -165,11 +165,11 @@ local function GetClosestToPosition(pos)
 end
 
 Ext.RegisterNetListener("UGMT_RightClickMove", function(call, payload, ...)
-    if GetTableSize(selected) == 0 then return end
+    if #SelectionManager.CurrentSelection == 0 then return end
     local infos = Ext.Json.Parse(payload)
     local closest = GetClosestToPosition(infos.WalkablePosition)
     local vector = SubtractCoordinates(infos.WalkablePosition, Ext.GetCharacter(closest).WorldPos)
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         if HasActiveStatus(char, "GM_MOVING") == 1 then
             CharacterPurgeQueue(char)
         end

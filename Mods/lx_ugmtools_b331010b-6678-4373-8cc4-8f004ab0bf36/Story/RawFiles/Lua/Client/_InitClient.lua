@@ -76,6 +76,7 @@ Ext.Require("Client/UI/Classes/ToolButton.lua")
 Ext.Require("Client/UI/Classes/DraggingEffect.lua")
 
 Ext.Require("Client/UI/System/ToolBar.lua")
+-- Ext.Require("Client/Tools/SelectionFX.lua")
 
 -- Ext.Require("Client/ClickingState.lua")
 -- Ext.Require("Client/CustomStatsTooltipFix.lua")
@@ -102,10 +103,10 @@ Ext.RegisterListener("SessionLoaded", function(...)
             capslockModifier = event.Press
         end
     end)
-    Ext.RegisterNetListener("UGM_ClickMoveConfirmed", function(...)
-        local cursor = Ext.GetPickingState()
-        if cursor then
-            local visual = Ext.ClientVisual.Create(cursor.WalkablePosition)
-        end
-    end)
+    -- Ext.RegisterNetListener("UGM_ClickMoveConfirmed", function(...)
+    --     local cursor = Ext.GetPickingState()
+    --     if cursor then
+    --         local visual = Ext.ClientVisual.Create(cursor.WalkablePosition)
+    --     end
+    -- end)
 end)

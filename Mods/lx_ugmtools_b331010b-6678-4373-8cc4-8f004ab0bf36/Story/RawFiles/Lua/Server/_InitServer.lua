@@ -1,11 +1,12 @@
 PersistentVars = {}
-selected = {}
-target = nil
-quickSelection = nil
-bypasslock = false
+-- selected = {}
+-- target = nil
+-- quickSelection = nil
+-- bypasslock = false
 
 -- Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
-Ext.Require("Server/Systems/Selection.lua")
+-- Ext.Require("Server/Systems/Selection.lua")
+Ext.Require("Server/Systems/Selection_ng.lua")
 Ext.Require("Server/Systems/OsiServices.lua")
 Ext.Require("Server/Systems/InputBoxAnswer.lua")
 Ext.Require("Server/Systems/ContextMenuAnswers.lua")
@@ -107,28 +108,6 @@ Ext.RegisterNetListener("UGM_ClientLoaded", ClientLoaded)
 
 function LoadVars()
     --Ext.Print(Ext.JsonStringify(PersistentVars))
-    if PersistentVars.selectType == nil then
-        PersistentVars.selectType = {
-            current = "GM_SELECTED",
-            alternate = "GM_SELECTED_DISCREET"
-        }
-    end
-    if PersistentVars.targetType == nil then
-        PersistentVars.targetType = {
-            current = "GM_TARGETED",
-            alternate = "GM_TARGETED_DISCREET"
-        }
-    end
-    if PersistentVars.options == nil then
-        PersistentVars.options = {
-            activatedOnly = "off",
-            deactivatedOnly = "off",
-        }
-    end
-    if PersistentVars.lock == nil then
-        PersistentVars.lock = false
-    end
-
     if PersistentVars.talkType == nil then
         PersistentVars.talkType = "normal"
     end
@@ -158,11 +137,11 @@ end
 
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", Reactivation)
 
-Ext.RegisterOsirisListener("StoryEvent", 2, "before", function(character, event)
-    if event ~= "GM_CharacterDeleted" then return end
-    if selected[character] ~= nil then selected[character] = nil end
-    if character == target then target = nil end
-end)
+-- Ext.RegisterOsirisListener("StoryEvent", 2, "before", function(character, event)
+--     if event ~= "GM_CharacterDeleted" then return end
+--     if selected[character] ~= nil then selected[character] = nil end
+--     if character == target then target = nil end
+-- end)
 
 -- Console commands
 local debugCommands = {

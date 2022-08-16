@@ -1,5 +1,5 @@
 local function ClearFromOsiUI()
-    ClearSelectionAndTarget()
+    -- ClearSelectionAndTarget()
 end
 
 Ext.RegisterNetListener("UGM_Hotbar_UnselectAll", ClearFromOsiUI)
@@ -34,20 +34,17 @@ Ext.RegisterNetListener("UGM_Hotbar_StartFollow", StartFollowingUI)
 
 local function StoryFreezeUI()
     if GetTableSize(selected) < 1 then
-        local players = Osi.DB_IsPlayer:Get(nil)
-        
-        for i,player in pairs(players) do
-            player = player[1]
-            if HasActiveStatus(player, "GM_STORYFREEZE") == 0 then
-                CharacterFreeze(player)
-                ApplyStatus(player, "GM_STORYFREEZE", -1.0)
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+            if HasActiveStatus(char, "GM_STORYFREEZE") == 0 then
+                CharacterFreeze(char)
+                ApplyStatus(char, "GM_STORYFREEZE", -1.0)
             else
-                CharacterUnfreeze(player)
-                RemoveStatus(player, "GM_STORYFREEZE")
+                CharacterUnfreeze(char)
+                RemoveStatus(char, "GM_STORYFREEZE")
             end
         end
     else
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             if HasActiveStatus(char, "GM_STORYFREEZE") == 0 then
                 CharacterFreeze(char)
                 ApplyStatus(char, "GM_STORYFREEZE", -1.0)
