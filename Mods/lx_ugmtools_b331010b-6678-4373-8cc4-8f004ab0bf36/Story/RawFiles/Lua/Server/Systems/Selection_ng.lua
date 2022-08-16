@@ -55,7 +55,7 @@ Ext.Osiris.RegisterListener("ObjectFlagSet", 3, "before", function(flag, object,
         Osi.ApplyStatus(object, "GM_SELECTED_DISCREET", -1, 1)
     elseif flag == "UGMT_Targeted" then
         if SelectionManager.CurrentTarget then
-            SelectionManager:ClearFlag(SelectionManager.CurrentTarget)
+            SelectionManager:ClearTarget()
         end
         SelectionManager.CurrentTarget = Osi.GetUUID(object)
         -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Target"}))
@@ -75,7 +75,9 @@ Ext.Osiris.RegisterListener("ObjectFlagCleared", 3, "before", function(flag, obj
             end
         end
     elseif flag == "UGMT_Targeted" then
-        SelectionManager.CurrentTarget = nil
+        if SelectionManager.CurrentTarget == object then
+            SelectionManager.CurrentTarget = nil
+        end
         -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_ClearSelectionFX", Ext.Json.Stringify({Character = object.NetID}))
         Osi.RemoveStatus(object, "GM_TARGETED_DISCREET")
     end
@@ -122,7 +124,6 @@ Ext.RegisterNetListener("UGM_QuickDeselection", function(call, payload)
     if not infos.ShiftMod then
         local object = Ext.ServerEntity.GetCharacter(tonumber(infos.Character))
         SelectionManager:ClearFlag(object)
-        SelectionManager.CurrentTarget = nil
     end
     SelectionManager.CursorSelection = nil
 end)
