@@ -32,10 +32,15 @@ end
 
 --- @param object GUID|IEoCServerObject|IGameObject
 function SelectionManager:ClearFlag(object)
+    if self.Lock then return end
     if type(object) == "string" then
         object = Ext.Entity.GetGameObject(object)
     end
     Osi.ObjectClearFlag(object.MyGuid, "UGMT_Selected", 0)
+end
+
+function SelectionManager:ClearTarget()
+    Osi.ObjectClearFlag(self.CurrentTarget, "UGMT_Targeted", 0)
 end
 
 function SelectionManager:UpdateSelectionEffects()
@@ -114,9 +119,12 @@ end)
 -- Quick Deselection
 Ext.RegisterNetListener("UGM_QuickDeselection", function(call, payload)
     local infos = Ext.Json.Parse(payload)
-    local object = Ext.ServerEntity.GetCharacter(tonumber(infos.Character))
-    SelectionManager:ClearFlag(object)
-    SelectionManager.CurrentTarget = nil
+    if not infos.ShiftMod then
+        local object = Ext.ServerEntity.GetCharacter(tonumber(infos.Character))
+        SelectionManager:ClearFlag(object)
+        SelectionManager.CurrentTarget = nil
+    end
+    SelectionManager.CursorSelection = nil
 end)
 
 function SelectionManager:GetSelectedCharacters()
@@ -144,6 +152,19 @@ function SelectAroundPosition(item, distance)
         item = Ext.ServerEntity.GetItem(item)
         for i,character in pairs(item:GetNearbyCharacters(distance)) do
             SelectionManager:AddToSelection(character)
+        end
+    end
+end
+
+function SelectionManager:ClearSelectionAndTarget()
+    if not self.Lock then
+        for i,object in pairs(self.CurrentSelection) do
+            if self.CursorSelection ~= object then
+                self:ClearFlag(object)
+            end
+        end
+        if self.CurrentTarget then
+            self:ClearTarget()
         end
     end
 end

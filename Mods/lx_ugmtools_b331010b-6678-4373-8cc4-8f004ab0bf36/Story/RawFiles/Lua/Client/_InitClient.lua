@@ -25,12 +25,10 @@ local function UI_QuickSelect(ui, call, ...)
         local handle = Ext.DoubleToHandle(targetBar:GetValue("targetHandle", "number"))
         if Ext.Utils.IsValidHandle(handle) then
             local char = Ext.GetCharacter(handle)
-            if not shiftModifier then
-                Ext.PostMessageToServer("UGM_QuickDeselection", Ext.Json.Stringify({
-                    ShiftMod = shiftModifier,
-                    Character = char.NetID,
-                }))
-            end
+            Ext.PostMessageToServer("UGM_QuickDeselection", Ext.Json.Stringify({
+                ShiftMod = shiftModifier,
+                Character = char.NetID,
+            }))
         end
     else
         local handle = Ext.DoubleToHandle(params[2])
