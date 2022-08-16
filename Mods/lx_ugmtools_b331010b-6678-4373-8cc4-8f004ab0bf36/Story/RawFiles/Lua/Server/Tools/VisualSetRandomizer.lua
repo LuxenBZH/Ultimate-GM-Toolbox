@@ -13,7 +13,7 @@ local slots = {
 -- Randomize visual set
 function RandomizeVisualSet(item, event)
     if event ~= "GM_RandomizeVisuals" then return end
-    for char,select in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         local choices = {}
         local character = Ext.GetCharacter(char)
         for slot, i in pairs(slots) do
