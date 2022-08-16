@@ -160,11 +160,11 @@ Ext.RegisterListener("SessionLoaded", function()
 
     local hotbar = Ext.GetBuiltinUI("Public/Game/GUI/hotBar.swf")
     Ext.RegisterUIInvokeListener(hotbar, "setPlayerHandle", function(...)
-        toolbar:GetRoot().visible = false
+        Ext.GetUI("UGMT_Toolbar"):GetRoot().visible = false
     end)
     local GMPanel = Ext.GetBuiltinUI("Public/Game/GUI/GM/GMPanelHUD.swf")
     Ext.RegisterUIInvokeListener(GMPanel, "showTargetBar", function(...)
-        toolbar:GetRoot().visible = true
+        Ext.GetUI("UGMT_Toolbar"):GetRoot().visible = true
     end)
     if Mods.LeaderLib then
         Ext.RegisterUICall(toolbar, "setPosition", function(...)
