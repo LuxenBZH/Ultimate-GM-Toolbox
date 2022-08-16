@@ -1,27 +1,26 @@
 -- Activate/Deactivate
 local function MassActivateDeactivate(item, event)
     if event == "GM_Activate" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             RemoveStatus(char, "DEACTIVATED")
         end
     elseif event == "GM_Deactivate" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             ApplyStatus(char, "DEACTIVATED", -1.0, 1)
         end
     else return end
-    ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassActivateDeactivate)
 
 -- local function MassSheatheUnsheathe(item, event)
 --     if event == "GM_Sheathe" then
---         for char,x in pairs(selected) do
+--         for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
 --             RemoveStatus(char, PersistentVars.selectType.current)
 --             RemoveStatus(char, "UNSHEATHED")
 --         end
 --     elseif event == "GM_Unsheathe" then
---         for char,x in pairs(selected) do
+--         for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
 --             RemoveStatus(char, PersistentVars.selectType.current)
 --             ApplyStatus(char, "UNSHEATHED", -1.0, 1)
 --         end
@@ -32,7 +31,7 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassActivateDeactivate)
 -- Ext.RegisterOsirisListener("StoryEvent", 2, "before", MassSheatheUnsheathe)
 
 function ToggleCombatMode()
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         if HasActiveStatus(char, "UNSHEATHED") == 1 then
             RemoveStatus(char, "UNSHEATHED")
         else
@@ -50,7 +49,7 @@ end
 --                 ApplyStatus(player, "GM_STORYFREEZE", -1.0)
 --             end
 --         else
---             for char,x in pairs(selected) do
+--             for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
 --                 CharacterFreeze(char)
 --                 ApplyStatus(char, "GM_STORYFREEZE", -1.0)
 --             end
@@ -62,7 +61,7 @@ end
 --                 RemoveStatus(player, "GM_STORYFREEZE")
 --             end
 --         else
---             for char,x in pairs(selected) do
+--             for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
 --                 RemoveStatus(char, "GM_STORYFREEZE")
 --             end
 --         end
@@ -74,19 +73,17 @@ end
 
 function StoryFreeze()
     if GetTableSize(selected) < 1 then
-        local players = Osi.DB_IsPlayer:Get(nil)
-        for i,player in pairs(players) do
-            player = player[1]
-            if HasActiveStatus(player, "GM_STORYFREEZE") == 0 then
-                CharacterFreeze(player)
-                ApplyStatus(player, "GM_STORYFREEZE", -1.0)
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+            if HasActiveStatus(char, "GM_STORYFREEZE") == 0 then
+                CharacterFreeze(char)
+                ApplyStatus(char, "GM_STORYFREEZE", -1.0)
             else
-                CharacterUnfreeze(player)
-                RemoveStatus(player, "GM_STORYFREEZE")
+                CharacterUnfreeze(char)
+                RemoveStatus(char, "GM_STORYFREEZE")
             end
         end
     else
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             if HasActiveStatus(char, "GM_STORYFREEZE") == 0 then
                 CharacterFreeze(char)
                 ApplyStatus(char, "GM_STORYFREEZE", -1.0)
@@ -107,7 +104,7 @@ end
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", Unfreeze)
 
 local function FetchVisibleStatus(character)
-    local char = Ext.GetCharacter(character)
+    local char = Ext.ServerEntity.GetCharacter(character)
     local charStatuses = char:GetStatuses()
     local list = {}
     for i,status in pairs(charStatuses) do
@@ -121,35 +118,33 @@ end
 local function CopyRemoveStatus(item, event)
     if GetTableSize(selected) == 0 then return end
     if event == "GM_Copy_Status" then
-        if target == nil then return end
-        local statuses = FetchVisibleStatus(target)
-        for char,x in pairs(selected) do
+        if SelectionManager.CurrentTarget == nil then return end
+        local statuses = FetchVisibleStatus(SelectionManager.CurrentTarget)
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             for i,status in pairs(statuses) do
-                local duration = GetStatusTurns(target, status)
+                local duration = GetStatusTurns(SelectionManager.CurrentTarget, status)
                 ApplyStatus(char, status, duration, 1)
             end
         end
     elseif event == "GM_Clear_Status" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             local statuses = FetchVisibleStatus(char)
             for i,status in pairs(statuses) do
                 RemoveStatus(char, status)
             end
         end
     else return end
-    ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", CopyRemoveStatus)
 
 -- Transform character
 local function TransformCharacter(item, event)
-    if event ~= "GM_Transform" or target == nil then return end
-    for char,x in pairs(selected) do
+    if event ~= "GM_Transform" or SelectionManager.CurrentTarget == nil then return end
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         selected[char] = nil -- Since the template change, the GUID have to be removed manually
-        CharacterTransformAppearanceTo(char, target, 0, 1)
+        CharacterTransformAppearanceTo(char, SelectionManager.CurrentTarget, 0, 1)
     end
-    ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", TransformCharacter)
@@ -157,14 +152,13 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", TransformCharacter)
 -- Bossifier
 local function Bossify(item, event)
     if event ~= "GM_Bossify" then return end
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         if IsBoss(char) == 0 then
             SetIsBoss(char, 1)
         else
             SetIsBoss(char, 0)
         end
     end
-    ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", Bossify)
@@ -172,48 +166,47 @@ Ext.RegisterOsirisListener("StoryEvent", 2, "before", Bossify)
 -- Make PC or NPC
 function ManagePlayable(item, event)
     if event == "GM_MakePlayer" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             CharacterMakePlayer(char)
             Osi.DB_IsPlayer(char)
         end
     elseif event == "GM_MakeNPC" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             CharacterMakeNPC(char)
             Osi.DB_IsPlayer:Delete(char)
         end
-    elseif event == "GM_MakeFollower" and target ~= nil then
-        for char,x in pairs(selected) do
-            if CharacterIsPlayer(target) then
-                CharacterAddToPlayerCharacter(char, target)
+    elseif event == "GM_MakeFollower" and SelectionManager.CurrentTarget ~= nil then
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+            if CharacterIsPlayer(SelectionManager.CurrentTarget) then
+                CharacterAddToPlayerCharacter(char, SelectionManager.CurrentTarget)
                 CharacterGiveSkill(char, "Shout_FollowerKeepPosition")
-                CharacterGiveSkill(target, "Shout_FollowerKeepPosition")
+                CharacterGiveSkill(SelectionManager.CurrentTarget, "Shout_FollowerKeepPosition")
             end
-            CharacterAddToPlayerCharacter(char, target)
+            CharacterAddToPlayerCharacter(char, SelectionManager.CurrentTarget)
         end
     elseif event == "GM_UnmakeFollower" then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             local owner = CharacterGetOwner(char)
             if owner ~= "" then
                 CharacterRemoveFromPlayerCharacter(char, owner)
                 CharacterGiveSkill(char, "Shout_FollowerKeepPosition")
-                CharacterGiveSkill(target, "Shout_FollowerKeepPosition")
+                CharacterGiveSkill(SelectionManager.CurrentTarget, "Shout_FollowerKeepPosition")
             end
             CharacterRemoveFromPlayerCharacter(char, owner)
         end
-    elseif event == "GM_AssignPlayer" and target ~= nil then
-        for char,x in pairs(selected) do
-            local user = CharacterGetReservedUserID(target)
+    elseif event == "GM_AssignPlayer" and SelectionManager.CurrentTarget ~= nil then
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+            local user = CharacterGetReservedUserID(SelectionManager.CurrentTarget)
             CharacterAssignToUser(char, user)
         end
     else return end
-    ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", ManagePlayable)
 
 function ManageFollower()
-    for char,x in pairs(selected) do
-        if CharacterIsPlayer(target) then
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
+        if CharacterIsPlayer(SelectionManager.CurrentTarget) then
             ManagePlayable("", "GM_UnmakeFollower")
         else
             ManagePlayable("", "GM_MakeFollower")
@@ -253,7 +246,7 @@ end
 function UGM_ApplyStatus(status, duration)
     if duration ~= -1 then duration = duration * 6.0 end
     if NRD_StatExists(string.upper(status)) then
-        for char,x in pairs(selected) do
+        for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             ApplyStatus(char, string.upper(status), duration, 1)
         end
     else
@@ -262,7 +255,7 @@ function UGM_ApplyStatus(status, duration)
 end
 
 function UGM_ShowVisibleStatuses()
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         print("Character: "..Ext.GetCharacter(char).DisplayName)
         local statuses = FetchVisibleStatus(char)
         for i,status in pairs(statuses) do

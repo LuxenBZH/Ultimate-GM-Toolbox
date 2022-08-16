@@ -22,7 +22,7 @@ rarityRef = {
 
 local function GenerateTreasureFromTable(tab)
     local treasureTable = tab..rarity
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         local x,y,z = GetPosition(char)
         local pouch = Ext.GetItem(CreateItemTemplateAtPosition("LOOT_Pouch_A_244deb74-a42b-44b3-94b1-a7fe3620b98e", x, y, z))
         local level = CharacterGetLevel(char)
@@ -39,7 +39,7 @@ local function GenerateEquipment(item, event)
     local treasure = treasureRef[event]
     if treasure == nil then return end
     GenerateTreasureFromTable(treasure)
-    ClearSelectionAndTarget()
+    -- ClearSelectionAndTarget()
 end
 
 Ext.RegisterOsirisListener("StoryEvent", 2, "before", GenerateEquipment)

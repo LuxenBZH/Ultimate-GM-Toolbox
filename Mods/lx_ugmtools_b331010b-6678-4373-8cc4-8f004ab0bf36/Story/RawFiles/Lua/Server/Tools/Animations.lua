@@ -55,13 +55,13 @@ function StartAnimLoop(char, animation)
 end
 
 function StartCharacterAnimation(animations)
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         StartAnimations(char, animations)
     end
 end
 
 function StartCharacterAnimationLoop(animation)
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         StartAnimLoop(char, animation)
     end
 end
@@ -132,7 +132,7 @@ end
 Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", EndAnimation)
 
 function StopAnimationLoop()
-    for char,x in pairs(selected) do
+    for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
         SetVarString(char, "UGM_Animations", "")
         RemoveStatus(char, "GM_ANIMATED")
     end
