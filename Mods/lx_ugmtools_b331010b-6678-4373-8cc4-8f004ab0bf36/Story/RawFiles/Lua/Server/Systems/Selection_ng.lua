@@ -16,7 +16,6 @@ SelectionManager = {
 
 --- @param object GUID|IEoCServerObject|IGameObject
 function SelectionManager:SetFlag(object)
-    _P("Object Set Flag")
     if type(object) == "string" then
         object = Ext.Entity.GetGameObject(object)
     end
@@ -45,7 +44,6 @@ function SelectionManager:UpdateSelectionEffects()
 end
 
 Ext.Osiris.RegisterListener("ObjectFlagSet", 3, "before", function(flag, object, dialogInstance)
-    _P("ObjectFlagSet", flag, object)
     if flag == "UGMT_Selected" then
         SelectionManager.CurrentSelection[#SelectionManager.CurrentSelection+1] = Osi.GetUUID(object)
         -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Select"}))

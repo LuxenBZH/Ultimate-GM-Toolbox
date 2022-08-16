@@ -32,7 +32,7 @@ function DraggingEffect:Create(templates, functions, starting, statuses)
     for i,func in pairs(functions) do
         Ext.RegisterNetListener(func, function(channel, payload)
             -- print(channel, payload)
-            this.CurrentEntity = Ext.GetItem(tonumber(payload))
+            this.CurrentEntity = Ext.GetItem(tonumber(payload)).NetID
             -- Ext.Print("currentEntity",this.CurrentEntity)
             this:Drag()
         end)
@@ -44,12 +44,13 @@ function DraggingEffect:Create(templates, functions, starting, statuses)
                 this:ToggleOff()
             end
             if event.EventId == 1 and event.Release then
+                local entity = Ext.ClientEntity.GetItem(this.CurrentEntity)
                 local infos = {
                     Func = functions[this.CurrentId],
-                    Entity = this.CurrentEntity.NetID,
-                    X = this.CurrentEntity.Translate[1],
-                    Y = this.CurrentEntity.Translate[2],
-                    Z = this.CurrentEntity.Translate[3],
+                    Entity = this.CurrentEntity,
+                    X = entity.Translate[1],
+                    Y = entity.Translate[2],
+                    Z = entity.Translate[3],
                 }
                 infos = Ext.JsonStringify(infos)
                 Ext.PostMessageToServer("UGM_TriggerDraggingEffectFunction", infos)
@@ -83,7 +84,7 @@ DraggingEffect.__call = DraggingEffect.ToggleOn
 
 function DraggingEffect:ToggleOff()
     self.Kill = false
-    Ext.PostMessageToServer("UGM_KillDraggingEffect", tostring(self.CurrentEntity.NetID))
+    Ext.PostMessageToServer("UGM_KillDraggingEffect", tostring(self.CurrentEntity))
     self.CurrentEntity = nil
 end
 
@@ -98,7 +99,7 @@ function DraggingEffect:Drag()
         -- Ext.Print("drag")
         local pos = Ext.GetPickingState()
         if self.CurrentEntity then
-            self.CurrentEntity.Translate = pos.WalkablePosition
+            Ext.ClientEntity.GetItem(self.CurrentEntity).Translate = pos.WalkablePosition
         else
             return
         end
