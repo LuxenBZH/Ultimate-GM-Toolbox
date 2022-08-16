@@ -168,3 +168,7 @@ function SelectionManager:ClearSelectionAndTarget()
         end
     end
 end
+
+function SelectionManager:ToggleLock()
+    self.Lock = not self.Lock
+end

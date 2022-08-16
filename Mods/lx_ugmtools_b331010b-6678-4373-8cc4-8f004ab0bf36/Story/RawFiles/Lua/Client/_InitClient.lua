@@ -97,6 +97,7 @@ Ext.RegisterListener("SessionLoaded", function(...)
             end
         elseif event.EventId == 285 then
             shiftModifier = event.Press
+            tm.Bars[1].ugmt_lock_select:OnPress()
         elseif event.EventId == 269 then
             capslockModifier = event.Press
         end

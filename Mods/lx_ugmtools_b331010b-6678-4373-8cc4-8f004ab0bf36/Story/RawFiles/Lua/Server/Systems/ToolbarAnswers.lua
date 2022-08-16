@@ -1,6 +1,6 @@
 local answers = {
     ["ugmt_unselect"]       = {handle = function() SelectionManager:ClearSelectionAndTarget() end},
-    ["ugmt_lock_select"]    = {handle = ToggleSelectionLock},
+    ["ugmt_lock_select"]    = {handle = function() SelectionManager:ToggleLock() end},
     ["ugmt_follow"]         = {handle = LuaFollowTarget},
     ["ugmt_bark_mode"]      = {handle = ToggleBark},
     ["ugmt_story_freeze"]   = {handle = StoryFreeze},
