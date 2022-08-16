@@ -94,9 +94,9 @@ function SelectionManager:AddToSelection(object)
     end
 end
 
-function SelectionManager:SetCursorSelection(object)
+function SelectionManager:SetCursorSelection(object, shiftMod)
     if self.CursorSelection then
-        if self.CursorSelection ~= object.MyGuid then
+        if self.CursorSelection ~= object.MyGuid and not shiftMod then
             self:ClearFlag(self.CursorSelection)
         end
     end
@@ -108,7 +108,7 @@ end
 Ext.RegisterNetListener("UGM_QuickSelection", function(call, payload)
     local infos = Ext.Json.Parse(payload)
     local object = Ext.ServerEntity.GetCharacter(tonumber(infos.Character))
-    SelectionManager:SetCursorSelection(object)
+    SelectionManager:SetCursorSelection(object, infos.ShiftMod)
 end)
 
 -- Quick Deselection
