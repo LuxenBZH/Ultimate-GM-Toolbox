@@ -62,6 +62,7 @@ capslockModifier = false
 
 Ext.Require("Client/Tools/ShroudManager.lua")
 Ext.Require("Client/Tools/SessionLoaded.lua")
+Ext.Require("Client/Tools/Visuals.lua")
 Ext.Require("Client/Setup/FXReplacements.lua")
 Ext.Require("Client/Setup/MessageBox.lua")
 

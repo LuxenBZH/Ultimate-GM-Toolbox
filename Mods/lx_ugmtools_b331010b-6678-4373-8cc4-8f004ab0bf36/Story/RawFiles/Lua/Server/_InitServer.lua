@@ -162,7 +162,8 @@ local utilityCommands = {
             end
         end},
     ugm_getselect = {"", "Print the GUID of the selected characters", handle = function(params) Ext.Dump(selected) end},
-    ugm_fade = {"<b|w>", "Fade out or in the players possessing the selected characters. If no character is selected, then fade all players. b = black, white = w", handle = function(params) FadeSelection(params[1]) end}
+    ugm_fade = {"<b|w>", "Fade out or in the players possessing the selected characters. If no character is selected, then fade all players. b = black, white = w", handle = function(params) FadeSelection(params[1]) end},
+    ugm_setcolor = {"<ClothColor1|2|3,HairColor,SkinColor> <RGB,HEX> <Colors>", "Change the color of the selected characters.", handle = function(params) for char,i in pairs(SelectionManager:GetSelectedCharacters()) do GMTools:CharacterModifyColor(char, params[1], params[2], params[3]) end end},
 }
 
 local statsCommands = {

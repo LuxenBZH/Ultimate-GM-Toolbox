@@ -1,0 +1,5 @@
+Ext.RegisterNetListener("UGMT_CharacterModifyColor", function(call, payload, ...)
+    local infos = Ext.Json.Parse(payload)
+    local character = Ext.ClientEntity.GetCharacter(tonumber(infos.Character))
+    character.PlayerData.CustomData[infos.Part] = tonumber(infos.Color)
+end)

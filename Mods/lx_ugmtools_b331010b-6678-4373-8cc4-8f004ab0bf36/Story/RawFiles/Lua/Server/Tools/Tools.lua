@@ -1,3 +1,33 @@
+--- @class GMTools
+GMTools = {}
+
+--- @alias ColorMode "RGB" | "HEX"
+--- @alias ColorPart "ClothColor1" | "ClothColor2" | "ClothColor3" | "HairColor" | "SkinColor"
+
+---@param character GUID
+---@param part ColorPart
+---@param mode ColorMode
+---@param colors string
+function GMTools:CharacterModifyColor(character, part, mode, colors)
+    character = Ext.ServerEntity.GetCharacter(character)
+    local long
+    if mode == "RGB" then
+        long = ((colors[1] & 0x0ff)<<16)|((colors[2] & 0x0ff)<<8)|(colors[3] & 0x0ff)
+    elseif mode == "HEX" then
+        long = tonumber(colors)
+    else
+        _P("[UGMTools:CharacterModifyColor] Unknown mode!")
+        return
+    end
+    character.PlayerData.CustomData[part] = long
+    Ext.Net.BroadcastMessage("UGMT_CharacterModifyColor", Ext.Json.Stringify({
+        Character = character.NetID,
+        Part = part,
+        Color = long
+    }))
+    ApplyStatus(character.MyGuid, "DEACTIVATED", 1.0, 1)
+end
+
 -- Activate/Deactivate
 local function MassActivateDeactivate(item, event)
     if event == "GM_Activate" then
