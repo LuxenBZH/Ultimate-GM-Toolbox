@@ -37,6 +37,7 @@ function ToolButton:Create(bar, ui, name, size, icons, special)
     if #icons > 1 then
         Ext.RegisterListener("InputEvent", function(event)
             if this.OnUse then
+                
                 if not this.CurrentIcon then
                     this.CurrentIcon = 1
                 end
@@ -44,10 +45,10 @@ function ToolButton:Create(bar, ui, name, size, icons, special)
                     this.OnUse = false
                 elseif event.EventId == 218 and event.Release then
                     this.CurrentIcon = this.CurrentIcon - 1 > 0 and this.CurrentIcon - 1 or #icons
-                    ui:SetCustomIcon(name, icons[this.CurrentIcon], size, size)
+                    Ext.UI.GetByName(this.UI):SetCustomIcon(name, icons[this.CurrentIcon], size, size)
                 elseif event.EventId == 219 and event.Release then
                     this.CurrentIcon = this.CurrentIcon + 1 <= # icons and this.CurrentIcon + 1 or 1
-                    ui:SetCustomIcon(name, icons[this.CurrentIcon], size, size)
+                    Ext.UI.GetByName(this.UI):SetCustomIcon(name, icons[this.CurrentIcon], size, size)
                 end
             end
         end)
