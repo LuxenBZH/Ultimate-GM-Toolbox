@@ -20,8 +20,8 @@ local toolbars = {
         ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}},
         -- ["ugmt_bossify"]        = {{"ugmt_toggleboss"}},
         -- ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
-        ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
-        ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
+        -- ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
+        -- ["ugmt_togglefollower"] = {{"ugmt_togglefollower"}},
         -- ["ugmt_confiscate"]     = {{"ugmt_confiscateweapons", "ugmt_confiscateinventory"}}
     },
     -- [3] = {
@@ -37,23 +37,22 @@ local buttonOrder = {
         [3] = "ugmt_lock_select" ,
         [4] = "ugmt_moveto",
         [5] = "ugmt_patrol",
-        -- [6] = "ugmt_follow",
-        [7] = "ugmt_bark_mode",
-        [8] = "ugmt_story_freeze",
-        [9] = "ugmt_unsheath",
-        [10] = "ugmt_shroud",
-        [11] = "ugmt_fade",
-        [12] = "ugmt_clearitems"
+        [6] = "ugmt_bark_mode",
+        [7] = "ugmt_story_freeze",
+        [8] = "ugmt_unsheath",
+        [9] = "ugmt_shroud",
+        [10] = "ugmt_fade",
+        [11] = "ugmt_clearitems"
     },
     [2] = {
-        [5] = "ugmt_randomvisuals",
-        [6] = "ugmt_transform",
+        [1] = "ugmt_randomvisuals",
+        [2] = "ugmt_transform",
         [3] = "ugmt_setrarity",
         [4] = "ugmt_armor",
-        -- [3] = "ugmt_bossify",     
-        -- [4] = "ugmt_makeplayer",
-        [1] = "ugmt_makenpc",
-        [2] = "ugmt_togglefollower",
+        -- [5] = "ugmt_bossify",
+        -- [6] = "ugmt_makeplayer",
+        -- [5] = "ugmt_makenpc",
+        -- [5] = "ugmt_togglefollower",
     },
     -- [3] = {
     --     [1] = "ugmt_setrarity",
@@ -141,17 +140,29 @@ Ext.RegisterListener("SessionLoaded", function()
     toolbar:GetRoot().visible = false
 
     tm = ToolBarManager:Create("UGMT_Toolbar")
-    
-    for bar, buttons in pairs(toolbars) do
-        tm:AddBar(bar)
-        for index, name in pairs(buttonOrder[bar]) do
-            tm:AddButton(bar, name, 48, table.unpack(toolbars[bar][name]))
-            -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
+
+    local index = 1
+    while index <= GetTableSize(toolbars) do
+    -- for bar, buttons in pairs(toolbars) do
+        -- local buttons = toolbars[index]
+        tm:AddBar(index)
+        local buttonIndex = 1
+        while buttonIndex <= #buttonOrder[index] do
+            local name = buttonOrder[index][buttonIndex]
+            if name then
+                -- _D(toolbars[index][name])
+                tm:AddButton(index, name, 48, table.unpack(toolbars[index][name]))
+                -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
+            end
+            buttonIndex = buttonIndex + 1
         end
-        if bar > 1 then
+        if index > 1 then
             -- Ext.Print("SIZE",(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])))
-            toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[bar-1].x = 175 + (GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])+2)*64
+            _P(GetTableSize(toolbars[1]))
+            _P(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[index])+1)
+            toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[index-1].x = 175 + 6*64
         end
+        index = index + 1
     end
     toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[0].y = -5
     toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[1].visible = false
