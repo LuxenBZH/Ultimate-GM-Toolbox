@@ -1,23 +1,23 @@
 local toolbars = {
     [1] = {
-        ["ugmt_select"]         = {{"ugmt_select_zone_1",  "ugmt_select_zone_2", "ugmt_select_zone_3"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"Select2m", "Select5m", "Select10m"}, 1, {"GM_CIRCLE2M", "GM_CIRCLE5M", "GM_CIRCLE10M"})},
-        ["ugmt_unselect"]       = {{"ugmt_unselect"}},
-        ["ugmt_lock_select"]    = {{"ugmt_lock_select_deactivated", "ugmt_lock_select"}},
-        ["ugmt_moveto"]         = {{"ugmt_walkto", "ugmt_runto"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"WalkTo", "RunTo"}, 1, {"GM_BLUEARROW", "GM_REDARROW"})},
-        ["ugmt_patrol"]         = {{"ugmt_beaconpatrol", "ugmt_startpatrol"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"PlacePatrolBeacon", "StartPatrol"}, 1, {"GM_GREENARROW", "GM_REDARROW"})},
+        ["ugmt_select"]         = {{"ugmt_select_zone_1",  "ugmt_select_zone_2", "ugmt_select_zone_3"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"Select2m", "Select5m", "Select10m"}, 1, {"GM_CIRCLE2M", "GM_CIRCLE5M", "GM_CIRCLE10M"}), {"Select Area (2m)", "Select Area (5m)", "Select Area (10m)"}},
+        ["ugmt_unselect"]       = {{"ugmt_unselect"}, nil, {"Clear selection"}},
+        ["ugmt_lock_select"]    = {{"ugmt_lock_select_deactivated", "ugmt_lock_select"}, nil, {"Lock selection (key: Shift)"}},
+        ["ugmt_moveto"]         = {{"ugmt_walkto", "ugmt_runto"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"WalkTo", "RunTo"}, 1, {"GM_BLUEARROW", "GM_REDARROW"}), {"Walk to position", "Run to position"}},
+        ["ugmt_patrol"]         = {{"ugmt_beaconpatrol", "ugmt_startpatrol"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2", "9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"PlacePatrolBeacon", "StartPatrol"}, 1, {"GM_GREENARROW", "GM_REDARROW"}), {"Place patrol beacon", "Start patroling"}},
         -- ["ugmt_follow"]         = {{"ugmt_follow"}},
-        ["ugmt_bark_mode"]      = {{"ugmt_bark_mode_deactivated", "ugmt_bark_mode"}},
-        ["ugmt_story_freeze"]   = {{"ugmt_story_freeze"}},
-        ["ugmt_unsheath"]       = {{"ugmt_unsheath"}},
-        ["ugmt_shroud"]         = {{"ugmt_shroud"}},
-        ["ugmt_fade"]           = {{"ugmt_fade"}},
-        ["ugmt_clearitems"]     = {{"ugmt_clearitems"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"ItemRemove"}, 1, {"GM_CIRCLE2M"})},
+        ["ugmt_bark_mode"]      = {{"ugmt_bark_mode_deactivated", "ugmt_bark_mode"}, nil, {"Toggle Bark mode"}},
+        ["ugmt_story_freeze"]   = {{"ugmt_story_freeze"}, nil, {"Toggle story freeze"}},
+        ["ugmt_unsheath"]       = {{"ugmt_unsheath"}, nil, {"Sheathe or Unsheathe"}},
+        ["ugmt_shroud"]         = {{"ugmt_shroud"}, nil, {"Regenerate shroud"}},
+        ["ugmt_fade"]           = {{"ugmt_fade"}, nil, {"Fade to black or fade back"}},
+        ["ugmt_clearitems"]     = {{"ugmt_clearitems"}, DraggingEffect:Create({"9a0c0892-64ff-4e2c-9137-322efe4946c2"}, {"ItemRemove"}, 1, {"GM_CIRCLE2M"}), {"Clear items in area"}},
     },
     [2] = {
-        ["ugmt_randomvisuals"]  = {{"ugmt_visualrandomize"}},
-        ["ugmt_transform"]      = {{"ugmt_transform"}},
-        ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}},
-        ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}},
+        ["ugmt_randomvisuals"]  = {{"ugmt_visualrandomize"}, nil, {"Randomize character visuals"}},
+        ["ugmt_transform"]      = {{"ugmt_transform"}, nil, {"Transform selected character from the target"}},
+        -- ["ugmt_setrarity"]      = {{"Item_ToVend", "Item_Uncommon", "Item_Rare","Item_Epic"}, {"Set item generation rarity"}},
+        -- ["ugmt_armor"]          = {{"ugmt_armormage","ugmt_armorfinesse", "ugmt_armorheavy", "Item_Unknown"}, {"Set armor generation type"}},
         -- ["ugmt_bossify"]        = {{"ugmt_toggleboss"}},
         -- ["ugmt_makeplayer"]     = {{"ugmt_makepc"}},
         -- ["ugmt_makenpc"]        = {{"ugmt_makenpc"}},
@@ -47,8 +47,8 @@ local buttonOrder = {
     [2] = {
         [1] = "ugmt_randomvisuals",
         [2] = "ugmt_transform",
-        [3] = "ugmt_setrarity",
-        [4] = "ugmt_armor",
+        -- [3] = "ugmt_setrarity",
+        -- [4] = "ugmt_armor",
         -- [5] = "ugmt_bossify",
         -- [6] = "ugmt_makeplayer",
         -- [5] = "ugmt_makenpc",
@@ -70,7 +70,9 @@ local buttonOrder = {
 ToolBarManager = {
     Bars = {},
     UI = nil,
-    CurrentButton = nil
+    CurrentButton = nil,
+    OffsetX = 0,
+    OffsetY = 0,
 }
 
 ToolBarManager.__index = ToolBarManager
@@ -79,7 +81,9 @@ function ToolBarManager:Create(ui)
     local this = {
         Bars = {},
         UI = ui,
-        CurrentButton = nil
+        CurrentButton = nil,
+        OffsetX = 0,
+        OffsetY = 0,
     }
     setmetatable(this, self)
     Ext.RegisterListener("InputEvent", function(event)
@@ -96,11 +100,12 @@ function ToolBarManager:AddBar(index)
     self.Bars[index] = {}
 end
 
-function ToolBarManager:AddButton(barIndex, name, size, icons, special)
-    self.Bars[barIndex][name] = ToolButton:Create(barIndex, self.UI, name, size, icons, special)
+function ToolBarManager:AddButton(barIndex, buttonIndex, name, size, icons, special, tooltips)
     Ext.UI.GetByName(self.UI):GetRoot().toolbarHolder_mc.addButtonToBar(barIndex, name)
+    self.Bars[barIndex][name] = ToolButton:Create(barIndex, buttonIndex, self, self.UI, name, size, icons, special, tooltips)
     Ext.RegisterUICall(Ext.UI.GetByName(self.UI), "toolbar_"..name, function(...)
         self:OnPress(barIndex, name)
+        Ext.UI.GetByName(self.UI):ExternalInterfaceCall("PlaySound", "UI_Gen_XButton_Click")
     end)
 end
 
@@ -138,7 +143,6 @@ Ext.RegisterListener("SessionLoaded", function()
     local toolbar = Ext.GetUI("UGMT_Toolbar")
     -- toolbar:GetRoot().toolbar_mc.lBorder_mc.visible = false
     toolbar:GetRoot().visible = false
-
     tm = ToolBarManager:Create("UGMT_Toolbar")
 
     local index = 1
@@ -150,17 +154,17 @@ Ext.RegisterListener("SessionLoaded", function()
         while buttonIndex <= #buttonOrder[index] do
             local name = buttonOrder[index][buttonIndex]
             if name then
-                -- _D(toolbars[index][name])
-                tm:AddButton(index, name, 48, table.unpack(toolbars[index][name]))
+                tm:AddButton(index, buttonIndex, name, 48, table.unpack(toolbars[index][name]))
                 -- toolbars[bar][name] = ToolButton:Create(bar, toolbar, name, 48, table.unpack(toolbars[bar][name]))
             end
             buttonIndex = buttonIndex + 1
         end
         if index > 1 then
             -- Ext.Print("SIZE",(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[bar])))
-            _P(GetTableSize(toolbars[1]))
-            _P(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[index])+1)
+            -- _P(GetTableSize(toolbars[1]))
+            -- _P(GetTableSize(toolbars[1])-1 - GetTableSize(toolbars[index])+1)
             toolbar:GetRoot().toolbarHolder_mc.toolbar_Array[index-1].x = 175 + 6*64
+            tm.OffsetX = 175 + 6*64
         end
         index = index + 1
     end
@@ -178,6 +182,7 @@ Ext.RegisterListener("SessionLoaded", function()
         Ext.GetUI("UGMT_Toolbar"):GetRoot().visible = true
     end)
     if Mods.LeaderLib then
+        
         Ext.RegisterUICall(toolbar, "setPosition", function(...)
             -- Timer.StartOneshot("UGMT_ResizeUIClient", 30, function(...)
                 local ratio = tonumber(toolbar:GetRoot().screenWidth) / tonumber(toolbar:GetRoot().screenHeight) - 1.777777777
