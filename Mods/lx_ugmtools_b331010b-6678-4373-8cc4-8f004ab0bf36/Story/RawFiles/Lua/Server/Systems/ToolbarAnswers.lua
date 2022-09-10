@@ -32,8 +32,28 @@ end)
 Timer = Mods.LeaderLib.Timer
 
 local draggingFunctions = {
-    ["WalkTo"]    = {handle = function(entity) ClassicMove(entity, "GM_Move_Walk") end},
-    ["RunTo"]     = {handle = function(entity) ClassicMove(entity, "GM_Move_Run") end},
+    ["WalkTo"]    = {handle = function(entity) 
+        local locked = true
+        if not SelectionManager.Lock then
+            locked = false
+            SelectionManager:ToggleLock()
+        end
+        ClassicMove(entity, "GM_Move_Walk")
+        if not locked then
+            Timer.StartOneshot("UGM_ToggleSelectionLock", 50, function() SelectionManager:ToggleLock() end)
+        end 
+    end},
+    ["RunTo"]     = {handle = function(entity) 
+        local locked = true
+        if not SelectionManager.Lock then
+            locked = false
+            SelectionManager:ToggleLock()
+        end
+        ClassicMove(entity, "GM_Move_Run")
+        if not locked then
+            Timer.StartOneshot("UGM_ToggleSelectionLock", 50, function() SelectionManager:ToggleLock() end)
+        end 
+    end},
     ["Select2m"]  = {handle = function(entity) SelectAroundPosition(entity, 2) end},
     ["Select5m"]  = {handle = function(entity) SelectAroundPosition(entity, 5) end},
     ["Select10m"] = {handle = function(entity) SelectAroundPosition(entity, 10) end},

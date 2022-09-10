@@ -20,7 +20,6 @@ function StartPatrol(object, event)
         local pos = PersistentVars[currentLevel].patrols[char][1]
         CharacterMoveToPosition(char, pos[1], pos[2], pos[3], 0, "UGM_Loop_Patrol")
         ApplyStatus(char, "GM_PATROLING", -1.0)
-        RemoveStatus(char, PersistentVars.selectType.current)
     end
 end
 
@@ -121,7 +120,6 @@ function FollowTarget(item, event)
         Osi.ProcCharacterFollowCharacter(char, SelectionManager.CurrentTarget)
         ApplyStatus(char, "GM_FOLLOW", -1.0, 1)
         PersistentVars.Followers[char] = SelectionManager.CurrentTarget
-        RemoveStatus(char, PersistentVars.selectType.current)
     end
 end
 
