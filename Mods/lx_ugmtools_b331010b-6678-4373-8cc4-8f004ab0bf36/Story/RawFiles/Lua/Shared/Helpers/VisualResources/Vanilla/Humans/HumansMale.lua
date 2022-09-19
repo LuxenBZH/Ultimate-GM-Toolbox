@@ -9,7 +9,7 @@
 --- @field Beard table
 --- @field Fullbody table
 --- @field Cape table
---- @field Shoulders table
+--- @field Shoulder table
 --- @field Misc table
 GenderVisuals = {
     Hair = {},
@@ -22,7 +22,7 @@ GenderVisuals = {
     Beard = {},
     Fullbody = {},
     Cape = {},
-    Shoulders = {},
+    Shoulder = {},
     Misc = {}
 }
 
@@ -38,6 +38,7 @@ function GenderVisuals:Create()
         Legs = {},
         Boots = {},
         Beard = {},
+        Fullbody = {},
         Cape = {},
         Shoulder = {},
         Misc = {}
@@ -156,8 +157,7 @@ CharacterVisualResources.Humans.Male.Helmet = {
     Humans_Male_Armor_FUR_Kitchen_Pot_F = "80057fa8-e752-478e-883c-a87778063047",
 }
 
-
-CharacterVisualResources.Humans.Male.Heads = {
+CharacterVisualResources.Humans.Male.Head = {
     Humans_Male_Body_Naked_A_Head_A = "f72b6f7f-b12f-40ce-9560-44457acbbcb4",
     Humans_Male_Body_Naked_A_Head_B = "395eaf1b-c144-490a-8375-bf81190a37d3",
     Humans_Male_Body_Naked_A_Head_C = "355b7b7a-0201-45e8-a373-5bf8bf4c8b7b",
@@ -183,6 +183,8 @@ CharacterVisualResources.Humans.Male.Heads = {
     Humans_Male_Body_Naked_A_Head_Ifan_A = "f588044d-ecd2-4ac9-abf5-6a1a52f7a33f",
     Humans_Male_Body_Naked_A_Head_Lucian_A = "baf686d1-a176-4cdd-a564-926d2c4dbbe2",
     Humans_Male_Body_Naked_A_Head_Tarquin_A = "4c5727c1-0e54-4c58-9f6f-75f7cf766e31",
+    Humans_Male_Body_Naked_Head_Silentmonk_A = "b28bfe01-8439-4c66-902a-5248db9ac297",
+    Humans_Male_Body_Naked_Skinny_A_Head_Silentmonk_A = "76c78bef-559c-45f3-af86-38a9c2989bbe",
 
     Humans_Male_Skeleton_A_Head_A = "2ef472e2-587a-41f5-bcec-44a2bcc08cd0",
     Humans_Male_Skeleton_A_Head_B = "6924f660-4c3c-4a28-bb8d-cd9823ba53e0",
@@ -259,7 +261,6 @@ CharacterVisualResources.Humans.Male.Torso = {
     Humans_Male_RedFaction_Brute_A_Upperbody_A = "1eee33c3-2ef8-458b-81be-781985a9e56e",
     Humans_Male_RedFaction_Grunt_A_Upperbody_A = "148b278c-5841-4e2c-abe8-d12ae2bdf1cc",
     Humans_Male_RedFaction_Inquisitor_A_Upperbody_A = "869786e4-62b4-4e03-b5f7-96e1cc9ad0cb",
-    Humans_Male_RedFaction_Inquisitor_A_Upperbody_B = "f03be5ec-34f9-4090-83e1-e82c934a081a",
     Humans_Male_RedFaction_Priest_A_Upperbody_A = "d95acd05-19e5-45cc-9811-c7b9dc8a7842",
     Humans_Male_RedFaction_Ranger_A_Upperbody_A = "b7e925a0-414d-47cb-a546-f1d6497c3f22",
     Humans_Male_Robe_Tarquin_Upperbody_A = "06f08126-ccee-4655-aff9-2167667add1b",
@@ -471,6 +472,7 @@ CharacterVisualResources.Humans.Male.Fullbody = {
     Humans_Male_Armor_Mage_A_Fullbody_A = "bbc05d27-62d0-4738-ad36-c2644b59d6c8",
     Humans_Male_Blackring_Grunt_A_FullBody_A = "6702594c-9535-4fd2-808d-1375df7f034e",
     Humans_Male_Blackring_Wizard_A_Fullbody_A = "9b6ca789-6d43-4580-b939-9d85af367e52",
+    Humans_Male_RedFaction_Inquisitor_A_Upperbody_B = "f03be5ec-34f9-4090-83e1-e82c934a081a",
     ProxyMesh_Humans_Hero_Male_Fullbody = "11a0f5d4-f764-4644-bbb6-585e463a88c9",
 
     Humans_Male_Skeleton_Armor_Mage_A_Fullbody_A = "cbf0acf7-cd2f-48b1-bf60-1e7a0257abef",
@@ -486,7 +488,7 @@ CharacterVisualResources.Humans.Male.Cape = {
     Humans_Male_Armor_Gareth_Cape_A = "60977e4b-1f9c-4f74-81f9-ebf2f7205f61",
 }
 
-CharacterVisualResources.Humans.Male.Shoulders = {
+CharacterVisualResources.Humans.Male.Shoulder = {
     Humans_Male_Armor_Guard_A_Shoulders_A = "83303c51-7b7f-42fc-8143-d705df9e0701",
     Humans_Male_Armor_Gareth_Shoulders_A = "3b8b868e-db8b-41eb-bbf0-05e4134fbaa8",
     Humans_Male_Armor_Gareth_Shoulders_B = "27cc23cd-5b8b-45e0-9fc6-683f607ebdf2",

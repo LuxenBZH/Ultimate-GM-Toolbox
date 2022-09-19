@@ -9,7 +9,7 @@
 --- @field Beard table
 --- @field Fullbody table
 --- @field Cape table
---- @field Shoulders table
+--- @field Shoulder table
 --- @field Misc table
 GenderVisuals = {
     Hair = {},
@@ -19,10 +19,10 @@ GenderVisuals = {
     Arms = {},
     Legs = {},
     Boots = {},
-    Beard = {},
+    Beard = {};
     Fullbody = {},
     Cape = {},
-    Shoulders = {},
+    Shoulder = {},
     Misc = {}
 }
 
@@ -37,7 +37,8 @@ function GenderVisuals:Create()
         Arms = {},
         Legs = {},
         Boots = {},
-        Beard = {},
+        Beard = {};
+        Fullbody = {},
         Cape = {},
         Shoulder = {},
         Misc = {}
@@ -74,7 +75,6 @@ CharacterVisualResources.Humans.Female.Hair = {
     Humans_Female_Hair_E = "dbf4638d-279e-4d07-80ea-636e7ffe102b",
     Humans_Female_Hair_F = "6b269e65-7aa6-435c-8ea5-a39c9f0bf6fc",
     Humans_Female_Hair_K = "331bb12d-75f3-40f0-8b56-f14e5b385af9",
-    Humans_Female_Hair_Lohse = "65575ad1-d44f-43b6-8695-17ef7b503000",
     Humans_Female_Hair_N = "f5201bef-b314-4296-af39-0650b7c08585",
     Humans_Female_Hair_Rich_A = "3e2e1b42-253c-436f-8b1e-cb12c8f38c2e",
     Humans_Female_Hair_O = "ef13d5b0-4101-481b-91f1-b496ae263547",
@@ -84,6 +84,7 @@ CharacterVisualResources.Humans.Female.Hair = {
     Humans_Female_Hair_T = "804127d0-92ac-4bca-bdad-5dd6729ae1a4",
     Humans_Female_Hair_U = "3d0b67ae-b6a4-40b7-9fa0-332a55f6a2d7",
     Humans_Female_Hair_V = "ac717478-ca3b-45ef-898a-0db0bfdeaa1e",
+    Humans_Female_Hair_Lohse = "65575ad1-d44f-43b6-8695-17ef7b503000",
 
     Humans_Female_Skeleton_Hair_V = "da5112ef-1988-4999-801d-ecef38baff58",
     Humans_Female_Skeleton_A_Hair_A = "575976de-68f4-4f38-a89f-262d77466220",
@@ -166,6 +167,7 @@ CharacterVisualResources.Humans.Female.Head = {
     Humans_Female_Body_Naked_A_Head_O = "b4fa2123-bf3c-4a81-a520-52a5f0cf46be",
     Humans_Female_Body_Naked_A_Head_P = "205c9c8c-b47a-4e62-97b3-af1e217d2647",
     Humans_Female_Body_Naked_A_Head_R = "57734ab8-6c2b-44b3-b496-8bad225f05f9",
+    Humans_Female_Blackring_Witch_A_Head_A = "<675e083e-b5c3-44ae-9aa3-fa287ad5af99>",
     Humans_Female_Body_Naked_Head_Lohse = "2de20ce9-cf62-4648-bf7a-59238b19a076",
     Humans_Female_Body_Naked_Head_Silentmonk_A = "a56e33b3-ced1-4194-8af4-8f2771fa7939",
     Humans_Female_Body_Naked_Skinny_A_Head_A = "cd639189-e5fb-45af-81f3-80137e0c071a",
@@ -249,7 +251,6 @@ CharacterVisualResources.Humans.Female.Torso = {
     Humans_Female_Armor_Blackring_A_Upperbody_B = "fe2a27e5-50de-4f4c-a28c-bb781a0e891a",
     Humans_Female_Blackring_Witch_A_Upperbody_A = "1b944916-c70c-4612-bf4f-6e2e4979a3a0",
     Humans_Female_Redfaction_Inquisitor_A_Upperbody_A = "b127091b-75eb-40b1-89b2-5a10d2323a3e",
-    Humans_Female_Redfaction_Inquisitor_A_Upperbody_B = "24c4116a-b707-40f2-b25c-e36a43d62037",
     Humans_Female_Redfaction_Priest_A_UpperBody_A = "5be85962-e17a-4604-b387-1fe6657cabda",
     Humans_Female_RedFaction_Ranger_A_UpperBody_A = "0c847515-2535-46c6-9284-dd9b6d3459d7",
 
@@ -298,7 +299,6 @@ CharacterVisualResources.Humans.Female.Torso = {
     Humans_Female_Skeleton_Ataraxian_A_Upperbody_A = "7c4fd32f-4e0c-4db3-bb25-9180f92a96d3",
     Humans_Female_Skeleton_Ataraxian_B_Upperbody_A = "83f9e197-c935-48e6-bf28-f898e39f8777",
     Humans_Female_Skeleton_Blackring_Witch_A_Upperbody_A = "f7067c1a-a9e8-4e61-a66c-9c797f3715d4",
-    Humans_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_B = "772f79ff-1d78-41fe-a6fa-0e7b8b83d6e9",
 }
 
 CharacterVisualResources.Humans.Female.Arms = {
@@ -428,9 +428,16 @@ CharacterVisualResources.Humans.Female.Boots = {
     Humans_Female_Skeleton_Robe_Purge_A_Legs_C = "0d453c98-69a9-40dc-ad05-05543d72fc89",
 }
 
+CharacterVisualResources.Humans.Female.Beard = {
+
+}
+
 CharacterVisualResources.Humans.Female.Fullbody = {
     Humans_Female_Armor_Mage_A_Fullbody_A = "3c18b048-7f77-41ae-a0ed-146649850392",
+    Humans_Female_Redfaction_Inquisitor_A_Upperbody_B = "24c4116a-b707-40f2-b25c-e36a43d62037",
     ProxyMesh_Humans_Hero_Female_Fullbody = "87ebb53d-0496-469f-a3c4-b21fba83532b",
+
+    Humans_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_B = "772f79ff-1d78-41fe-a6fa-0e7b8b83d6e9",
 }
 
 CharacterVisualResources.Humans.Female.Cape = {
@@ -438,7 +445,7 @@ CharacterVisualResources.Humans.Female.Cape = {
     Humans_Female_Paladin_Warlock_A_Cape_A = "01a82c98-73b8-4d3e-90b0-9688d84c7ce7",
 }
 
-CharacterVisualResources.Humans.Female.Shoulders = {
+CharacterVisualResources.Humans.Female.Shoulder = {
     Humans_Female_Armor_Blackring_A_Shoulders_A = "bd1b10c0-abdc-4630-b601-7321400a0e14",
     Humans_Female_Armor_Guard_A_Shoulders_A = "b1e6cdd0-0df4-4b77-9223-3b6360d59650",
     Humans_Female_Armor_Platemail_A_Shoulders_A = "879184f4-33b3-4ed2-8640-a6def836ac6b",
