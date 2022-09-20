@@ -438,6 +438,9 @@ CharacterVisualResources.Humans.Female.Fullbody = {
     ProxyMesh_Humans_Hero_Female_Fullbody = "87ebb53d-0496-469f-a3c4-b21fba83532b",
 
     Humans_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_B = "772f79ff-1d78-41fe-a6fa-0e7b8b83d6e9",
+
+    RS3_FX_SK_Soul_Ghost_HumanFemale_01 = "<41f9d443-5c2e-45e9-9187-969f73eb7daa>",
+    RS3_FX_SK_Humans_Female_Armoured_01 = "<d6bf25fa-ead1-45f0-81fc-010c3061b318>",
 }
 
 CharacterVisualResources.Humans.Female.Cape = {

@@ -155,6 +155,8 @@ CharacterVisualResources.Humans.Male.Helmet = {
     Humans_Male_Shapeshifter_Mask_A = "c322117e-ce78-4095-bd66-bba0738786aa",
     Humans_Male_Armor_FUR_Bucket_A = "d53f1ab6-c57d-4e74-9b48-adebd627309b",
     Humans_Male_Armor_FUR_Kitchen_Pot_F = "80057fa8-e752-478e-883c-a87778063047",
+
+    Creatures_Gheist_A_Helmet_A = "<d9c82bee-b3c0-4a2e-a6ee-b53797c8cdd0>",
 }
 
 CharacterVisualResources.Humans.Male.Head = {
@@ -199,6 +201,16 @@ CharacterVisualResources.Humans.Male.Head = {
     Humans_Male_Skeleton_A_Lich_Head_A = "dee6dcd7-f79f-4239-a194-847c1e478895",
     Humans_Male_Skeleton_DeathFigure_A = "3558cb7f-cd6d-4344-93d6-1b8967ad7987",
     Humans_Male_Skeleton_DeathFigure_CC_A_01 = "4c896ecb-c32d-4d9b-88e6-ccb95774d4d8",
+
+    Creatures_Zombie_Male_A_Head_A = "<732e82c8-85d9-4583-b722-3b6a569e5cf3>",
+    Creatures_Zombie_Male_B_Head_A = "<8689f877-e426-41ee-9c02-1876bcad95f1>",
+    Creatures_Zombie_Male_A_Head_B = "<4c3c6801-fe11-4401-89c1-21beed73f8d8>",
+    Creatures_Zombie_Male_B_Head_B = "<b6d0cae7-e9f2-4f2e-86a6-65d32d04adc3>",
+    Creatures_Zombie_Male_A_Head_C = "<34bfa5b9-a49f-4281-bc80-0c1b43a0a7c5>",
+    Creatures_Zombie_Male_B_Head_C = "<c5f52078-f366-4945-87b0-016b09d6bb12>",
+    Creatures_Zombie_Male_A_Head_D = "<c3c5bb8c-998e-4444-933e-eb6c28583a9a>",
+    Creatures_Zombie_Male_B_Head_D = "<bfaca489-249e-4123-8749-0fa7773fc483>",
+    Creatures_Zombie_Male_A_Head_E = "<a79c3b4b-65be-47a6-bbd0-d56568d0a1e2>",
 }
 
 CharacterVisualResources.Humans.Male.Torso = {
@@ -324,6 +336,13 @@ CharacterVisualResources.Humans.Male.Torso = {
     Humans_Male_Skeleton_Armor_Bandit_A_Upperbody_A = "10f0d9d4-699b-451e-aece-1982363b60da",
     Humans_Male_Skeleton_Armor_Blackring_A_Upperbody_A = "58adf275-15fd-4dae-8d88-5cb373ec0f94",
     Humans_Male_Skeleton_RedFaction_Inquisitor_A_Upperbody_B = "419bacff-2d35-4ecd-86f2-409da0d64881",
+
+    Creatures_Gheist_A_Upperbody_A = "<97ee0ea9-6b18-4873-a4f5-c22e99cb01e2>",
+    Creatures_Zombie_Male_A_Upperbody_A = "<c5870833-8c3b-4a4d-bda0-e6fcf316d6dc>",
+    Creatures_Zombie_Male_B_Upperbody_A = "<486ec1e7-c26b-4e83-afd1-99c771ae02d0>",
+    Creatures_Zombie_Male_A_Upperbody_B = "<9aeb1d63-21b5-4839-a47c-38307c0ca162>",
+    Creatures_Zombie_Male_B_Upperbody_B = "<12800ad1-cdf5-42a1-aec5-2ea4bde8de5a>",
+    Creatures_Zombie_Male_A_Upperbody_C = "<a80d7720-fbc7-4e4c-a2ec-1b6394ce576d>",
 }
 
 CharacterVisualResources.Humans.Male.Arms = {
@@ -355,6 +374,14 @@ CharacterVisualResources.Humans.Male.Arms = {
     Humans_Male_Skeleton_Robe_Purge_A_Arms_C = "3bd19215-8c38-4c3b-91b6-d681639e2203",
     Humans_Male_Skeleton_Armor_Bandit_A_Arms_A = "3a0fe940-0aab-4713-bdb7-f10d64e212a1",
     Humans_Male_Skeleton_Armor_Blackring_A_Arms_A = "b940b0a7-9b17-4eda-9d81-3e004f36d2e8",
+
+    Creatures_Zombie_Male_A_Arms_A = "<0d05f150-5f79-4a62-b18a-8e759d4da688>",
+    Creatures_Zombie_Male_B_Arms_A = "<b53e94ba-4ebe-432b-8b3c-d405acf051d8>",
+    Creatures_Zombie_Male_A_Arms_B = "<6bfb7cb3-be50-4b43-8bcb-1166bdb365df>",
+    Creatures_Zombie_Male_B_Arms_B = "<d943bfdf-ae85-4b50-98cc-c3344e7713f2>",
+    Creatures_Zombie_Male_A_Arms_C = "<c6558f40-b610-4b87-8920-37c4664155e1>",
+    Creatures_Zombie_Male_B_Arms_C = "<66f6407d-cc37-432b-8238-9c18705200c9>",
+    Creatures_Zombie_Male_A_Arms_D = "<06fe72ff-d35f-4f04-b8fb-423765d3f248>",
 }
 
 CharacterVisualResources.Humans.Male.Legs = {
@@ -414,6 +441,17 @@ CharacterVisualResources.Humans.Male.Legs = {
     Humans_Male_Skeleton_Ataraxian_A_Lowerbody_A = "b6f93021-6da0-40b7-8983-bf27317bf3e0",
     Humans_Male_Skeleton_Ataraxian_B_Lowerbody_A = "45f4aef2-9c36-4d61-adc9-e252e28f2ed5",
     Humans_Male_Skeleton_Armor_Bandit_A_Lowerbody_A = "89b6ebe9-cfe0-4359-986a-0aaa8406680a",
+
+    Creatures_Gheist_A_Lowerbody_A = "<da796763-85ad-4fcf-ac8b-dcc0ff9914c5>",
+    Creatures_Zombie_Male_A_Lowerbody_A = "<e230f07d-e815-47d8-a726-f9e8a4ad2f5e>",
+    Creatures_Zombie_Male_B_Lowerbody_A = "<c71537be-cc0a-4cb3-ae1a-071c9be4f3cf>",
+    Creatures_Zombie_Male_A_Lowerbody_B = "<c0a0ca6d-b0c4-453b-892a-ee6394b77fd5>",
+    Creatures_Zombie_Male_B_Lowerbody_B = "<80a969de-738f-4df0-b1d6-43c0c817abf8>",
+    Creatures_Zombie_Male_A_Lowerbody_C = "<62ca1238-850e-4469-a287-a4b1e11bf3b4>",
+    Creatures_Zombie_Male_B_Lowerbody_C = "<d52499ed-f3ae-4fb9-9a33-22e25578b7f1>",
+    Creatures_Zombie_Male_A_Lowerbody_D = "<6e8ddbe8-4e33-4f3e-b0d6-76535e266fe0>",
+    Creatures_Zombie_Male_B_Lowerbody_D = "<6c5f09be-96b1-4071-be98-1528d1e61318>",
+    Creatures_Zombie_Male_A_Lowerbody_E = "<40fecf23-f8d0-4f80-9bc2-f6818a23ba30>",
 }
 
 CharacterVisualResources.Humans.Male.Boots = {
@@ -468,7 +506,6 @@ CharacterVisualResources.Humans.Male.Beard = {
 }
 
 CharacterVisualResources.Humans.Male.Fullbody = {
-    Humans_Male_DeathFigure_B_01 = "b79bbc0e-286b-418d-a50d-cb7813556084",
     Humans_Male_Armor_Mage_A_Fullbody_A = "bbc05d27-62d0-4738-ad36-c2644b59d6c8",
     Humans_Male_Blackring_Grunt_A_FullBody_A = "6702594c-9535-4fd2-808d-1375df7f034e",
     Humans_Male_Blackring_Wizard_A_Fullbody_A = "9b6ca789-6d43-4580-b939-9d85af367e52",
@@ -479,6 +516,22 @@ CharacterVisualResources.Humans.Male.Fullbody = {
     Humans_Male_Skeleton_Blackring_Grunt_A_FullBody_A = "a32077e5-5cec-4e09-a42e-69d99bcc99f6",
     Humans_Male_Skeleton_Blackring_Wizard_A_Fullbody_A = "d532ec41-be5e-443f-8500-a21719318a74",
     Humans_Male_Skeleton_Lich_A = "7f9913cb-3921-4cf8-844d-b6cbcb5b8209",
+    Humans_Male_DeathFigure_B_01 = "b79bbc0e-286b-418d-a50d-cb7813556084",
+    TEST_Humans_Male_DeathFigure_B  = "<4411dcf0-7dc6-4c21-92c4-8adf18c6b72c>",
+    TEST_Humans_Male_DeathFigure_C = "<7e394a7e-879c-4676-9430-e394ed7c164f>",
+    TEST_Humans_Male_DeathFigure_D = "<915d9d6d-2d54-49be-b650-446566506199>",
+    TEST_Humans_Male_DeathFigure_E = "<07a75589-bf99-4896-afa4-86696ce7f4e1>",
+    TEST_Humans_Male_DeathFigure = "<cbbd745b-019d-4236-a50c-4c1cfb829189>",
+
+    Creatures_Raanaar_Titan_A = "<78cbdf0c-7225-45d9-84d2-bbd7ae9675a2>",
+    Creatures_Statue_A_Voidwoken_Maya = "<1bfbd0fd-4f85-4471-8888-f7fccc203821>",
+    Creatures_Statue_A_Voidwoken_B_Maya = "<55a7a16e-f043-46bf-a1f0-74bbf37e4c72>",
+    Creatures_Terracotta_Crypt_Gardian_A = "<0f32a135-252e-431c-b4d3-a5291a235064>",
+    Creatures_Terracotta_Crypt_Gardian_B = "<58c6a0d4-f0a3-460d-88c4-721361709d29>",
+    Creatures_Terracotta_Crypt_Gardian_C = "<418db973-d4e0-4227-8483-f660d2b50d76>",
+    RS3_FX_Humans_Hero_Male_Fullbody_SourceBody_001 = "<aae84562-7d39-4c42-b16c-75c522eb0a3d>",
+    RS3_FX_SK_Soul_Ghost_HumanMale_01 = "<4eaaef7e-122e-44c8-a0e8-8aeb9f63dc4f>",
+    RS3_FX_SK_Humans_Male_Armoured_01 = "<50770ec7-1fe7-4a0c-91ff-f36cde6c9f1a>",
 }
 
 CharacterVisualResources.Humans.Male.Cape = {
@@ -486,6 +539,8 @@ CharacterVisualResources.Humans.Male.Cape = {
     Humans_Male_Robe_Rich_A_Cape_A = "afa60e73-faf0-4c73-a6d0-92d67e8cd33f",
     Humans_Male_Robe_Rich_B_Cape_A = "fc64b39b-bf93-48de-a360-072c3775a485",
     Humans_Male_Armor_Gareth_Cape_A = "60977e4b-1f9c-4f74-81f9-ebf2f7205f61",
+
+    Creatures_Gheist_A_Cloth_A = "<569b816d-3d19-4b9b-bfaa-169cedc8bf49>",
 }
 
 CharacterVisualResources.Humans.Male.Shoulder = {
@@ -499,6 +554,9 @@ CharacterVisualResources.Humans.Male.Shoulder = {
     Humans_Male_Armor_Leather_A_Shoulders_A = "0e4fae24-d9d0-45e5-9a7b-240b2ece1407",
     Humans_Male_Armor_Blackring_A_Shoulders_A = "975b09c6-14f4-402e-b017-c7488783b792",
     Humans_Male_RedFaction_Grunt_A_Shoulders_A = "194e681d-0285-44a3-bb88-5a10471b0a99",
+
+    Creatures_Terracotta_Crypt_Gardian_A_Shoulders_A = "<b9b27b27-6903-4a0e-867a-569d0d493361>",
+    Creatures_Terracotta_Crypt_Gardian_A_Shoulders_B = "<4658e03c-b223-44f8-b563-393a1dd9d381>",
 }
 
 CharacterVisualResources.Humans.Male.Misc = {
@@ -506,4 +564,7 @@ CharacterVisualResources.Humans.Male.Misc = {
     Humans_Male_Clothing_UNIQUE_Blindfolds_A = "10a6460f-3154-4e00-b622-59c13c97230e",
     Humans_Male_RedFaction_Priest_A_Prop_A = "bf9ae5cc-020f-4c88-8fb2-701d3eafe13b",
     Humans_Male_Skeleton_ClawFinger_A = "5c7bd2cc-35ca-4c98-aae7-c3ede069f879",
+
+    Creatures_Zombie_Male_A_Cloth_A = "<ef1b77d8-072d-4989-b702-8a54593d0399>",
+    Creatures_Zombie_Male_B_Cloth_A = "<e57d06da-478a-4135-9a95-e80f0fe12b65>",
 }
