@@ -147,6 +147,7 @@ CharacterVisualResources.Humans.Male.Helmet = {
     Humans_Male_Robe_Purge_A_Helmet_B = "3945aaec-be04-416c-86dd-c63c052dfc9b",
     Humans_Male_Robe_Purge_A_Helmet_C = "de7eea6e-1558-4997-9231-bf1ca871df90",
     Humans_Male_Robe_Purge_A_Helmet_D = "0be5c954-f315-4ee3-878b-2ff0e1de6b6b",
+    Humans_Male_Skeleton_Robe_Purge_A_Helmet_C = "<05a35cfd-c475-44de-b1f2-010be6eff879>",
     Humans_Male_Skeleton_Ataraxian_A_Helmet_A = "6319246f-fdf0-44f8-a5f1-d0868873f8e2",
     Humans_Male_Skeleton_Ataraxian_A_Helmet_B = "08fc4e7a-363a-4efb-ace8-e81abfb3dbeb",
     Humans_Male_Skeleton_Ataraxian_A_Helmet_C = "9938ced3-ac3b-44b7-9c81-56576554103a",
@@ -510,7 +511,6 @@ CharacterVisualResources.Humans.Male.Fullbody = {
     Humans_Male_Blackring_Grunt_A_FullBody_A = "6702594c-9535-4fd2-808d-1375df7f034e",
     Humans_Male_Blackring_Wizard_A_Fullbody_A = "9b6ca789-6d43-4580-b939-9d85af367e52",
     Humans_Male_RedFaction_Inquisitor_A_Upperbody_B = "f03be5ec-34f9-4090-83e1-e82c934a081a",
-    ProxyMesh_Humans_Hero_Male_Fullbody = "11a0f5d4-f764-4644-bbb6-585e463a88c9",
 
     Humans_Male_Skeleton_Armor_Mage_A_Fullbody_A = "cbf0acf7-cd2f-48b1-bf60-1e7a0257abef",
     Humans_Male_Skeleton_Blackring_Grunt_A_FullBody_A = "a32077e5-5cec-4e09-a42e-69d99bcc99f6",
@@ -532,6 +532,7 @@ CharacterVisualResources.Humans.Male.Fullbody = {
     RS3_FX_Humans_Hero_Male_Fullbody_SourceBody_001 = "<aae84562-7d39-4c42-b16c-75c522eb0a3d>",
     RS3_FX_SK_Soul_Ghost_HumanMale_01 = "<4eaaef7e-122e-44c8-a0e8-8aeb9f63dc4f>",
     RS3_FX_SK_Humans_Male_Armoured_01 = "<50770ec7-1fe7-4a0c-91ff-f36cde6c9f1a>",
+    ProxyMesh_Humans_Hero_Male_Fullbody = "11a0f5d4-f764-4644-bbb6-585e463a88c9",
 }
 
 CharacterVisualResources.Humans.Male.Cape = {

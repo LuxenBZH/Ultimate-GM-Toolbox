@@ -330,9 +330,12 @@ CharacterVisualResources.Elves.Female.Beard = {
 
 CharacterVisualResources.Elves.Female.Fullbody = {
     Elves_Female_Redfaction_Inquisitor_A_Upperbody_A = "6347100e-3efb-4bb9-a8f2-2eeec55a1aa8",
-    ProxyMesh_Elves_Hero_Female_Fullbody = "<1a91b031-84e9-4bcc-8680-19c0bd5cf250>",
 
     Elves_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_A = "ab7b8655-2bb0-4bf4-9aa4-f9483f7d1396",
+
+    RS3_FX_SK_Elves_Female_Armoured_01 = "<80a7c0c4-1796-4cff-ad80-17f1a9d19eb2>",
+    RS3_FX_SK_Elves_Female_Armoured_02 = "<a14aa3ae-c51c-4ca3-8078-852cd1778fe1>",
+    ProxyMesh_Elves_Hero_Female_Fullbody = "<1a91b031-84e9-4bcc-8680-19c0bd5cf250>",
 }
 
 CharacterVisualResources.Elves.Female.Cape = {

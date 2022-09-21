@@ -130,6 +130,7 @@ CharacterVisualResources.Humans.Female.Helmet = {
     Humans_Female_Robe_Purge_A_Helmet_B = "fc028965-97ce-4f69-99d6-bec0506fa125",
     Humans_Female_Robe_Purge_A_Helmet_C = "d015af20-88d4-4366-a057-a8286789efef",
     Humans_Female_Robe_Purge_A_Helmet_D = "03a8999e-697e-41a5-8172-2266a9d5e2c7",
+    Humans_Female_Skeleton_Robe_Purge_A_Helmet_C = "09cc500a-e1eb-46f8-b915-ab948d116df4",
     Humans_Female_Armor_Blackring_A_Helmet_A = "092d044f-af95-4f5a-b99c-d1f5813ae298",
     Humans_Female_Armor_PlaguesMask_A_Helmet_B = "56575810-281e-4c6d-a286-564c247d2d0e",
     Humans_Female_Beast_Helmet_A = "ede0475d-d6d2-4b7b-913b-80f690d36e3b",
@@ -140,7 +141,6 @@ CharacterVisualResources.Humans.Female.Helmet = {
     Humans_Female_RedFaction_Priest_A_Helmet_A = "c1b05a1c-fea7-42aa-903a-49e9870150ba",
     Humans_Female_RedFaction_Ranger_A_Helmet_A = "98712243-3190-4671-b61b-47f737f94f6a",
     Humans_Female_RedFaction_Ranger_A_Helmet_B = "d23be6f3-707b-4839-8100-2d774d704404",
-    Humans_Female_Skeleton_Robe_Purge_A_Helmet_C = "09cc500a-e1eb-46f8-b915-ab948d116df4",
     Humans_Female_Skeleton_Ataraxian_A_Helmet_A = "f03bbf36-9db3-4497-b6c3-eba3ace8ecc7",
     Humans_Female_Skeleton_Ataraxian_B_Helmet_A = "2af81318-32ca-41fe-af32-3891cab492e4",
     Humans_Female_Shapeshifter_Mask_A = "c625fd26-8fd1-4cc7-b7b9-8ea50290f60b",
@@ -435,12 +435,12 @@ CharacterVisualResources.Humans.Female.Beard = {
 CharacterVisualResources.Humans.Female.Fullbody = {
     Humans_Female_Armor_Mage_A_Fullbody_A = "3c18b048-7f77-41ae-a0ed-146649850392",
     Humans_Female_Redfaction_Inquisitor_A_Upperbody_B = "24c4116a-b707-40f2-b25c-e36a43d62037",
-    ProxyMesh_Humans_Hero_Female_Fullbody = "87ebb53d-0496-469f-a3c4-b21fba83532b",
 
     Humans_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_B = "772f79ff-1d78-41fe-a6fa-0e7b8b83d6e9",
 
     RS3_FX_SK_Soul_Ghost_HumanFemale_01 = "<41f9d443-5c2e-45e9-9187-969f73eb7daa>",
     RS3_FX_SK_Humans_Female_Armoured_01 = "<d6bf25fa-ead1-45f0-81fc-010c3061b318>",
+    ProxyMesh_Humans_Hero_Female_Fullbody = "87ebb53d-0496-469f-a3c4-b21fba83532b",
 }
 
 CharacterVisualResources.Humans.Female.Cape = {

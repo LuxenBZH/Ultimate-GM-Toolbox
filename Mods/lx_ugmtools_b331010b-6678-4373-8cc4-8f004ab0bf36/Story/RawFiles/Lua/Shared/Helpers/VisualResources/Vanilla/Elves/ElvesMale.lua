@@ -334,7 +334,6 @@ CharacterVisualResources.Elves.Male.Beard = {
 CharacterVisualResources.Elves.Male.Fullbody = {
     Elves_Male_Armor_Mage_A_Fullbody_A = "5ce61178-4f6b-427b-840a-cc30ce9abf79",
     Elves_Male_RedFaction_Inquisitor_A_Upperbody_A = "3ff98d3d-758c-4fa7-893d-c79ed8eb32a6",
-    ProxyMesh_Elves_Hero_Male_Fullbody = "<f70e9916-de65-43cb-8952-972bfd28daad>",
 
     Elves_Male_Skeleton_Armor_Mage_A_Fullbody_A = "0654bb44-b2ff-429c-a76f-66bc2a2b73ed",
     Elves_Male_Skeleton_RedFaction_Inquisitor_A_Upperbody_A = "eb58a100-4d86-4af6-b204-c0f501efbc0a",
@@ -342,6 +341,8 @@ CharacterVisualResources.Elves.Male.Fullbody = {
 
     Creatures_SwallowMan_A = "<2b024a71-c409-4a12-b277-0e4e98aa603b>",
     RS3_FX_SK_Soul_Ghost_ElvesMale_01 = "<8854cd01-e2f6-4b46-9a63-3378461e0b4a>",
+    RS3_FX_SK_Elves_Male_Armoured_01 = "<873ea8ce-1654-463f-b500-8c3c0f4b5549>",
+    ProxyMesh_Elves_Hero_Male_Fullbody = "<f70e9916-de65-43cb-8952-972bfd28daad>",
 }
 
 CharacterVisualResources.Elves.Male.Cape = {
