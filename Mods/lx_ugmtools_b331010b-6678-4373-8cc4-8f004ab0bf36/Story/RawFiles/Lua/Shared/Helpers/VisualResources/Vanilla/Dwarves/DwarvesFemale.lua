@@ -95,9 +95,9 @@ CharacterVisualResources.Dwarves.Female.Helmet = {
     Dwarves_Female_Armor_Chainmail_A_Helmet_B = "79861185-4357-402d-8a02-32e50fc8c09e",
     Dwarves_Female_Armor_Scalemail_A_Helmet_A = "98174b47-7870-4cfd-b050-74e9ff38d06e",
     Dwarves_Female_Armor_Scalemail_A_Helmet_B = "b10ac682-cbe7-4b2d-afbb-87f496bdde18",
-    Dwarves_Female_Armor_StarterChainmail_A_Helmet_A = "dbb21184-62e7-467e-9e83-9cb389caeac0",
     Dwarves_Female_Armor_Leather_A_Helmet_A = "4d56640a-27c3-4ac8-9bb6-a4da5ca11474",
     Dwarves_Female_Armor_Leather_A_Helmet_B = "4dd57142-c451-4c62-b3aa-90d4516d3786",
+    Dwarves_Female_Armor_StarterChainmail_A_Helmet_A = "dbb21184-62e7-467e-9e83-9cb389caeac0",
     Dwarves_Female_Armor_StarterLeather_A_Helmet_A = "55bfbe1c-6e78-4e19-bd26-df98c09cab81",
     Dwarves_Female_Armor_Mage_A_Helmet_A = "829c9198-281a-4c7d-8732-5ba3451021ae",
     Dwarves_Female_Armor_Mage_B_Helmet_A = "3bbcc0bc-6e22-470b-ade4-3d05533af038",
@@ -164,15 +164,15 @@ CharacterVisualResources.Dwarves.Female.Torso = {
     Dwarves_Female_Armor_Scalemail_A_Upperbody_D = "e00177e8-4247-4b7f-82af-54a042171811",
     Dwarves_Female_Armor_Scalemail_A_Upperbody_E = "a8699d53-8f5e-42af-aeb5-a1e69f1b6251",
     Dwarves_Female_Armor_Scalemail_A_Upperbody_F = "caec63fa-3466-4799-83e8-4ad6c8f07fc6",
-    Dwarves_Female_Armor_StarterChainmail_A_Upperbody_A = "1e901ffa-9717-4f55-a95b-6d0576dcd0d9",
-    Dwarves_Female_Armor_StarterChainmail_A_Upperbody_B = "3795fff4-c6c9-4f40-98ba-433a72f693b0",
+    Dwarves_Female_Armor_Leather_Upperbody_A_Cape = "7292273b-bd4e-444e-8cdd-c439f43d2854",
     Dwarves_Female_Armor_Leather_A_Upperbody_A = "a4935a5e-1cf5-4c75-8c10-c35a7326aec4",
+    Dwarves_Female_Armor_Leather_Upperbody_B = "63210cfc-7c80-4f57-a907-0e5428fb0e08",
     Dwarves_Female_Armor_Leather_A_Upperbody_C = "5fd20a56-6cad-4532-a39c-d155f509fa10",
     Dwarves_Female_Armor_Leather_A_Upperbody_D = "12e8b2f4-e215-428a-b156-8bf0d085684e",
     Dwarves_Female_Armor_Leather_A_Upperbody_E = "81792734-897b-4201-9987-c89a7d63b036",
-    Dwarves_Female_Armor_Leather_A_Upperbody_F = "a38f6bc9-9ad1-4200-8c6d-5d46f4a84fe5",
-    Dwarves_Female_Armor_Leather_Upperbody_A_Cape = "7292273b-bd4e-444e-8cdd-c439f43d2854",
-    Dwarves_Female_Armor_Leather_Upperbody_B = "63210cfc-7c80-4f57-a907-0e5428fb0e08",
+    Dwarves_Female_Armor_Leather_A_Upperbody_F = "a38f6bc9-9ad1-4200-8c6d-5d46f4a84fe5",    
+    Dwarves_Female_Armor_StarterChainmail_A_Upperbody_A = "1e901ffa-9717-4f55-a95b-6d0576dcd0d9",
+    Dwarves_Female_Armor_StarterChainmail_A_Upperbody_B = "3795fff4-c6c9-4f40-98ba-433a72f693b0",
     Dwarves_Female_Armor_StarterLeather_A_Upperbody_A = "7fcb9629-3ca6-4959-8f73-bcbd05106495",
     Dwarves_Female_Armor_StarterLeather_A_Upperbody_B = "809f7866-b396-4003-b383-a5dfae937e1a",
     Dwarves_Female_Armor_Mage_A_Upperbody_A = "46dfc9dd-6f5c-48c0-abca-1886555de5ce",
@@ -229,37 +229,37 @@ CharacterVisualResources.Dwarves.Female.Torso = {
 }
 
 CharacterVisualResources.Dwarves.Female.Arms = {
+Dwarves_Female_Body_Naked_A_Arms_A = "c1c34e2a-42e2-48d8-a52e-b5af264f7791",
     Dwarves_Female_Armor_Platemail_A_Arms_A = "916be717-6a7f-4963-97ac-08b0d8da9289",
     Dwarves_Female_Armor_Chainmail_A_Arms_A = "dbd24584-aca3-47df-9757-be7dd244f4b1",
     Dwarves_Female_Armor_Scalemail_A_Arms_A = "9c687503-e72b-4308-9ed3-4a06c060a388",
-    Dwarves_Female_Armor_StarterChainmail_A_Arms_A = "f83a045a-ae4d-4991-898c-276fe049d72d",
     Dwarves_Female_Armor_Leather_A_Arms_A = "8f1c6181-a209-4f6d-8318-ec9f80b5d733",
+    Dwarves_Female_Armor_StarterChainmail_A_Arms_A = "f83a045a-ae4d-4991-898c-276fe049d72d",
     Dwarves_Female_Armor_StarterLeather_A_Arms_A = "46598e1e-1071-423f-aca2-d264d2d9c222",
     Dwarves_Female_Armor_Mage_A_Arms_A = "8dedc1a6-3ffa-4444-9f0b-b35b456d26af",
     Dwarves_Female_Armor_Mage_B_Arms_A = "316004d4-2873-4a77-a511-a93d3ec23d79",
     Dwarves_Female_Armor_Mage_C_Arms_A = "24027449-2e79-4273-b6d6-420adadc87da",
     Dwarves_Female_Clothing_Worker_A_Arms_A = "e3789ffd-107e-4778-aeb1-9b353b72b811",
-    Dwarves_Female_Body_Naked_A_Arms_A = "c1c34e2a-42e2-48d8-a52e-b5af264f7791",
+
     Dwarves_Female_Skeleton_Armor_Platemail_A_Arms_A = "b840794b-bf09-41ab-9432-ae09907f6cfe",
     Dwarves_Female_Skeleton_Armor_Chainmail_A_Arms_A = "8106c990-2f11-4f69-b004-1a6a48cd1eab",
     Dwarves_Female_Skeleton_Armor_Scalemail_A_Arms_A = "40ee5343-5bd3-46f3-86e0-c1e166058d21",
+    Dwarves_Female_Skeleton_Armor_Leather_A_Arms_A = "fdbf7976-ab79-4cab-a98e-5649062bf000",
     Dwarves_Female_Skeleton_Armor_StarterChainmail_A_Arms_A = "605cac8a-3ce5-4ada-9b1a-f419371b3ab9",
     Dwarves_Female_Skeleton_Armor_StarterLeather_A_Arms_A = "2d041751-8b9e-4e7a-a582-bd8af8343082",
-    Dwarves_Female_Skeleton_Armor_Leather_A_Arms_A = "fdbf7976-ab79-4cab-a98e-5649062bf000",
     Dwarves_Female_Skeleton_Armor_Mage_A_Arms_A = "7dbe4a09-7b56-4ee3-8154-550db9fa1641",
     Dwarves_Female_Skeleton_Armor_Mage_C_Arms_A = "e6fc5bc0-f4d2-402f-8c10-951387c7f7f2",
     Dwarves_Female_Skeleton_Clothing_Worker_A_Arms_A = "5c3813dd-8ef3-4a9c-81d6-fedd1c5d8c6a",
     Dwarves_Female_Skeleton_Robe_Purge_A_Arms_C = "467186f1-d95b-4d32-b4cd-ff6e9e150be3",
-
 }
 
 CharacterVisualResources.Dwarves.Female.Legs = {
-    Dwarves_Female_Skeleton_Robe_Purge_A_Lowerbody_C = "b2ffe7fe-f4a9-4937-b54b-62ddadedbb55",
+    Dwarves_Female_Body_Naked_A_Lowerbody_A = "77bb03e4-1a2b-48f2-a139-9b51fbb970ef",
     Dwarves_Female_Armor_Platemail_A_Lowerbody_A = "db23a528-991b-4e73-b47b-db32ccd2d214",
     Dwarves_Female_Armor_Chainmail_A_Lowerbody_A = "1cec949e-a8f2-4b0a-91c3-c5d76b210b87",
     Dwarves_Female_Armor_Scalemail_A_Lowerbody_A = "46229fbd-bb78-489e-a499-fd82d271df00",
-    Dwarves_Female_Armor_StarterChainmail_A_Lowerbody_A = "66d629d9-15f9-4162-bd5d-91840f8985d0",
     Dwarves_Female_Armor_Leather_A_Lowerbody_A = "f6274550-37c4-41a5-aae6-c60e6401993d",
+    Dwarves_Female_Armor_StarterChainmail_A_Lowerbody_A = "66d629d9-15f9-4162-bd5d-91840f8985d0",
     Dwarves_Female_Armor_StarterLeather_A_Lowerbody_A = "eac8b0d4-53c5-4528-a5ca-acd999781045",
     Dwarves_Female_Armor_Mage_A_Lowerbody_A = "4d1c763d-bbe9-4ad8-8c55-d7964f08f914",
     Dwarves_Female_Armor_Mage_B_Lowerbody_A = "148d4bfb-4ba9-487b-b81c-fc906d08766e",
@@ -275,7 +275,7 @@ CharacterVisualResources.Dwarves.Female.Legs = {
     Dwarves_Female_Clothing_Worker_Maid_A_Lowerbody_A = "ab50b5d8-87c7-476e-9ac7-b7a87eefe07d",
     Dwarves_Female_Robe_Purge_A_Lowerbody_A = "e9b1ceca-ad2d-4d33-8526-5b2a5c753197",
     Dwarves_Female_Robe_Purge_A_Lowerbody_B = "611597a4-e87b-475e-87d7-36116070606d",
-    Dwarves_Female_Body_Naked_A_Lowerbody_A = "77bb03e4-1a2b-48f2-a139-9b51fbb970ef",
+    Dwarves_Female_Skeleton_Robe_Purge_A_Lowerbody_C = "b2ffe7fe-f4a9-4937-b54b-62ddadedbb55",
 
     Dwarves_Female_Skeleton_Armor_Mage_A_Lowerbody_A = "4f48fb97-4884-4afa-97b8-e0ac3ec5aa96",
     Dwarves_Female_Skeleton_Armor_Mage_C_Lowerbody_A = "7d809d74-2976-470e-a521-2b79cdb81e58",
@@ -284,7 +284,6 @@ CharacterVisualResources.Dwarves.Female.Legs = {
     Dwarves_Female_Skeleton_Clothing_A_Lowerbody_A = "90a07379-91e1-4463-985f-4231d1ae59ab",
     Dwarves_Female_Skeleton_Robe_Purge_A_Lowerbody_A = "7c2e85a4-ee15-44e5-b537-b9568c61b4fc",
     Dwarves_Female_Skeleton_Robe_Purge_A_Lowerbody_B = "ea08ec52-736e-43f8-a4af-1099a66d5676",
-
 }
 
 CharacterVisualResources.Dwarves.Female.Boots = {
@@ -292,8 +291,8 @@ CharacterVisualResources.Dwarves.Female.Boots = {
     Dwarves_Female_Armor_Platemail_A_Legs_A = "21b4dfd0-d55d-42e7-bcd1-46b06fa9ab35",
     Dwarves_Female_Armor_Chainmail_A_Legs_A = "2ad14000-f829-447c-8d24-61781b443733",
     Dwarves_Female_Armor_Scalemail_A_Legs_A = "2e313c52-170b-4d77-a33d-d1d3ea0f9f92",
-    Dwarves_Female_Armor_StarterChainmail_A_Legs_A = "ceb50050-7990-49b9-b96c-c74e270621f2",
     Dwarves_Female_Armor_Leather_A_Legs_A = "5c4af696-c36c-4a1a-bf4a-24e61eb486f0",
+    Dwarves_Female_Armor_StarterChainmail_A_Legs_A = "ceb50050-7990-49b9-b96c-c74e270621f2",
     Dwarves_Female_Armor_StarterLeather_A_Legs_A = "59c72e8f-e335-41e5-866b-569bde04598f",
     Dwarves_Female_Armor_Mage_A_Legs_A = "f1e9f2c4-51a4-4c82-88b6-2d8df6cae939",
     Dwarves_Female_Armor_Mage_B_Legs_A = "20e1ffcc-e109-4441-ae4a-35254fd1d298",
@@ -304,9 +303,9 @@ CharacterVisualResources.Dwarves.Female.Boots = {
 
     Dwarves_Female_Skeleton_Armor_Platemail_A_Legs_A = "12c80077-e6e0-4419-9f03-0f5e261546fa",
     Dwarves_Female_Skeleton_Armor_Scalemail_A_Legs_A = "331b292f-a687-4761-b30f-7447afb74aa6",
+    Dwarves_Female_Skeleton_Armor_Leather_A_Legs_A = "3f8d521b-2529-4e74-a508-0e11a8c6a2a6",
     Dwarves_Female_Skeleton_Armor_StarterChainmail_A_Legs_A = "4eb1ff88-9991-46e8-8239-a890fbc7d5c5",
     Dwarves_Female_Skeleton_Armor_StarterLeather_A_Legs_A = "e96eb01b-ded0-4529-a612-07271761868a",
-    Dwarves_Female_Skeleton_Armor_Leather_A_Legs_A = "3f8d521b-2529-4e74-a508-0e11a8c6a2a6",
     Dwarves_Female_Skeleton_Armor_Mage_A_Legs_A = "259dc067-5212-4c54-ba79-65da191bd24b",
     Dwarves_Female_Skeleton_Armor_Mage_B_Legs_A = "28882704-5409-40a2-9b26-2f4bb4569616",
     Dwarves_Female_Skeleton_Armor_Mage_C_Legs_A = "417fcc3a-3025-4e7b-bf42-0e0f2c192dac",
@@ -315,9 +314,7 @@ CharacterVisualResources.Dwarves.Female.Boots = {
     Dwarves_Female_Skeleton_Robe_Purge_A_Legs_C = "83578b54-c666-4ed8-b022-7febc0378de8",
 }
 
-CharacterVisualResources.Dwarves.Female.Beard = {
-
-}
+CharacterVisualResources.Dwarves.Female.Beard = {}
 
 CharacterVisualResources.Dwarves.Female.Fullbody = {
     Dwarves_Female_Armor_Mage_A_Fullbody_A = "c24a5edf-a17d-4c7a-bf45-f4d23221a5b6",
@@ -326,21 +323,21 @@ CharacterVisualResources.Dwarves.Female.Fullbody = {
     Dwarves_Female_Skeleton_Armor_Mage_A_Fullbody_A = "7dba9e45-65e0-495a-ba14-8cb3268a5fe9",
     Dwarves_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_A = "6e190782-ae54-49dd-8539-e242e1d9cb5c",
 
-    Creatures_SourcePuppet_A = "<ccf29c64-9559-4154-a07d-48e09aa46a5b>",
-    Creatures_SourcePuppet_B = "<a825ea18-e90e-48cd-901c-10848f695f82>",
-    RS3_FX_SK_Soul_Ghost_DwarfFemale_01 = "<53e36905-45e3-4dae-8816-f39829047d89>",
-    RS3_FX_SK_Dwarves_Female_Armoured_01 = "<70111155-9480-4c57-bd4e-fa88ce69e1cd>",
-    ProxyMesh_Dwarves_Hero_Female_Fullbody = "<ddebd965-3179-4d84-a38a-61f690f05d12>",
+    Creatures_SourcePuppet_A = "ccf29c64-9559-4154-a07d-48e09aa46a5b",
+    Creatures_SourcePuppet_B = "a825ea18-e90e-48cd-901c-10848f695f82",
+    RS3_FX_SK_Soul_Ghost_DwarfFemale_01 = "53e36905-45e3-4dae-8816-f39829047d89",
+    RS3_FX_SK_Dwarves_Female_Armoured_01 = "70111155-9480-4c57-bd4e-fa88ce69e1cd",
+    ProxyMesh_Dwarves_Hero_Female_Fullbody = "ddebd965-3179-4d84-a38a-61f690f05d12",
 }
 
 CharacterVisualResources.Dwarves.Female.Cape = {
-    Dwarves_Female_Clothing_Civilian_Rich_E_Cape_A = "<8a88b776-a243-4dac-90cc-72aee380ffb2>",
+    Dwarves_Female_Clothing_Civilian_Rich_E_Cape_A = "8a88b776-a243-4dac-90cc-72aee380ffb2",
 }
 
-CharacterVisualResources.Dwarves.Female.Shoulder = {
-
-}
+CharacterVisualResources.Dwarves.Female.Shoulder = {}
 
 CharacterVisualResources.Dwarves.Female.Misc = {
     Dwarves_Female_Clothing_UNIQUE_Blindfolds_A = "86d5f658-5b93-406a-93c6-91a1966da6ff",
+
+    Dwarves_Female_Skeleton_ClawFinger_A = "ac59ce88-021c-44a5-a29a-05ad2b5598bf",
 }

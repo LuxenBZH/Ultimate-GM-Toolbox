@@ -92,9 +92,9 @@ CharacterVisualResources.Elves.Female.Helmet = {
     Elves_Female_Armor_Chainmail_A_Helmet_B = "99203e2a-2d17-48e5-b4f5-61f9ad27cfa0",
     Elves_Female_Armor_Scalemail_A_Helmet_A = "770a329c-d56a-4d22-8d02-11671917a7a4",
     Elves_Female_Armor_Scalemail_A_Helmet_B = "64640319-7efa-43cd-83f4-bf20c23f03a8",
-    Elves_Female_Armor_StarterChainmail_A_Helmet_A = "28c6bad4-af8c-4d39-a1f8-253a309dd287",
     Elves_Female_Armor_Leather_A_Helmet_A = "7ff863f1-1956-4c6d-84c9-a496de47fdfc",
     Elves_Female_Armor_Leather_B_Helmet_A = "03ec300f-7e45-401e-904b-74a304058051",
+    Elves_Female_Armor_StarterChainmail_A_Helmet_A = "28c6bad4-af8c-4d39-a1f8-253a309dd287",
     Elves_Female_Armor_StarterLeather_A_Helmet_A = "70103156-e67d-4eb4-bcfd-3c73b2f5239e",
     Elves_Female_Armor_Mage_A_Helmet_A = "49b5e67d-fbb9-40e1-b4cc-f8daaa1f7d6f",
     Elves_Female_Armor_Mage_B_Helmet_A = "270a6b1a-9f41-44c4-8dea-73a0edca5403",
@@ -160,8 +160,6 @@ CharacterVisualResources.Elves.Female.Torso = {
     Elves_Female_Armor_Scalemail_A_Upperbody_D = "8272b9da-4b82-43c9-9bf9-96f76f780ec6",
     Elves_Female_Armor_Scalemail_A_Upperbody_E = "3cdf67a3-0f4f-4572-b25c-0676ce7c6358",
     Elves_Female_Armor_Scalemail_A_Upperbody_F = "30a57f6b-b0b0-4bcd-80dc-5f1c35fa5ec1",
-    Elves_Female_Armor_StarterChainmail_A_Upperbody_A = "f29ddffa-fee9-421d-be25-e20ebfa79466",
-    Elves_Female_Armor_StarterChainmail_A_Upperbody_B = "4ae68a71-721a-4dd2-a532-803bec09ee3f",
     Elves_Female_Armor_Leather_A_Upperbody_A_Cape = "8f26287a-be77-4e8e-8aac-7a66ebe1cf74",
     Elves_Female_Armor_Leather_A_Upperbody_A = "a411d73e-0176-4e43-ab7a-c0afb26b0f29",
     Elves_Female_Armor_Leather_A_Upperbody_B = "31fe6d3a-0c0a-46af-abc9-f81dbd81a5fd",
@@ -169,6 +167,8 @@ CharacterVisualResources.Elves.Female.Torso = {
     Elves_Female_Armor_Leather_A_Upperbody_D = "dc1a3532-aa87-462e-825c-953421f096db",
     Elves_Female_Armor_Leather_A_Upperbody_E = "8ff6ae62-9a0f-409f-b878-3ed3088e4935",
     Elves_Female_Armor_Leather_A_Upperbody_F = "b40cf06a-cf20-4cbf-a280-0c637ae6de76",
+    Elves_Female_Armor_StarterChainmail_A_Upperbody_A = "f29ddffa-fee9-421d-be25-e20ebfa79466",
+    Elves_Female_Armor_StarterChainmail_A_Upperbody_B = "4ae68a71-721a-4dd2-a532-803bec09ee3f",
     Elves_Female_Armor_StarterLeather_A_Upperbody_A = "1ec87ad7-9bc8-4a08-bb86-1bf2e0de60f7",
     Elves_Female_Armor_StarterLeather_A_Upperbody_B = "f20fd324-ca70-45e4-9032-e25e8ec220b2",
     Elves_Female_Armor_Mage_A_Upperbody_A = "7f15527b-863a-4eb6-a5b3-abbc59ea3495",
@@ -202,8 +202,6 @@ CharacterVisualResources.Elves.Female.Torso = {
     Elves_Female_Skeleton_Armor_Scalemail_A_Upperbody_D = "c8b75b69-5018-442c-b47a-c13600bc7836",
     Elves_Female_Skeleton_Armor_Scalemail_A_Upperbody_E = "c80c3552-2fcf-4315-a95d-e4d09f6bedc3",
     Elves_Female_Skeleton_Armor_Scalemail_A_Upperbody_F = "b769e0e5-74fe-450b-b601-53ef50e1f6a7",
-    Elves_Female_Skeleton_Armor_StarterChainmail_A_Upperbody_A = "c393c06b-de13-4ac3-8734-f7d75eda1a46",
-    Elves_Female_Skeleton_Armor_StarterChainmail_A_Upperbody_B = "96e4107a-75d0-4d84-a8a7-36581b597be8",
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_A_Cape = "d97d49be-7815-4535-9117-2c604413b5e8",
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_A = "082de9e5-733e-4060-85d5-9ea3401b70c3",
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_B_Cape = "c47f27f2-6127-4645-b260-fd2c8afcc161",
@@ -212,6 +210,8 @@ CharacterVisualResources.Elves.Female.Torso = {
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_D = "49cbc034-2612-477a-a8b7-28dcc8af8654",
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_E = "542545af-e84b-4582-87a7-47199b76e231",
     Elves_Female_Skeleton_Armor_Leather_A_Upperbody_F = "66b82f86-5424-4ba0-a5d4-1a5514761882",
+    Elves_Female_Skeleton_Armor_StarterChainmail_A_Upperbody_A = "c393c06b-de13-4ac3-8734-f7d75eda1a46",
+    Elves_Female_Skeleton_Armor_StarterChainmail_A_Upperbody_B = "96e4107a-75d0-4d84-a8a7-36581b597be8",
     Elves_Female_Skeleton_Armor_StarterLeather_A_Upperbody_A = "f140f0a5-9af3-4b7f-873d-fb20fec60ea2",
     Elves_Female_Skeleton_Armor_StarterLeather_A_Upperbody_B = "4b6b2e00-496a-41e7-8b1c-517900684acf",
     Elves_Female_Skeleton_Armor_Mage_A_Upperbody_A = "18f802f3-760d-4bb2-8485-bf9fe36a9cc3",
@@ -232,8 +232,8 @@ CharacterVisualResources.Elves.Female.Arms = {
     Elves_Female_Armor_Platemail_A_Arms_A = "0efd0e9b-3975-4927-be05-dce6491ade66",
     Elves_Female_Armor_Chainmail_A_Arms_A = "3d73155e-c8b9-49cd-b46e-e8676512817f",
     Elves_Female_Armor_Scalemail_A_Arms_A = "6df7f72b-d478-41a3-80f1-571ad2a14fd2",
-    Elves_Female_Armor_StarterChainmail_A_Arms_A = "b21c1a09-c1d6-46d5-9e21-96b507646589",
     Elves_Female_Armor_Leather_A_Arms_A = "a07ae4f9-4b1d-4783-935e-c925579e26a9",
+    Elves_Female_Armor_StarterChainmail_A_Arms_A = "b21c1a09-c1d6-46d5-9e21-96b507646589",
     Elves_Female_Armor_StarterLeather_A_Arms_A = "6eff24df-c0d4-4ca2-89e6-27819d8a31c9",
     Elves_Female_Armor_Mage_A_Arms_A = "d19f1161-41fc-4f4b-a72d-c8d7ac3fcf27",
     Elves_Female_Armor_Mage_B_Arms_A = "7d70c10a-f621-4fb0-8388-870f8494952c",
@@ -246,8 +246,8 @@ CharacterVisualResources.Elves.Female.Arms = {
     Elves_Female_Skeleton_Armor_Platemail_A_Arms_A = "9654c1b3-cbc3-4c51-9bf7-2c7f723d8cfc",
     Elves_Female_Skeleton_Armor_Chainmail_A_Arms_A = "fc1a8121-b73b-4e65-a93e-03629b24e819",
     Elves_Female_Skeleton_Armor_Scalemail_A_Arms_A = "95d4a5ab-bcaf-4ec1-9f09-a51b37a9d0e8",
-    Elves_Female_Skeleton_Armor_StarterChainmail_A_Arms_A = "c889c24e-983f-4911-a9b0-abdb65ebd808",
     Elves_Female_Skeleton_Armor_Leather_A_Arms_A = "5ab2d93f-1b5e-48bf-a563-402bdf2fbe41",
+    Elves_Female_Skeleton_Armor_StarterChainmail_A_Arms_A = "c889c24e-983f-4911-a9b0-abdb65ebd808",
     Elves_Female_Skeleton_Armor_StarterLeather_A_Arms_A = "b0ec7375-8d29-4262-8d9d-0e7d078d17a5",
     Elves_Female_Skeleton_Armor_Mage_A_Arms_A = "35677846-1dcb-41f8-81c3-915e77fe9c09",
     Elves_Female_Skeleton_Armor_Mage_B_Arms_A = "64840524-f540-45f3-a1a2-cb0e31b2878d",
@@ -262,8 +262,8 @@ CharacterVisualResources.Elves.Female.Legs = {
     Elves_Female_Armor_Platemail_A_Lowerbody_A = "2caf4119-af02-495e-8fe9-a5c05bbc4ccc",
     Elves_Female_Armor_Chainmail_A_Lowerbody_A = "c98d0350-1e73-4ba4-bb85-fecb724f71f7",
     Elves_Female_Armor_Scalemail_A_Lowerbody_A = "dcc03eda-a9e4-4369-b497-471379314fec",
-    Elves_Female_Armor_StarterChainmail_A_Lowerbody_A = "0f61d9f9-de8a-43d4-bd5a-cb0f2c3c0df7",
     Elves_Female_Armor_Leather_A_Lowerbody_A = "ccdf659e-c223-4f30-acef-c0c6052d294f",
+    Elves_Female_Armor_StarterChainmail_A_Lowerbody_A = "0f61d9f9-de8a-43d4-bd5a-cb0f2c3c0df7",
     Elves_Female_Armor_StarterLeather_A_Lowerbody_A = "51aee84f-fcd5-4a19-8141-580fa3791abc",
     Elves_Female_Armor_Mage_A_Lowerbody_A = "6cc932d4-d491-4ced-89a1-2b99d01220dd",
     Elves_Female_Armor_Mage_B_Lowerbody_A = "ddf59967-ed96-439b-b07b-d2fec8c268c6",
@@ -299,8 +299,8 @@ CharacterVisualResources.Elves.Female.Boots = {
     Elves_Female_Armor_Platemail_A_Legs_A = "12bcda26-91e7-426d-aa6f-a7d3ce5abfe6",
     Elves_Female_Armor_Chainmail_A_Legs_A = "18b01cd7-5609-4988-bf16-6342f9308be9",
     Elves_Female_Armor_Scalemail_A_Legs_A = "42222991-ce74-44c4-89c4-741562754d96",
-    Elves_Female_Armor_StarterChainmail_A_Legs_A = "d5951eaa-3f1a-417d-a515-49edca689a1c",
     Elves_Female_Armor_Leather_A_Legs_A = "530a2a35-a411-4c72-ab7e-f15d6c80c693",
+    Elves_Female_Armor_StarterChainmail_A_Legs_A = "d5951eaa-3f1a-417d-a515-49edca689a1c",
     Elves_Female_Armor_StarterLeather_A_Legs_A = "4810694c-cf47-4cb2-821b-1bfd17f95a1b",
     Elves_Female_Armor_Mage_A_Legs_A = "51f173b4-b50e-4e89-9908-170adfe342a9",
     Elves_Female_Armor_Mage_B_Legs_A = "488beb18-85bc-4e19-b2ce-e25a9144c951",
@@ -313,8 +313,8 @@ CharacterVisualResources.Elves.Female.Boots = {
     Elves_Female_Skeleton_Armor_Platemail_A_Legs_A = "49023711-2886-4768-a74d-64cfec419030",
     Elves_Female_Skeleton_Armor_Chainmail_A_Legs_A = "15147d93-bcf5-41c4-bf8f-7b3ebbeabc13",
     Elves_Female_Skeleton_Armor_Scalemail_A_Legs_A = "aae8649b-667c-4f26-85f1-d601803d3b2c",
-    Elves_Female_Skeleton_Armor_StarterChainmail_A_Legs_A = "07151282-12f1-4be4-89f5-61534df80872",
     Elves_Female_Skeleton_Armor_Leather_A_Legs_A = "ce05dace-9573-4498-88e3-943900336bfc",
+    Elves_Female_Skeleton_Armor_StarterChainmail_A_Legs_A = "07151282-12f1-4be4-89f5-61534df80872",
     Elves_Female_Skeleton_Armor_StarterLeather_A_Legs_A = "ffb7afae-be95-424c-8c2f-15c6a85cf96a",
     Elves_Female_Skeleton_Armor_Mage_A_Legs_A = "383705d9-7722-4925-a7e2-7645105e046c",
     Elves_Female_Skeleton_Armor_Mage_B_Legs_A = "78c0c422-dda3-4b2f-89b3-0e51b77af94c",
@@ -324,23 +324,19 @@ CharacterVisualResources.Elves.Female.Boots = {
     Elves_Female_Skeleton_Robe_Purge_A_Legs_C = "6372b72a-52bd-4ee0-9aef-fa223ff7ded8",
 }
 
-CharacterVisualResources.Elves.Female.Beard = {
-
-}
+CharacterVisualResources.Elves.Female.Beard = {}
 
 CharacterVisualResources.Elves.Female.Fullbody = {
     Elves_Female_Redfaction_Inquisitor_A_Upperbody_A = "6347100e-3efb-4bb9-a8f2-2eeec55a1aa8",
 
     Elves_Female_Skeleton_Redfaction_Inquisitor_A_Upperbody_A = "ab7b8655-2bb0-4bf4-9aa4-f9483f7d1396",
 
-    RS3_FX_SK_Elves_Female_Armoured_01 = "<80a7c0c4-1796-4cff-ad80-17f1a9d19eb2>",
-    RS3_FX_SK_Elves_Female_Armoured_02 = "<a14aa3ae-c51c-4ca3-8078-852cd1778fe1>",
-    ProxyMesh_Elves_Hero_Female_Fullbody = "<1a91b031-84e9-4bcc-8680-19c0bd5cf250>",
+    RS3_FX_SK_Elves_Female_Armoured_01 = "80a7c0c4-1796-4cff-ad80-17f1a9d19eb2",
+    RS3_FX_SK_Elves_Female_Armoured_02 = "a14aa3ae-c51c-4ca3-8078-852cd1778fe1",
+    ProxyMesh_Elves_Hero_Female_Fullbody = "1a91b031-84e9-4bcc-8680-19c0bd5cf250",
 }
 
-CharacterVisualResources.Elves.Female.Cape = {
-
-}
+CharacterVisualResources.Elves.Female.Cape = {}
 
 CharacterVisualResources.Elves.Female.Shoulder = {
     Elves_Female_Armor_Leather_A_Shoulders_A = "5f4f2ccb-47e4-41d8-bcbe-85453b9e238d",
