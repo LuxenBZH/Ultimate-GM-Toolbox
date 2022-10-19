@@ -51,26 +51,28 @@ end
 Ext.Osiris.RegisterListener("ObjectFlagSet", 3, "before", function(flag, object, dialogInstance)
     if flag == "UGMT_Selected" then
         SelectionManager.CurrentSelection[#SelectionManager.CurrentSelection+1] = Osi.GetUUID(object)
-        -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Select"}))
-        Osi.ApplyStatus(object, "GM_SELECTED_DISCREET", -1, 1)
+        Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Select"}))
+        -- Osi.ApplyStatus(object, "GM_SELECTED_DISCREET", -1, 1)
+        Osi.DB_GM_Selection(object)
     elseif flag == "UGMT_Targeted" then
         if SelectionManager.CurrentTarget then
             SelectionManager:ClearTarget()
         end
         SelectionManager.CurrentTarget = Osi.GetUUID(object)
-        -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Target"}))
-        Osi.ApplyStatus(object, "GM_TARGETED_DISCREET", -1, 1)
+        Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_SetSelectionFX", Ext.Json.Stringify({Character = Ext.ServerEntity.GetGameObject(object).NetID, Type = "Target"}))
+        -- Osi.ApplyStatus(object, "GM_TARGETED_DISCREET", -1, 1)
     end
 end)
 
 Ext.Osiris.RegisterListener("ObjectFlagCleared", 3, "before", function(flag, object, dialogInstance)
     local object = Osi.GetUUID(object)
     if flag == "UGMT_Selected" then
+        Osi.DB_GM_Selection:Delete(object)
         for i,selected in pairs(SelectionManager.CurrentSelection) do
             if object == selected then
                 SelectionManager.CurrentSelection[i] = nil
-                -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_ClearSelectionFX", Ext.Json.Stringify({Character = object.NetID}))
-                Osi.RemoveStatus(object, "GM_SELECTED_DISCREET")
+                Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_ClearSelectionFX", Ext.Json.Stringify({Character = Ext.Entity.GetGameObject(object).NetID}))
+                -- Osi.RemoveStatus(object, "GM_SELECTED_DISCREET")
                 break
             end
         end
@@ -78,8 +80,8 @@ Ext.Osiris.RegisterListener("ObjectFlagCleared", 3, "before", function(flag, obj
         if SelectionManager.CurrentTarget == object then
             SelectionManager.CurrentTarget = nil
         end
-        -- Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_ClearSelectionFX", Ext.Json.Stringify({Character = object.NetID}))
-        Osi.RemoveStatus(object, "GM_TARGETED_DISCREET")
+        Ext.Net.PostMessageToClient(Osi.CharacterGetHostCharacter(), "UGMT_ClearSelectionFX", Ext.Json.Stringify({Character = Ext.Entity.GetGameObject(object).NetID}))
+        -- Osi.RemoveStatus(object, "GM_TARGETED_DISCREET")
     end
 end)
 
@@ -173,3 +175,12 @@ end
 function SelectionManager:ToggleLock()
     self.Lock = not self.Lock
 end
+
+Ext.Events.GameStateChanged:Subscribe(function(e)
+    if e.FromState == "LoadLevel" and e.ToState == "Sync" then
+        local characters = Ext.ServerEntity.GetAllCharacterGuids()
+        for i,character in pairs(characters) do
+            SelectionManager:ClearFlag(character)
+        end
+    end
+end)

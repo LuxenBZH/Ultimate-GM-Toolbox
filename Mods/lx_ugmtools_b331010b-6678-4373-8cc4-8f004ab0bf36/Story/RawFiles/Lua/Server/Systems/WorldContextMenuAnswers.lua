@@ -70,10 +70,13 @@ local answers = {
             local highestLeveledCharacter = nil
             for i,player in pairs(Osi.DB_IsPlayer:Get(nil)) do
                 _P(player[1])
-                local level = Ext.GetCharacter(player[1]).Stats.Level
-                if level > highestLevel then
-                    highestLevel = level
-                    highestLeveledCharacter = player
+                local char = Ext.GetCharacter(player[1])
+                if char then
+                    local level = char.Stats.Level
+                    if level > highestLevel then
+                        highestLevel = level
+                        highestLeveledCharacter = player
+                    end
                 end
             end
             GenerateItems(character.MyGuid, character.MyGuid)

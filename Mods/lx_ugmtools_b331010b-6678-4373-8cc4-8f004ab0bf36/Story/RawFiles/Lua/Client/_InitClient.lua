@@ -75,7 +75,7 @@ Ext.Require("Client/UI/Classes/ToolButton.lua")
 Ext.Require("Client/UI/Classes/DraggingEffect.lua")
 
 Ext.Require("Client/UI/System/ToolBar.lua")
--- Ext.Require("Client/Tools/SelectionFX.lua")
+Ext.Require("Client/Tools/SelectionFX.lua")
 
 -- Ext.Require("Client/ClickingState.lua")
 -- Ext.Require("Client/CustomStatsTooltipFix.lua")

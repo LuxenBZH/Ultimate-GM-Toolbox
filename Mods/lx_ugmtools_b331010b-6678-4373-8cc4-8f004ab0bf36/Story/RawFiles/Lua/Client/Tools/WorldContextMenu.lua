@@ -52,6 +52,26 @@ UI.ContextMenu.Register.BuiltinOpeningListener(function(contextMenu)
     end
 end)
 
+local function ParseVisualsCategories(tree, parentAction)
+    for k,v in pairs(tree) do
+        local action = Action:Create({
+            ID = "UGMT_VisualCategory"..k,
+            DisplayName = k
+        })
+        parentAction.Children[#parentAction.Children+1] = action
+        if type(v) == "table" then
+            action.Children = {}
+            ParseVisualsCategories(v, action)
+        else
+            -- local fontSize = -2 -string.len(k)%10
+            -- action.DisplayName = "<font size=\""..fontSize.."\">"..k.."</font>"
+            action.Callback = function(...)
+                _P("Visual Callback:",k,v)
+            end
+        end
+    end
+end
+
 -- Mods.LeaderLib.UI.ContextMenu.Register.Action(Action:Create({
 --     ID = "UGMT_AssignCharacter",
 --     -- DisplayName = Ext.GetTranslatedStringFromKey("UGMT_ResetStatBoost"),
@@ -184,6 +204,40 @@ Ext.RegisterListener("SessionLoaded", function()
 
     UI.ContextMenu.Register.Action(treasureTableAction)
 
+    -- Set Visuals
+    -- local visualsAction = Action:Create({
+    --     ID = "UGMT_SetVisuals",
+    --     DisplayName = "Set Character Visuals",
+    --     Tooltip = "Change character visuals, with options beyond the current visual set the character has.",
+    --     ShouldOpen = GetShouldOpenNpc,
+    --     Children = {},
+    --     Callback = nil
+    -- })
+
+    -- UI.ContextMenu.Register.Action(visualsAction)
+
+    -- local slots = {
+    --     [1] = "Hairs",
+    --     [2] = "Head",
+    --     [3] = "Torso",
+    --     [4] = "Arms",
+    --     [5] = "Legs",
+    --     [6] = "Boots",
+    --     [7] = "Beard",
+    --     [8] = "Aux 1",
+    --     [9] = "Aux 2"
+    -- }
+    -- for i,j in pairs(slots) do
+    --     local a = Action:Create({
+    --         ID = "UGMT_SetVisualsOnSlot"..j,
+    --         DisplayName = j,
+    --         Children = {}
+    --     })
+    --     ParseVisualsCategories(CharacterVisualResources, a)
+    --     visualsAction.Children[#visualsAction.Children+1] = a
+    -- end
+    
+
     local Input = Mods.LeaderLib.Input
     local Events = Mods.LeaderLib.Events
 
@@ -273,7 +327,6 @@ Ext.RegisterListener("SessionLoaded", function()
                     }))
                 end
             })
-            
 
             if character.IsPlayer then
                 togglePlayerAction.DisplayName = "Make NPC"
