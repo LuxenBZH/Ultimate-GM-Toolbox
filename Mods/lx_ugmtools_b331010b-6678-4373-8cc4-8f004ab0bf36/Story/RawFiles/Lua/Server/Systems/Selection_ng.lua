@@ -133,7 +133,9 @@ end)
 function SelectionManager:GetSelectedCharacters()
     local characters = {}
     for i,object in pairs(self.CurrentSelection) do
-        if ObjectIsCharacter(object) == 1 then
+        if Osi.ObjectExists(object) == 0 then
+            self.CurrentSelection[object] = nil
+        elseif Osi.ObjectIsCharacter(object) == 1 then
             characters[object] = true
         end
     end
