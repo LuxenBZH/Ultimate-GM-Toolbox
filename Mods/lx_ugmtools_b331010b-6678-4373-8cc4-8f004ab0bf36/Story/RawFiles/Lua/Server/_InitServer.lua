@@ -4,34 +4,6 @@ PersistentVars = {}
 -- quickSelection = nil
 -- bypasslock = false
 
--- Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
--- Ext.Require("Server/Systems/Selection.lua")
-Ext.Require("Server/Systems/Selection_ng.lua")
-Ext.Require("Server/Systems/OsiServices.lua")
-Ext.Require("Server/Systems/InputBoxAnswer.lua")
-Ext.Require("Server/Systems/ContextMenuAnswers.lua")
-
-
-Ext.Require("Server/Tools/Movement.lua")
-Ext.Require("Server/Tools/Tools.lua")
-Ext.Require("Server/Tools/Equipment.lua")
-Ext.Require("Server/Tools/Animations.lua")
-Ext.Require("Server/Tools/UIHotbar.lua")
--- Ext.Require("Server/ConsoleCommands.lua")
--- Ext.Require("Server/VisualResources.lua")
-Ext.Require("Server/Tools/VisualSetRandomizer.lua")
-Ext.Require("Server/Tools/Fade.lua")
-Ext.Require("Server/Tools/ContextMenuTools.lua")
-
-Ext.Require("Server/Systems/ToolbarAnswers.lua")
-Ext.Require("Server/Systems/WorldContextMenuAnswers.lua")
-
-Ext.Require("Server/Fixes/LoseControlFix.lua")
-Ext.Require("Server/Fixes/ForceGMControl.lua")
-Ext.Require("Server/Fixes/AlignmentFixer.lua")
-Ext.Require("Server/Fixes/ModListWatchdog.lua")
--- Ext.Require("Server/ClickTools.lua")
-
 -- Initialization
 currentLevel = ""
 
@@ -91,7 +63,7 @@ local function InitCurrentLevel(map, isEditor)
     RestoreCharactersAnimations()
     RestoreFollowingBehavior()
     local host = CharacterGetHostCharacter()
-    Ext.PostMessageToClient(host, "UGM_ReplaceFX", "")
+    -- Ext.PostMessageToClient(host, "UGM_ReplaceFX", "")
 end
 
 Ext.RegisterOsirisListener("GameStarted", 2, "before", InitCurrentLevel)
@@ -142,6 +114,34 @@ Ext.RegisterOsirisListener("CharacterStatusRemoved", 3, "before", Reactivation)
 --     if selected[character] ~= nil then selected[character] = nil end
 --     if character == target then target = nil end
 -- end)
+
+-- Ext.Require("Server/Systems/OsirisGlobalListeners.lua")
+-- Ext.Require("Server/Systems/Selection.lua")
+Ext.Require("Server/Systems/Selection_ng.lua")
+Ext.Require("Server/Systems/OsiServices.lua")
+Ext.Require("Server/Systems/InputBoxAnswer.lua")
+Ext.Require("Server/Systems/ContextMenuAnswers.lua")
+
+
+Ext.Require("Server/Tools/Movement.lua")
+Ext.Require("Server/Tools/Tools.lua")
+Ext.Require("Server/Tools/Equipment.lua")
+Ext.Require("Server/Tools/Animations.lua")
+Ext.Require("Server/Tools/UIHotbar.lua")
+-- Ext.Require("Server/ConsoleCommands.lua")
+-- Ext.Require("Server/VisualResources.lua")
+Ext.Require("Server/Tools/VisualSetRandomizer.lua")
+Ext.Require("Server/Tools/Fade.lua")
+Ext.Require("Server/Tools/ContextMenuTools.lua")
+
+Ext.Require("Server/Systems/ToolbarAnswers.lua")
+Ext.Require("Server/Systems/WorldContextMenuAnswers.lua")
+
+Ext.Require("Server/Fixes/LoseControlFix.lua")
+Ext.Require("Server/Fixes/ForceGMControl.lua")
+Ext.Require("Server/Fixes/AlignmentFixer.lua")
+Ext.Require("Server/Fixes/ModListWatchdog.lua")
+-- Ext.Require("Server/ClickTools.lua")
 
 -- Console commands
 local debugCommands = {

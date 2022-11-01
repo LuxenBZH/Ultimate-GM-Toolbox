@@ -204,6 +204,41 @@ Ext.RegisterListener("SessionLoaded", function()
 
     UI.ContextMenu.Register.Action(treasureTableAction)
 
+    -- Properties
+    local propertiesAction = Action:Create({
+        ID = "UGMT_CharacterProperties",
+        DisplayName = "Properties",
+        ShouldOpen = GetShouldOpen,
+        Children = {},
+        Callback = nil
+    })
+
+    UI.ContextMenu.Register.Action(propertiesAction)
+
+    -- Set Spotter
+    local spotterAction = Action:Create({
+        ID = "UGMT_SetSpotter",
+        DisplayName = "Toggle Spotter",
+        Tooltip = "Toggle the ability of this character to spot sneaking characters",
+        ShouldOpen = GetShouldOpen,
+        Callback = nil,
+    })
+
+    propertiesAction.Children[#propertiesAction.Children+1] = spotterAction
+
+    -- Set Scale
+    local setScaleAction = Action:Create({
+        ID = "UGMT_SetObjectScale",
+        DisplayName = "Set Scale",
+        Tooltip = "Change the size of the character",
+        ShouldOpen = GetShouldOpen,
+        Callback = nil,
+    })
+
+    propertiesAction.Children[#propertiesAction.Children+1] = setScaleAction
+
+    -- Set Scale
+
     -- Set Visuals
     -- local visualsAction = Action:Create({
     --     ID = "UGMT_SetVisuals",
@@ -327,6 +362,20 @@ Ext.RegisterListener("SessionLoaded", function()
                     }))
                 end
             })
+
+            -- Set Spotter
+            spotterAction.Callback = function (...)
+                Ext.PostMessageToServer("UGMT_ContextMenuAction",  Ext.Json.Stringify({
+                Callback = "ugmt_setspotter",
+                Character = character.NetID
+            })) end
+
+            -- Set Scale
+            setScaleAction.Callback = function (...)
+                OpenInputBox("Enter a percentage number", "", UGM_Data.InputBoxIndexes.SetScale, {
+                    Character = character.NetID
+                })
+            end
 
             if character.IsPlayer then
                 togglePlayerAction.DisplayName = "Make NPC"

@@ -1,3 +1,5 @@
+UGM_Data = {}
+
 function GetTableSize(table)
     if table == nil then return 0 end
     local i = 0
@@ -146,4 +148,9 @@ equipmentSlots = {
     "Shield",
     "Weapon",
     "Wings",
+}
+
+UGM_Data.InputBoxIndexes = {
+    SetTreasureTable = 4501,
+    SetScale = 4502
 }

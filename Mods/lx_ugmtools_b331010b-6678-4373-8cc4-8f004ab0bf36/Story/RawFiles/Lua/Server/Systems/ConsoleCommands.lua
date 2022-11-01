@@ -10,7 +10,7 @@ local utilityCommands = {
     ugm_sswitch = {"", "Switch the selection type. In normal mode, you'll see an 'S' on the top of selected characters. In discreet mode, it's only shown in the console.", handle = function() SwitchSelectionType() end},
     ugm_setscale = {"<float>", "Set the character scale to the float value. Normal scale is 1.0, but it can vary. Not saved to templates, only on instances.", 
         handle = function(params)
-            for character, s in pairs(selected) do
+            for character, s in pairs(SelectionManager:GetSelectedCharacters()) do
                 Ext.BroadcastMessage("UGM_SetCharacterScale", Ext.GetCharacter(character).NetID..":"..tostring(params[1]), nil)
                 PersistentVars[currentLevel].scale[character] = params[1]
             end
