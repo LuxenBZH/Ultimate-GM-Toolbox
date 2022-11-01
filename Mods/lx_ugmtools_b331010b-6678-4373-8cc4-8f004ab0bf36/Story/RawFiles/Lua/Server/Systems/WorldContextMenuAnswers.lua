@@ -81,6 +81,11 @@ local answers = {
             end
             GenerateItems(character.MyGuid, character.MyGuid)
         end
+    },
+    ["ugmt_setspotter"] = {
+        Callback = function(character)  
+            character.SpotSneakers = not(character.SpotSneakers)
+        end
     }
 }
 
@@ -93,8 +98,12 @@ end)
 
 Ext.RegisterNetListener("UGM_InputBox", function(call, payload, ...)
     local infos = Ext.Json.Parse(payload)
+    infos.ButtonID = tonumber(infos.ButtonID)
     local character = Ext.GetCharacter(tonumber(infos.Character))
-    if infos.ButtonID == 4501 then
+    if infos.ButtonID == UGM_Data.InputBoxIndexes.SetTreasureTable then
         CharacterSetCustomTradeTreasure(character.MyGuid, infos.Value)
+    elseif infos.ButtonID == UGM_Data.InputBoxIndexes.SetScale then
+        Ext.BroadcastMessage("UGM_SetCharacterScale", infos.Character..":"..tostring(infos.Value/100), nil)
+        PersistentVars[Ext.ServerEntity:GetCurrentLevelData().LevelName].scale[character.MyGuid] = infos.Value/100
     end
 end)
