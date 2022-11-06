@@ -106,7 +106,8 @@ end
 
 function ToolButton:ChangeTooltip(index)
     local root = Ext.UI.GetByName(self.UI):GetRoot()
-    _D(self.Tooltips)
+    -- _D(self.Tooltips)
+    -- TODO "dse::ecl::lua::SetFlashValue(): Can't convert Lua type 'nil' to Flash!"
     root.toolbarHolder_mc.toolbar_Array[self.BarIndex-1].buttonArray[self.ButtonIndex-1].tooltipString = self.Tooltips[index]
 end
 

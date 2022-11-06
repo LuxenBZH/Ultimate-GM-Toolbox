@@ -204,6 +204,7 @@ function ManagePlayable(item, event)
         for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
             CharacterMakeNPC(char)
             Osi.DB_IsPlayer:Delete(char)
+            Ext.ServerEntity.GetCharacter(char).Multiplayer = false
         end
     elseif event == "GM_MakeFollower" and SelectionManager.CurrentTarget ~= nil then
         for char,x in pairs(SelectionManager:GetSelectedCharacters()) do
@@ -211,6 +212,7 @@ function ManagePlayable(item, event)
                 CharacterAddToPlayerCharacter(char, SelectionManager.CurrentTarget)
                 CharacterGiveSkill(char, "Shout_FollowerKeepPosition")
                 CharacterGiveSkill(SelectionManager.CurrentTarget, "Shout_FollowerKeepPosition")
+                
             end
             CharacterAddToPlayerCharacter(char, SelectionManager.CurrentTarget)
         end
@@ -223,6 +225,7 @@ function ManagePlayable(item, event)
                 CharacterGiveSkill(SelectionManager.CurrentTarget, "Shout_FollowerKeepPosition")
             end
             CharacterRemoveFromPlayerCharacter(char, owner)
+            Ext.ServerEntity.GetCharacter(char).Multiplayer = false
         end
     elseif event == "GM_AssignPlayer" and SelectionManager.CurrentTarget ~= nil then
         for char,x in pairs(SelectionManager:GetSelectedCharacters()) do

@@ -37,13 +37,14 @@ end
 local function RestoreFollowingBehavior()
     for follower,leader in pairs(PersistentVars.Followers) do
         if ObjectExists(follower) == 1 and ObjectExists(leader) == 1 then
+            ApplyStatus(follower, "GM_FOLLOW", -1.0, 1)
             Osi.ProcCharacterFollowCharacter(follower, leader)
         end
     end
 end
 
 local function InitCurrentLevel(map, isEditor)
-    currentLevel = map
+    currentLevel = Ext.ServerEntity.GetCurrentLevelData().UniqueKey
     if PersistentVars[currentLevel] == nil then
         PersistentVars[currentLevel] = {}
         PersistentVars[currentLevel].patrols = {}
