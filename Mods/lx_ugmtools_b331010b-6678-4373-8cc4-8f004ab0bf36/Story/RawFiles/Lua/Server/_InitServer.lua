@@ -7,6 +7,9 @@ PersistentVars = {}
 -- Initialization
 currentLevel = ""
 
+---@class ServerData
+ServerData = {}
+
 local function RestoreCharactersScaling()
     if PersistentVars == nil then
         PersistentVars = {}
@@ -45,6 +48,7 @@ end
 
 local function InitCurrentLevel(map, isEditor)
     currentLevel = Ext.ServerEntity.GetCurrentLevelData().UniqueKey
+    ServerData.CurrentLevel = Ext.ServerEntity.GetCurrentLevelData()
     if PersistentVars[currentLevel] == nil then
         PersistentVars[currentLevel] = {}
         PersistentVars[currentLevel].patrols = {}
@@ -64,7 +68,7 @@ local function InitCurrentLevel(map, isEditor)
     RestoreCharactersAnimations()
     RestoreFollowingBehavior()
     local host = CharacterGetHostCharacter()
-    -- Ext.PostMessageToClient(host, "UGM_ReplaceFX", "")
+    Ext.PostMessageToClient(host, "UGM_ReplaceFX", "")
 end
 
 Ext.RegisterOsirisListener("GameStarted", 2, "before", InitCurrentLevel)

@@ -13,3 +13,8 @@ local function ReplaceAllFX(...)
 end
 
 Ext.RegisterNetListener("UGM_ReplaceFX", ReplaceAllFX)
+-- Ext.Events.SessionLoaded:Subscribe(function(e)
+--     if Ext.ClientUI.GetByType(119):GetRoot().isGameMasterChar then
+--         ReplaceAllFX()
+--     end
+-- end)
